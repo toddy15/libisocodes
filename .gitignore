@@ -1,0 +1,4 @@
+*.[cho]
+libisocodes.so*
+*.vapi
+vala.stamp
