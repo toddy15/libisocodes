@@ -42,6 +42,10 @@ namespace isocodes {
             }
         }
         /**
+         * The ISO standard currently in use.
+         */
+        public string standard { get; protected set; }
+        /**
          * Pointer to the Xml.Doc structure of LibXML.
          */
         protected Xml.Doc* _xml = null;
@@ -54,7 +58,7 @@ namespace isocodes {
          * @param string Filename to open, defaults to filepath.
          * @param string ISO standard to expect in the file.
          */
-        public void open_file(string name = "", string standard = "") throws ISOCodesError
+        public void open_file(string name = "") throws ISOCodesError
         {
             // If the name is set, use it.
             if (name != "") {
@@ -84,41 +88,6 @@ namespace isocodes {
                     @"The file '$filepath' does not contain valid ISO $standard data."
                 );
             }
-        }
-        /**
-         * This method tries to locate the given code in the XML file.
-         * 
-         * @param string Code to search for.
-         */
-        public void search_code(string code = "")
-        {
-            stdout.printf("CODE: %s\n", code);
-            string[] test = _find_string_in_attributes(code,
-                {"alpha_2_code", "alpha_3_code", "numeric_code"});
-            foreach (var t in test) {
-                stdout.printf("T: %s\n", t);
-            }
-        }
-        protected string[] _find_string_in_attributes(string phrase, string[] attributes)
-        {
-            string[] results = {};
-            var iterator = _xml->get_root_element()->children;
-            // Loop through all entries
-            while (iterator != null) {
-                // Only use the nodes, not text or comments
-                if (iterator->type == ElementType.ELEMENT_NODE) {
-                    if (iterator->name == "iso_3166_entry") {
-                        foreach (var attribute in attributes) {
-                            if (iterator->get_prop(attribute) == phrase.up()) {
-                                results += iterator->get_prop("name");
-                            }
-                        }
-                    }
-                }
-                iterator = iterator->next;
-            }
-            delete iterator;
-            return results;
         }
     }
 }

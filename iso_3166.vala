@@ -28,6 +28,7 @@ namespace isocodes {
          */
         public ISO_3166() {
             Parser.init();
+            standard = "3166";
             filepath = "/usr/share/xml/iso-codes/iso_3166.xml";
         }
         /**
@@ -39,16 +40,39 @@ namespace isocodes {
             Parser.cleanup();
         }
         /**
-         * The ISO standard currently in use.
-         */
-        public string standard { get; private set; default = "3166"; }
-        /**
          * Open the given file and check if it contains the expected data.
          */
         public new void open_file(string name = "") throws ISOCodesError
         {
             // Open and parse the file
-            base.open_file(name, standard);
+            base.open_file(name);
+        }
+        /**
+         * This method tries to locate the given code in the XML file.
+         * 
+         * @param string Code to search for.
+         */
+        public ISO_3166_Entry[] search_code(string code = "")
+        {
+            string[] attributes = {"alpha_2_code", "alpha_3_code", "numeric_code"};
+            ISO_3166_Entry[] results = {};
+            var iterator = _xml->get_root_element()->children;
+            // Loop through all entries
+            while (iterator != null) {
+                // Only use the nodes, not text or comments
+                if (iterator->type == ElementType.ELEMENT_NODE) {
+                    if (iterator->name == "iso_3166_entry") {
+                        foreach (var attribute in attributes) {
+                            if (iterator->get_prop(attribute) == code.up()) {
+                                results += new ISO_3166_Entry(iterator);
+                            }
+                        }
+                    }
+                }
+                iterator = iterator->next;
+            }
+            delete iterator;
+            return results;
         }
     }
 }

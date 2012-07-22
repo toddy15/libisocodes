@@ -15,7 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-libisocodes_VALASOURCES = isocodes.vala iso_3166.vala exceptions.vala
+libisocodes_VALASOURCES = \
+	isocodes.vala \
+	iso_3166.vala \
+	iso_3166_entry.vala \
+	exceptions.vala
+
 libisocodes_CSOURCES = $(libisocodes_VALASOURCES:.vala=.c)
 libisocodes_OBJECTS = $(libisocodes_CSOURCES:.c=.o)
 
