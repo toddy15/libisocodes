@@ -40,39 +40,40 @@ namespace isocodes {
             Parser.cleanup();
         }
         /**
-         * Open the given file and check if it contains the expected data.
-         */
-        public new void open_file(string name = "") throws ISOCodesError
-        {
-            // Open and parse the file
-            base.open_file(name);
-        }
-        /**
          * This method tries to locate the given code in the XML file.
          * 
          * @param string Code to search for.
          */
-        public ISO_3166_Entry[] search_code(string code = "")
+        public ISO_3166_Entry[] search_code(string code = "") throws ISOCodesError
         {
+            ISO_3166_Entry[] result = {};
             string[] attributes = {"alpha_2_code", "alpha_3_code", "numeric_code"};
-            ISO_3166_Entry[] results = {};
-            var iterator = _xml->get_root_element()->children;
+            bool code_not_found = true;
+            
             // Loop through all entries
+            var iterator = _xml->get_root_element()->children;
             while (iterator != null) {
                 // Only use the nodes, not text or comments
                 if (iterator->type == ElementType.ELEMENT_NODE) {
                     if (iterator->name == "iso_3166_entry") {
                         foreach (var attribute in attributes) {
                             if (iterator->get_prop(attribute) == code.up()) {
-                                results += new ISO_3166_Entry(iterator);
+                                result += new ISO_3166_Entry(iterator);
+                                code_not_found = false;
+                                break;
                             }
                         }
                     }
                 }
                 iterator = iterator->next;
             }
+            if (code_not_found) {
+                throw new ISOCodesError.CODE_NOT_DEFINED(
+                    @"The code '$code' is not defined."
+                );
+            }
             delete iterator;
-            return results;
+            return result;
         }
     }
 }
