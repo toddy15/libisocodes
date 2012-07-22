@@ -22,6 +22,8 @@ libisocodes_OBJECTS = $(libisocodes_CSOURCES:.c=.o)
 ABI_VERSION = 1
 MINOR_VERSION = 0
 
+VALAC = /usr/bin/valac-0.16
+
 libisocodes.so.$(ABI_VERSION).$(MINOR_VERSION): $(libisocodes_OBJECTS) vala.stamp
 	ld -shared -soname=libisocodes.so.$(ABI_VERSION) \
 	`pkg-config --libs glib-2.0` \
@@ -32,7 +34,7 @@ libisocodes.so.$(ABI_VERSION).$(MINOR_VERSION): $(libisocodes_OBJECTS) vala.stam
 	ln -sf libisocodes.so.$(ABI_VERSION) libisocodes.so
 
 vala.stamp: $(libisocodes_VALASOURCES)
-	valac -C -H libisocodes.h \
+	$(VALAC) -C -H libisocodes.h \
 	--pkg libxml-2.0 \
 	--library libisocodes-$(ABI_VERSION).$(MINOR_VERSION) \
 	$(libisocodes_VALASOURCES)

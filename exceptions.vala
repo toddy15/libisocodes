@@ -19,6 +19,7 @@
 namespace isocodes {
     public errordomain ISOCodesError {
         FILE_DOES_NOT_EXIST,
-        CANNOT_PARSE_FILE
+        CANNOT_PARSE_FILE,
+        FILE_DOES_NOT_CONTAIN_ISO_DATA
     }
 }

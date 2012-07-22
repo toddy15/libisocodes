@@ -19,7 +19,7 @@
 using Xml;
 
 namespace isocodes {
-    public abstract class ISO_Codes : Object
+    public class ISO_Codes : Object
     {
         /**
          * Path of the XML file with iso-codes data.
@@ -44,7 +44,7 @@ namespace isocodes {
         /**
          * Pointer to the Xml.Doc structure of LibXML.
          */
-        private Xml.Doc* _xml = null;
+        protected Xml.Doc* _xml = null;
         /**
          * Open and parse the file.
          * 
@@ -52,8 +52,9 @@ namespace isocodes {
          * it.
          * 
          * @param string Filename to open, defaults to filepath.
+         * @param string ISO standard to expect in the file.
          */
-        public void open_file(string name = "") throws ISOCodesError
+        public void open_file(string name = "", string standard = "") throws ISOCodesError
         {
             // If the name is set, use it.
             if (name != "") {
@@ -72,6 +73,39 @@ namespace isocodes {
                     @"The file '$filepath' could not be parsed correctly."
                 );
             }
+            // Check that the file contains the expected data.
+            var root_element = _xml->get_root_element();
+            var root_name = root_element->name;
+            delete root_element;
+            // Make sure the expected standard uses the same notation,
+            // e.g. 3166_2 instead of 3166-2.
+            standard.replace("-", "_");
+            var expected_name = "iso_" + standard + "_entries";
+            if (root_name != expected_name) {
+                throw new ISOCodesError.FILE_DOES_NOT_CONTAIN_ISO_DATA(
+                    @"The file '$filepath' does not contain valid ISO $standard data."
+                );
+            }
+        }
+        /**
+         * This method tries to locate the given code in the XML file.
+         * 
+         * @param string Code to search for.
+         */
+        public void search_code(string code = "")
+        {
+            stdout.printf("CODE: %s\n", code);
+            _iterate_through_entries();
+        }
+        private void _iterate_through_entries()
+        {
+            var root_element = _xml->get_root_element();
+            stdout.printf("xml: %p\n", _xml);
+            stdout.printf("root: %p\n", root_element);
+            stdout.printf("it: %p\n", root_element->children);
+            
+            //Xml.Node* iterator = root_element->children;
+            delete root_element;
         }
     }
 }

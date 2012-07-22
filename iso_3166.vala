@@ -38,5 +38,17 @@ namespace isocodes {
         ~ISO_3166() {
             Parser.cleanup();
         }
+        /**
+         * The ISO standard currently in use.
+         */
+        public string standard { get; private set; default = "3166"; }
+        /**
+         * Open the given file and check if it contains the expected data.
+         */
+        public new void open_file(string name = "") throws ISOCodesError
+        {
+            // Open and parse the file
+            base.open_file(name, standard);
+        }
     }
 }
