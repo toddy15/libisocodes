@@ -74,9 +74,7 @@ namespace isocodes {
                 );
             }
             // Check that the file contains the expected data.
-            var root_element = _xml->get_root_element();
-            var root_name = root_element->name;
-            delete root_element;
+            var root_name = _xml->get_root_element()->name;
             // Make sure the expected standard uses the same notation,
             // e.g. 3166_2 instead of 3166-2.
             standard.replace("-", "_");
@@ -95,17 +93,32 @@ namespace isocodes {
         public void search_code(string code = "")
         {
             stdout.printf("CODE: %s\n", code);
-            _iterate_through_entries();
+            string[] test = _find_string_in_attributes(code,
+                {"alpha_2_code", "alpha_3_code", "numeric_code"});
+            foreach (var t in test) {
+                stdout.printf("T: %s\n", t);
+            }
         }
-        private void _iterate_through_entries()
+        protected string[] _find_string_in_attributes(string phrase, string[] attributes)
         {
-            var root_element = _xml->get_root_element();
-            stdout.printf("xml: %p\n", _xml);
-            stdout.printf("root: %p\n", root_element);
-            stdout.printf("it: %p\n", root_element->children);
-            
-            //Xml.Node* iterator = root_element->children;
-            delete root_element;
+            string[] results = {};
+            var iterator = _xml->get_root_element()->children;
+            // Loop through all entries
+            while (iterator != null) {
+                // Only use the nodes, not text or comments
+                if (iterator->type == ElementType.ELEMENT_NODE) {
+                    if (iterator->name == "iso_3166_entry") {
+                        foreach (var attribute in attributes) {
+                            if (iterator->get_prop(attribute) == phrase.up()) {
+                                results += iterator->get_prop("name");
+                            }
+                        }
+                    }
+                }
+                iterator = iterator->next;
+            }
+            delete iterator;
+            return results;
         }
     }
 }
