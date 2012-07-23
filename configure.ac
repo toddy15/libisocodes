@@ -17,13 +17,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Set up autoconf
+AC_PREREQ(2.68)
 AC_INIT([libisocodes], [1.0])
+AC_CONFIG_HEADERS([config.h])
+
+# Set up automake
 AM_INIT_AUTOMAKE([foreign])
+AM_MAINTAINER_MODE
 
+# Set up libtool
+LT_INIT
+
+# Check for compiler and pkg-config
 AC_PROG_CC
+PKG_PROG_PKG_CONFIG
 
+# Detect the two needed libraries
+PKG_CHECK_MODULES([GLIB], [glib-2.0])
+PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
+
+# Write configuration files
 AC_CONFIG_FILES([
 	Makefile
 ])
 
+# Terminate script
 AC_OUTPUT
