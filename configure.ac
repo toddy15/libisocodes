@@ -19,14 +19,16 @@
 
 # Set up autoconf
 AC_PREREQ(2.68)
-AC_INIT([libisocodes], [1.0])
+AC_INIT([libisocodes], [1.0], [toddy@debian.org])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
 
 # Set up automake
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([1.11 foreign])
 AM_MAINTAINER_MODE
 
 # Set up libtool
+LT_PREREQ([2.4.2])
 LT_INIT
 
 # Check for compiler and pkg-config
