@@ -23,12 +23,10 @@ lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = isocodes.c iso_3166.c iso_3166_entry.c exceptions.c
 include_HEADERS = libisocodes.h
 
+LIBRARY_ABI_VERSION = 4:6:3
+
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
+libisocodes_la_LDFLAGS = -version-info $(LIBRARY_ABI_VERSION)
 
-# Clean up some files that are left over
-MAINTAINERCLEANFILES = Makefile.in aclocal.m4 build-aux/compile \
-            build-aux/config.guess build-aux/config.sub build-aux/depcomp \
-            build-aux/install-sh build-aux/ltmain.sh build-aux/missing \
-            config.h.in config.h.in~ configure m4/libtool.m4 m4/ltoptions.m4 \
-            m4/ltsugar.m4 m4/ltversion.m4 m4/lt~obsolete.m4
+MAINTAINERCLEANFILES = config.h.in~
