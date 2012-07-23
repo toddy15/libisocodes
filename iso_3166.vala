@@ -48,31 +48,11 @@ namespace isocodes {
         {
             ISO_3166_Entry[] result = {};
             string[] attributes = {"alpha_2_code", "alpha_3_code", "numeric_code"};
-            bool code_not_found = true;
-            
-            // Loop through all entries
-            var iterator = _xml->get_root_element()->children;
-            while (iterator != null) {
-                // Only use the nodes, not text or comments
-                if (iterator->type == ElementType.ELEMENT_NODE) {
-                    if (iterator->name == "iso_3166_entry") {
-                        foreach (var attribute in attributes) {
-                            if (iterator->get_prop(attribute) == code.up()) {
-                                result += new ISO_3166_Entry(iterator);
-                                code_not_found = false;
-                                break;
-                            }
-                        }
-                    }
-                }
-                iterator = iterator->next;
+            Xml.Node*[] s = _find_code_in_attributes(attributes, code.up());
+            foreach (var n in s) {
+                result += new ISO_3166_Entry(n);
+                delete n;
             }
-            if (code_not_found) {
-                throw new ISOCodesError.CODE_NOT_DEFINED(
-                    @"The code '$code' is not defined."
-                );
-            }
-            delete iterator;
             return result;
         }
     }

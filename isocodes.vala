@@ -89,5 +89,35 @@ namespace isocodes {
                 );
             }
         }
+        protected Xml.Node*[] _find_code_in_attributes(string[] attributes, string code) throws ISOCodesError
+        {
+            Xml.Node*[] result = {};
+            bool code_found = false;
+            
+            // Loop through all entries
+            var iterator = _xml->get_root_element()->children;
+            while (iterator != null) {
+                // Only use the nodes, not text or comments
+                if (iterator->type == ElementType.ELEMENT_NODE) {
+                    if (iterator->name == "iso_3166_entry") {
+                        foreach (var attribute in attributes) {
+                            if (iterator->get_prop(attribute) == code) {
+                                result += iterator;
+                                code_found = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                iterator = iterator->next;
+            }
+            if (!code_found) {
+                throw new ISOCodesError.CODE_NOT_DEFINED(
+                    @"The code '$code' is not defined."
+                );
+            }
+            delete iterator;
+            return result;
+        }
     }
 }
