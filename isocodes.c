@@ -80,7 +80,7 @@ void isocodes_iso_codes_set_filepath (isocodesISO_Codes* self, const gchar* valu
 const gchar* isocodes_iso_codes_get_filepath (isocodesISO_Codes* self);
 const gchar* isocodes_iso_codes_get_standard (isocodesISO_Codes* self);
 xmlNode** _isocodes_iso_codes_find_code_in_attributes (isocodesISO_Codes* self, gchar** attributes, int attributes_length1, const gchar* code, int* result_length1, GError** error);
-static void _vala_array_add1 (xmlNode*** array, int* length, int* size, xmlNode* value);
+static void _vala_array_add2 (xmlNode*** array, int* length, int* size, xmlNode* value);
 isocodesISO_Codes* isocodes_iso_codes_new (void);
 isocodesISO_Codes* isocodes_iso_codes_construct (GType object_type);
 void isocodes_iso_codes_set_standard (isocodesISO_Codes* self, const gchar* value);
@@ -321,7 +321,7 @@ void isocodes_iso_codes_open_file (isocodesISO_Codes* self, const gchar* name, G
 }
 
 
-static void _vala_array_add1 (xmlNode*** array, int* length, int* size, xmlNode* value) {
+static void _vala_array_add2 (xmlNode*** array, int* length, int* size, xmlNode* value) {
 	if ((*length) == (*size)) {
 		*size = (*size) ? (2 * (*size)) : 4;
 		*array = g_renew (xmlNode*, *array, *size);
@@ -412,7 +412,7 @@ xmlNode** _isocodes_iso_codes_find_code_in_attributes (isocodesISO_Codes* self, 
 								_tmp17_ = _result_;
 								_tmp17__length1 = _result__length1;
 								_tmp18_ = iterator;
-								_vala_array_add1 (&_result_, &_result__length1, &__result__size_, _tmp18_);
+								_vala_array_add2 (&_result_, &_result__length1, &__result__size_, _tmp18_);
 								code_found = TRUE;
 								_g_free0 (attribute);
 								break;

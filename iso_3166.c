@@ -106,7 +106,7 @@ isocodesISO_3166_Entry** isocodes_iso_3166_search_code (isocodesISO_3166* self, 
 xmlNode** _isocodes_iso_codes_find_code_in_attributes (isocodesISO_Codes* self, gchar** attributes, int attributes_length1, const gchar* code, int* result_length1, GError** error);
 isocodesISO_3166_Entry* isocodes_iso_3166_entry_new (xmlNode* node);
 isocodesISO_3166_Entry* isocodes_iso_3166_entry_construct (GType object_type, xmlNode* node);
-static void _vala_array_add2 (isocodesISO_3166_Entry*** array, int* length, int* size, isocodesISO_3166_Entry* value);
+static void _vala_array_add1 (isocodesISO_3166_Entry*** array, int* length, int* size, isocodesISO_3166_Entry* value);
 static void isocodes_iso_3166_finalize (GObject* obj);
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func);
 static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func);
@@ -137,7 +137,7 @@ isocodesISO_3166* isocodes_iso_3166_new (void) {
          * 
          * @param string Code to search for.
          */
-static void _vala_array_add2 (isocodesISO_3166_Entry*** array, int* length, int* size, isocodesISO_3166_Entry* value) {
+static void _vala_array_add1 (isocodesISO_3166_Entry*** array, int* length, int* size, isocodesISO_3166_Entry* value) {
 	if ((*length) == (*size)) {
 		*size = (*size) ? (2 * (*size)) : 4;
 		*array = g_renew (isocodesISO_3166_Entry*, *array, (*size) + 1);
@@ -233,7 +233,7 @@ isocodesISO_3166_Entry** isocodes_iso_3166_search_code (isocodesISO_3166* self, 
 				_tmp11__length1 = _result__length1;
 				_tmp12_ = n;
 				_tmp13_ = isocodes_iso_3166_entry_new (_tmp12_);
-				_vala_array_add2 (&_result_, &_result__length1, &__result__size_, _tmp13_);
+				_vala_array_add1 (&_result_, &_result__length1, &__result__size_, _tmp13_);
 				_tmp14_ = n;
 				xmlFreeNode (_tmp14_);
 			}
