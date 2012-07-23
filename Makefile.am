@@ -1,4 +1,4 @@
-# Process this file with automake to produce Makefile.in.
+## Process this file with automake to produce Makefile.in.
 #
 # Copyright © 2012 Tobias Quathamer
 #
@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ACLOCAL_AMFLAGS = -I m4
-LIBRARY_ABI_VERSION = 0:0:0
+LIBISOCODES_ABI_VERSION = 0:0:0
 
 EXTRA_DIST = libisocodes-$(VERSION).gir
 
@@ -40,6 +40,6 @@ VALAFLAGS = \
 
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
-libisocodes_la_LDFLAGS = -version-info $(LIBRARY_ABI_VERSION)
+libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_ABI_VERSION)
 
 MAINTAINERCLEANFILES = config.h.in~

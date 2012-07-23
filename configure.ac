@@ -32,7 +32,7 @@ AM_MAINTAINER_MODE
 LT_PREREQ([2.4.2])
 LT_INIT
 
-# Check for compiler and pkg-config
+# Check for compilers and pkg-config
 AM_PROG_VALAC([0.14])
 AC_PROG_CC
 AM_PROG_CC_C_O
