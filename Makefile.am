@@ -25,3 +25,10 @@ include_HEADERS = libisocodes.h
 
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
+
+# Clean up some files that are left over
+MAINTAINERCLEANFILES = Makefile.in aclocal.m4 build-aux/compile \
+            build-aux/config.guess build-aux/config.sub build-aux/depcomp \
+            build-aux/install-sh build-aux/ltmain.sh build-aux/missing \
+            config.h.in config.h.in~ configure m4/libtool.m4 m4/ltoptions.m4 \
+            m4/ltsugar.m4 m4/ltversion.m4 m4/lt~obsolete.m4
