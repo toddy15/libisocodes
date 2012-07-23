@@ -295,7 +295,10 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
-VALAFLAGS = --pkg libxml-2.0
+VALAFLAGS = \
+	--pkg libxml-2.0 \
+	--library=libisocodes
+
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = isocodes.vala iso_3166.vala iso_3166_entry.vala exceptions.vala
 include_HEADERS = libisocodes.h
@@ -856,6 +859,10 @@ uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 	tags uninstall uninstall-am uninstall-includeHEADERS \
 	uninstall-libLTLIBRARIES
 
+
+libisocodes.h: $(libisocodes_la_SOURCES)
+	$(VALAC) $(VALAFLAGS) -C --header=$@ $(libisocodes_la_SOURCES)
+	rm -f $(libisocodes_la_SOURCES:.vala=.c)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
