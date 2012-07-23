@@ -19,8 +19,10 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
+VALAFLAGS = --pkg libxml-2.0
+
 lib_LTLIBRARIES = libisocodes.la
-libisocodes_la_SOURCES = isocodes.c iso_3166.c iso_3166_entry.c exceptions.c
+libisocodes_la_SOURCES = isocodes.vala iso_3166.vala iso_3166_entry.vala exceptions.vala
 include_HEADERS = libisocodes.h
 
 LIBRARY_ABI_VERSION = 0:0:0
