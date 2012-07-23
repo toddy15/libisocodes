@@ -33,6 +33,7 @@ LT_INIT
 
 # Check for compiler and pkg-config
 AC_PROG_CC
+AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG
 
 # Detect the two needed libraries
