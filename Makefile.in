@@ -295,14 +295,15 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
+LIBRARY_ABI_VERSION = 0:0:0
+EXTRA_DIST = libisocodes-$(VERSION).gir
+lib_LTLIBRARIES = libisocodes.la
+libisocodes_la_SOURCES = isocodes.vala iso_3166.vala iso_3166_entry.vala exceptions.vala
+include_HEADERS = libisocodes.h
 VALAFLAGS = \
 	--pkg libxml-2.0 \
 	--library=libisocodes
 
-lib_LTLIBRARIES = libisocodes.la
-libisocodes_la_SOURCES = isocodes.vala iso_3166.vala iso_3166_entry.vala exceptions.vala
-include_HEADERS = libisocodes.h
-LIBRARY_ABI_VERSION = 0:0:0
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBRARY_ABI_VERSION)
@@ -862,6 +863,10 @@ uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 
 libisocodes.h: $(libisocodes_la_SOURCES)
 	$(VALAC) $(VALAFLAGS) -C --header=$@ $(libisocodes_la_SOURCES)
+	rm -f $(libisocodes_la_SOURCES:.vala=.c)
+
+libisocodes-$(VERSION).gir: $(libisocodes_la_SOURCES)
+	$(VALAC) $(VALAFLAGS) -C --gir=$@ $(libisocodes_la_SOURCES)
 	rm -f $(libisocodes_la_SOURCES:.vala=.c)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

@@ -18,10 +18,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ACLOCAL_AMFLAGS = -I m4
+LIBRARY_ABI_VERSION = 0:0:0
 
-VALAFLAGS = \
-	--pkg libxml-2.0 \
-	--library=libisocodes
+EXTRA_DIST = libisocodes-$(VERSION).gir
 
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = isocodes.vala iso_3166.vala iso_3166_entry.vala exceptions.vala
@@ -31,7 +30,13 @@ libisocodes.h: $(libisocodes_la_SOURCES)
 	$(VALAC) $(VALAFLAGS) -C --header=$@ $(libisocodes_la_SOURCES)
 	rm -f $(libisocodes_la_SOURCES:.vala=.c)
 
-LIBRARY_ABI_VERSION = 0:0:0
+libisocodes-$(VERSION).gir: $(libisocodes_la_SOURCES)
+	$(VALAC) $(VALAFLAGS) -C --gir=$@ $(libisocodes_la_SOURCES)
+	rm -f $(libisocodes_la_SOURCES:.vala=.c)
+
+VALAFLAGS = \
+	--pkg libxml-2.0 \
+	--library=libisocodes
 
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
