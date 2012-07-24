@@ -31,12 +31,10 @@ libisocodes_la_SOURCES = \
 include_HEADERS = libisocodes.h
 
 libisocodes.h: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) -C --header=$@ $(libisocodes_la_SOURCES)
-	rm -f $(libisocodes_la_SOURCES:.vala=.c)
+	$(VALAC) $(VALAFLAGS) --compile --output /dev/null --header=$@ $(libisocodes_la_SOURCES)
 
 libisocodes-$(VERSION).gir: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) -C --gir=$@ $(libisocodes_la_SOURCES)
-	rm -f $(libisocodes_la_SOURCES:.vala=.c)
+	$(VALAC) $(VALAFLAGS) --compile --output /dev/null --gir=$@ $(libisocodes_la_SOURCES)
 
 VALAFLAGS = \
 	--pkg libxml-2.0 \
