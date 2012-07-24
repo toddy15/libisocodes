@@ -24,10 +24,10 @@ EXTRA_DIST = libisocodes-$(VERSION).gir
 
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = \
-	isocodes.vala \
-	iso_3166.vala \
-	iso_3166_entry.vala \
-	exceptions.vala
+	src/isocodes.vala \
+	src/iso_3166.vala \
+	src/iso_3166_entry.vala \
+	src/exceptions.vala
 include_HEADERS = libisocodes.h
 
 libisocodes.h: $(libisocodes_la_SOURCES)
