@@ -1,1 +1,12 @@
-
+Makefile
+*\.o
+*\.lo
+config.h
+config.log
+config.status
+.libs/
+.deps/
+libisocodes_la_vala.stamp
+stamp-h1
+libtool
+libisocodes.la
