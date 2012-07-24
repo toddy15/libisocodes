@@ -313,6 +313,7 @@ VALAFLAGS = \
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_ABI_VERSION)
+DISTCLEANFILES = libisocodes.h libisocodes.vapi
 MAINTAINERCLEANFILES = config.h.in~
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
@@ -787,6 +788,7 @@ distclean-generic:
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
 	-rm -f src/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/$(am__dirstamp)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -893,10 +895,14 @@ uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 
 
 libisocodes.h: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) --compile --output /dev/null --header=$@ $(libisocodes_la_SOURCES)
+	$(VALAC) $(VALAFLAGS) --compile --output /dev/null \
+	--header=$@ \
+	$(addprefix $(srcdir)/,$(libisocodes_la_SOURCES))
 
 libisocodes-$(VERSION).gir: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) --compile --output /dev/null --gir=$@ $(libisocodes_la_SOURCES)
+	$(VALAC) $(VALAFLAGS) --compile --output /dev/null \
+	--gir=$@ \
+	$(addprefix $(srcdir)/,$(libisocodes_la_SOURCES))
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -31,10 +31,14 @@ libisocodes_la_SOURCES = \
 include_HEADERS = libisocodes.h
 
 libisocodes.h: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) --compile --output /dev/null --header=$@ $(libisocodes_la_SOURCES)
+	$(VALAC) $(VALAFLAGS) --compile --output /dev/null \
+	--header=$@ \
+	$(addprefix $(srcdir)/,$(libisocodes_la_SOURCES))
 
 libisocodes-$(VERSION).gir: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) --compile --output /dev/null --gir=$@ $(libisocodes_la_SOURCES)
+	$(VALAC) $(VALAFLAGS) --compile --output /dev/null \
+	--gir=$@ \
+	$(addprefix $(srcdir)/,$(libisocodes_la_SOURCES))
 
 VALAFLAGS = \
 	--pkg libxml-2.0 \
@@ -44,4 +48,5 @@ libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_ABI_VERSION)
 
+DISTCLEANFILES = libisocodes.h libisocodes.vapi
 MAINTAINERCLEANFILES = config.h.in~
