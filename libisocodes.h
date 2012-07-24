@@ -6,10 +6,9 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include <libxml/tree.h>
-#include <libxml/parser.h>
 #include <stdlib.h>
 #include <string.h>
+#include <libxml/tree.h>
 
 G_BEGIN_DECLS
 
@@ -50,7 +49,6 @@ typedef struct _isocodesISO_3166_EntryPrivate isocodesISO_3166_EntryPrivate;
 struct _isocodesISO_Codes {
 	GObject parent_instance;
 	isocodesISO_CodesPrivate * priv;
-	xmlDoc* _xml;
 };
 
 struct _isocodesISO_CodesClass {

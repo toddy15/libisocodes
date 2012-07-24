@@ -23,7 +23,11 @@ LIBISOCODES_ABI_VERSION = 0:0:0
 EXTRA_DIST = libisocodes-$(VERSION).gir
 
 lib_LTLIBRARIES = libisocodes.la
-libisocodes_la_SOURCES = isocodes.vala iso_3166.vala iso_3166_entry.vala exceptions.vala
+libisocodes_la_SOURCES = \
+	isocodes.vala \
+	iso_3166.vala \
+	iso_3166_entry.vala \
+	exceptions.vala
 include_HEADERS = libisocodes.h
 
 libisocodes.h: $(libisocodes_la_SOURCES)

@@ -48,7 +48,7 @@ namespace isocodes {
         /**
          * Pointer to the Xml.Doc structure of LibXML.
          */
-        protected Xml.Doc* _xml = null;
+        private Xml.Doc* _xml = null;
         /**
          * Open and parse the file.
          * 
