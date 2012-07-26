@@ -73,7 +73,10 @@ namespace isocodes {
             // no result could be found. Therefore, throw an error.
             if (result == null) {
                 throw new ISOCodesError.CODE_NOT_DEFINED(
-                    _("The code '%s' is not defined in ISO %s.").printf(code, standard)
+                    // TRANSLATORS:
+                    // The first placeholder is a code, e.g. 'de' or 'hurgh'.
+                    // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
+                    _("The code \"%s\" is not defined in ISO %s.").printf(code, standard)
                 );
             }
             return result;

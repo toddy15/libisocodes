@@ -78,14 +78,18 @@ namespace isocodes {
             // Check that the file exists.
             if (FileUtils.test(filepath, FileTest.EXISTS) == false) {
                 throw new ISOCodesError.FILE_DOES_NOT_EXIST(
-                    _("The file '%s' does not exist.").printf(filepath)
+                    // TRANSLATORS:
+                    // The placeholder is a filename, including the directory path.
+                    _("The file \"%s\" could not be opened.").printf(filepath)
                 );
             }
             // Try parsing the file and handle errors.
             _xml = Parser.parse_file(filepath);
             if (_xml == null) {
                 throw new ISOCodesError.CANNOT_PARSE_FILE(
-                    _("The file '%s' could not be parsed correctly.").printf(filepath)
+                    // TRANSLATORS:
+                    // The placeholder is a filename, including the directory path.
+                    _("The file \"%s\" could not be parsed correctly.").printf(filepath)
                 );
             }
             // Check that the file contains the expected data.
@@ -96,7 +100,10 @@ namespace isocodes {
             var expected_name = "iso_" + standard + "_entries";
             if (root_name != expected_name) {
                 throw new ISOCodesError.FILE_DOES_NOT_CONTAIN_ISO_DATA(
-                    _("The file '%s' does not contain valid ISO %s data.").printf(filepath, standard)
+                    // TRANSLATORS:
+                    // The first placeholder is a filename, including the directory path.
+                    // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
+                    _("The file \"%s\" does not contain valid ISO %s data.").printf(filepath, standard)
                 );
             }
         }
@@ -132,15 +139,11 @@ namespace isocodes {
         /**
          * Find the given code with the given XPath.
          */
-        protected XPath.NodeSet* _search_code(string xpath) throws ISOCodesError
+        protected XPath.NodeSet* _search_code(string xpath)
         {
 			// Set up the XPath infrastructure
 			var context = new XPath.Context(_xml);
-			if (context == null) {
-                throw new ISOCodesError.LIBXML_INTERNAL_ERROR(
-                    _("LibXML has an internal error.")
-                );
-			}
+            assert(context != null);
 			// Try to match nodes against the XPath
 			var obj = context.eval(xpath);
 			// Get the result nodeset
