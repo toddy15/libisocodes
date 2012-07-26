@@ -20,7 +20,7 @@
 ACLOCAL_AMFLAGS = -I m4
 LIBISOCODES_ABI_VERSION = 0:0:0
 
-EXTRA_DIST = libisocodes-$(VERSION).gir
+EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi
 
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = \
@@ -30,19 +30,12 @@ libisocodes_la_SOURCES = \
 	src/exceptions.vala
 include_HEADERS = libisocodes.h
 
-libisocodes.h: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) --compile --output /dev/null \
-	--header=$@ \
-	$(addprefix $(srcdir)/,$(libisocodes_la_SOURCES))
-
-libisocodes-$(VERSION).gir: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) --compile --output /dev/null \
-	--gir=$@ \
-	$(addprefix $(srcdir)/,$(libisocodes_la_SOURCES))
-
 VALAFLAGS = \
 	--pkg libxml-2.0 \
-	--library=libisocodes
+	--library=libisocodes \
+	--vapidir=vapi --pkg config \
+	--header=libisocodes.h \
+	--gir=libisocodes-$(VERSION).gir
 
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)

@@ -297,7 +297,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
 LIBISOCODES_ABI_VERSION = 0:0:0
-EXTRA_DIST = libisocodes-$(VERSION).gir
+EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = \
 	src/isocodes.vala \
@@ -308,7 +308,10 @@ libisocodes_la_SOURCES = \
 include_HEADERS = libisocodes.h
 VALAFLAGS = \
 	--pkg libxml-2.0 \
-	--library=libisocodes
+	--library=libisocodes \
+	--vapidir=vapi --pkg config \
+	--header=libisocodes.h \
+	--gir=libisocodes-$(VERSION).gir
 
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
@@ -893,16 +896,6 @@ uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 	tags uninstall uninstall-am uninstall-includeHEADERS \
 	uninstall-libLTLIBRARIES
 
-
-libisocodes.h: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) --compile --output /dev/null \
-	--header=$@ \
-	$(addprefix $(srcdir)/,$(libisocodes_la_SOURCES))
-
-libisocodes-$(VERSION).gir: $(libisocodes_la_SOURCES)
-	$(VALAC) $(VALAFLAGS) --compile --output /dev/null \
-	--gir=$@ \
-	$(addprefix $(srcdir)/,$(libisocodes_la_SOURCES))
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
