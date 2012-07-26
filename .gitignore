@@ -1,4 +1,6 @@
 Makefile
+*~
+*\.c
 *\.o
 *\.lo
 config.h
@@ -8,5 +10,9 @@ config.status
 .deps/
 libisocodes_la_vala.stamp
 stamp-h1
+\.dirstamp
 libtool
 libisocodes.la
+libisocodes.h
+libisocodes.vapi
+libisocodes-[0-9.]*\.gir
