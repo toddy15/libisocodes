@@ -20,6 +20,10 @@
 ACLOCAL_AMFLAGS = -I m4
 LIBISOCODES_ABI_VERSION = 0:0:0
 
+# This is needed for gettext, it is too much work to rewrite
+# po/Makefile.in.in for a non-recursing approach.
+SUBDIRS = po
+
 EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi
 
 lib_LTLIBRARIES = libisocodes.la

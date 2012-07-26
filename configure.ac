@@ -38,6 +38,10 @@ AC_PROG_CC
 AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG
 
+# Set up gettext
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.18])
+
 # Detect the two needed libraries
 PKG_CHECK_MODULES([GLIB], [glib-2.0])
 PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
@@ -45,6 +49,7 @@ PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
 # Write configuration files
 AC_CONFIG_FILES([
 	Makefile
+	po/Makefile.in
 ])
 
 # Terminate script
