@@ -40,20 +40,61 @@ namespace isocodes {
             Parser.cleanup();
         }
         /**
-         * This method tries to locate the given code in the XML file.
+         * Return an array of all entries in the ISO standard.
+         */
+        public ISO_3166_Entry[] all_entries() throws ISOCodesError
+        {
+            ISO_3166_Entry[] result = null;
+            return result;
+        }
+        /**
+         * Try to locate the given code in the XML file.
          * 
          * @param string Code to search for.
          */
-        public ISO_3166_Entry[] search_code(string code = "") throws ISOCodesError
+        public ISO_3166_Entry search_code(string code = "") throws ISOCodesError
         {
-            ISO_3166_Entry[] result = {};
-            string[] attributes = {"alpha_2_code", "alpha_3_code", "numeric_code"};
-            Xml.Node*[] s = _find_code_in_attributes(attributes, code.up());
-            foreach (var n in s) {
-                result += new ISO_3166_Entry(n);
-                delete n;
+            ISO_3166_Entry result = null;
+            var xpaths = _get_xpaths(code);
+            // See if there are results for any of the XPaths
+            foreach (var xpath in xpaths) {
+                XPath.NodeSet* nodeset = _search_code(xpath);
+                // There can be only 1 matching node.
+                if (nodeset->length() == 1) {
+                    result = new ISO_3166_Entry(nodeset->item(0));
+                    // Exit after successful match, to avoid matching the same
+                    // entry another time (can happen e.g. in ISO 639, where
+                    // most entries have the same value for their 2B and 2T code
+                    break;
+                }
+            }
+            // If the result is still null, it means that
+            // no result could be found. Therefore, throw an error.
+            if (result == null) {
+                throw new ISOCodesError.CODE_NOT_DEFINED(
+                    @"The code '$code' is not defined in ISO $standard."
+                );
             }
             return result;
+        }
+        /**
+         * Set up the XPaths to try.
+         * 
+         * @param string Code to search for.
+         */
+        private string[] _get_xpaths(string code)
+        {
+            string[] xpaths = {};
+            if (code.length == 2) {
+                xpaths += "//iso_3166_entry[@alpha_2_code='" + code.up() + "']";
+            }
+            else if (_is_number(code)) {
+                xpaths += "//iso_3166_entry[@numeric_code='" + code.up() + "']";
+            }
+            else {
+                xpaths += "//iso_3166_entry[@alpha_3_code='" + code.up() + "']";
+            }
+            return xpaths;
         }
     }
 }

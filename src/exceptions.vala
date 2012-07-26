@@ -21,6 +21,7 @@ namespace isocodes {
         FILE_DOES_NOT_EXIST,
         CANNOT_PARSE_FILE,
         FILE_DOES_NOT_CONTAIN_ISO_DATA,
-        CODE_NOT_DEFINED
+        CODE_NOT_DEFINED,
+        LIBXML_INTERNAL_ERROR
     }
 }

@@ -56,7 +56,6 @@ namespace isocodes {
          * it.
          * 
          * @param string Filename to open, defaults to filepath.
-         * @param string ISO standard to expect in the file.
          */
         public void open_file(string name = "") throws ISOCodesError
         {
@@ -89,21 +88,25 @@ namespace isocodes {
                 );
             }
         }
-        protected Xml.Node*[] _find_code_in_attributes(string[] attributes, string code) throws ISOCodesError
+        /**
+         * Find the given code in the given attributes of the current standard.
+         */
+        protected void*[] _find_code_in_attributes(string[] attributes, string code) throws ISOCodesError
         {
-            Xml.Node*[] result = {};
-            bool code_found = false;
+			void*[] result = {};
+            
+            // Set up the expected tag name
+            var tag_name = "iso_" + standard.replace("-", "_") + "_entry";
             
             // Loop through all entries
             var iterator = _xml->get_root_element()->children;
             while (iterator != null) {
                 // Only use the nodes, not text or comments
                 if (iterator->type == ElementType.ELEMENT_NODE) {
-                    if (iterator->name == "iso_3166_entry") {
+                    if (iterator->name == tag_name) {
                         foreach (var attribute in attributes) {
                             if (iterator->get_prop(attribute) == code) {
-                                result += iterator;
-                                code_found = true;
+                                result += (void*) new ISO_3166_Entry(iterator);
                                 break;
                             }
                         }
@@ -111,13 +114,42 @@ namespace isocodes {
                 }
                 iterator = iterator->next;
             }
-            if (!code_found) {
-                throw new ISOCodesError.CODE_NOT_DEFINED(
-                    @"The code '$code' is not defined."
-                );
-            }
             delete iterator;
             return result;
+        }
+        /**
+         * Find the given code with the given XPath.
+         */
+        protected XPath.NodeSet* _search_code(string xpath) throws ISOCodesError
+        {
+			// Set up the XPath infrastructure
+			var context = new XPath.Context(_xml);
+			if (context == null) {
+                throw new ISOCodesError.LIBXML_INTERNAL_ERROR(
+                    "LibXML has an internal error."
+                );
+			}
+			// Try to match nodes against the XPath
+			var obj = context.eval(xpath);
+			// Get the result nodeset
+			return obj->nodesetval;
+        }
+        /**
+         * Determine whether a given string represents a number.
+         */
+        protected bool _is_number(string text)
+        {
+			var contains_only_digits = true;
+			var length = text.length;
+			var index = 0;
+			while (index < length) {
+				if (!text[index].isdigit()) {
+					contains_only_digits = false;
+					break;
+				}
+				index++;
+			}
+			return contains_only_digits;
         }
     }
 }

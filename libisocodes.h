@@ -8,6 +8,7 @@
 #include <glib-object.h>
 #include <stdlib.h>
 #include <string.h>
+#include <libxml/xpath.h>
 #include <libxml/tree.h>
 
 G_BEGIN_DECLS
@@ -59,7 +60,8 @@ typedef enum  {
 	ISOCODES_ISO_CODES_ERROR_FILE_DOES_NOT_EXIST,
 	ISOCODES_ISO_CODES_ERROR_CANNOT_PARSE_FILE,
 	ISOCODES_ISO_CODES_ERROR_FILE_DOES_NOT_CONTAIN_ISO_DATA,
-	ISOCODES_ISO_CODES_ERROR_CODE_NOT_DEFINED
+	ISOCODES_ISO_CODES_ERROR_CODE_NOT_DEFINED,
+	ISOCODES_ISO_CODES_ERROR_LIBXML_INTERNAL_ERROR
 } isocodesISOCodesError;
 #define ISOCODES_ISO_CODES_ERROR isocodes_iso_codes_error_quark ()
 struct _isocodesISO_3166 {
@@ -84,7 +86,9 @@ struct _isocodesISO_3166_EntryClass {
 GType isocodes_iso_codes_get_type (void) G_GNUC_CONST;
 GQuark isocodes_iso_codes_error_quark (void);
 void isocodes_iso_codes_open_file (isocodesISO_Codes* self, const gchar* name, GError** error);
-xmlNode** _isocodes_iso_codes_find_code_in_attributes (isocodesISO_Codes* self, gchar** attributes, int attributes_length1, const gchar* code, int* result_length1, GError** error);
+void** _isocodes_iso_codes_find_code_in_attributes (isocodesISO_Codes* self, gchar** attributes, int attributes_length1, const gchar* code, int* result_length1, GError** error);
+xmlNodeSet* _isocodes_iso_codes_search_code (isocodesISO_Codes* self, const gchar* xpath, GError** error);
+gboolean _isocodes_iso_codes_is_number (isocodesISO_Codes* self, const gchar* text);
 isocodesISO_Codes* isocodes_iso_codes_new (void);
 isocodesISO_Codes* isocodes_iso_codes_construct (GType object_type);
 const gchar* isocodes_iso_codes_get_filepath (isocodesISO_Codes* self);
@@ -95,7 +99,8 @@ GType isocodes_iso_3166_get_type (void) G_GNUC_CONST;
 isocodesISO_3166* isocodes_iso_3166_new (void);
 isocodesISO_3166* isocodes_iso_3166_construct (GType object_type);
 GType isocodes_iso_3166_entry_get_type (void) G_GNUC_CONST;
-isocodesISO_3166_Entry** isocodes_iso_3166_search_code (isocodesISO_3166* self, const gchar* code, int* result_length1, GError** error);
+isocodesISO_3166_Entry** isocodes_iso_3166_all_entries (isocodesISO_3166* self, int* result_length1, GError** error);
+isocodesISO_3166_Entry* isocodes_iso_3166_search_code (isocodesISO_3166* self, const gchar* code, GError** error);
 isocodesISO_3166_Entry* isocodes_iso_3166_entry_new (xmlNode* node);
 isocodesISO_3166_Entry* isocodes_iso_3166_entry_construct (GType object_type, xmlNode* node);
 const gchar* isocodes_iso_3166_entry_get_alpha_2_code (isocodesISO_3166_Entry* self);
