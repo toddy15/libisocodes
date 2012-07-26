@@ -50,6 +50,18 @@ namespace isocodes {
          */
         private Xml.Doc* _xml = null;
         /**
+         * Set up the i18n framework.
+         * 
+         * This method needs to be called by every subclass.
+         */
+        protected void _setup_i18n()
+        {
+            Intl.textdomain(Config.GETTEXT_PACKAGE);
+            Intl.bindtextdomain(Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
+            Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "UTF-8");
+            Intl.setlocale(LocaleCategory.ALL, "");
+        }
+        /**
          * Open and parse the file.
          * 
          * This method checks that the file exists and tries to parse
@@ -66,14 +78,14 @@ namespace isocodes {
             // Check that the file exists.
             if (FileUtils.test(filepath, FileTest.EXISTS) == false) {
                 throw new ISOCodesError.FILE_DOES_NOT_EXIST(
-                    @"The file '$filepath' does not exist."
+                    _("The file '%s' does not exist.").printf(filepath)
                 );
             }
             // Try parsing the file and handle errors.
             _xml = Parser.parse_file(filepath);
             if (_xml == null) {
                 throw new ISOCodesError.CANNOT_PARSE_FILE(
-                    @"The file '$filepath' could not be parsed correctly."
+                    _("The file '%s' could not be parsed correctly.").printf(filepath)
                 );
             }
             // Check that the file contains the expected data.
@@ -84,7 +96,7 @@ namespace isocodes {
             var expected_name = "iso_" + standard + "_entries";
             if (root_name != expected_name) {
                 throw new ISOCodesError.FILE_DOES_NOT_CONTAIN_ISO_DATA(
-                    @"The file '$filepath' does not contain valid ISO $standard data."
+                    _("The file '%s' does not contain valid ISO %s data.").printf(filepath, standard)
                 );
             }
         }
@@ -126,7 +138,7 @@ namespace isocodes {
 			var context = new XPath.Context(_xml);
 			if (context == null) {
                 throw new ISOCodesError.LIBXML_INTERNAL_ERROR(
-                    "LibXML has an internal error."
+                    _("LibXML has an internal error.")
                 );
 			}
 			// Try to match nodes against the XPath

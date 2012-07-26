@@ -27,6 +27,7 @@ namespace isocodes {
          * It is needed to initialize the LibXML parser here.
          */
         public ISO_3166() {
+            _setup_i18n();
             Parser.init();
             standard = "3166";
             filepath = "/usr/share/xml/iso-codes/iso_3166.xml";
@@ -72,7 +73,7 @@ namespace isocodes {
             // no result could be found. Therefore, throw an error.
             if (result == null) {
                 throw new ISOCodesError.CODE_NOT_DEFINED(
-                    @"The code '$code' is not defined in ISO $standard."
+                    _("The code '%s' is not defined in ISO %s.").printf(code, standard)
                 );
             }
             return result;
