@@ -30,6 +30,9 @@ libisocodes_la_SOURCES = \
 	src/exceptions.vala
 include_HEADERS = libisocodes.h
 
+libisocodes.h:
+	touch $@
+
 VALAFLAGS = \
 	--pkg libxml-2.0 \
 	--library=libisocodes \
