@@ -41,6 +41,7 @@ PKG_PROG_PKG_CONFIG
 # Set up gettext
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.18])
+AC_DEFINE([GETTEXT_PACKAGE], ["libisocodes"], [Gettext package name.])
 
 # Detect the two needed libraries
 PKG_CHECK_MODULES([GLIB], [glib-2.0])

@@ -21,7 +21,7 @@ ACLOCAL_AMFLAGS = -I m4
 LIBISOCODES_ABI_VERSION = 0:0:0
 
 # This is needed for gettext, it is too much work to rewrite
-# po/Makefile.in.in for a non-recursing approach.
+# po/Makefile.in.in for a non-recursive approach.
 SUBDIRS = po
 
 EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi
@@ -44,6 +44,8 @@ VALAFLAGS = \
 	--header=libisocodes.h \
 	--gir=libisocodes-$(VERSION).gir
 
+# Here are two quotes needed due to expansion by libtool
+libisocodes_la_CPPFLAGS = -include config.h -DLOCALEDIR=\""$(localedir)"\"
 libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_ABI_VERSION)

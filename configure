@@ -14374,6 +14374,9 @@ $as_echo "#define HAVE_DCGETTEXT 1" >>confdefs.h
 
 
 
+$as_echo "#define GETTEXT_PACKAGE \"libisocodes\"" >>confdefs.h
+
+
 # Detect the two needed libraries
 
 pkg_failed=no
