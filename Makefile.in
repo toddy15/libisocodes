@@ -110,7 +110,7 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libisocodes_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_libisocodes_la_OBJECTS = src/libisocodes_la-isocodes.lo \
 	src/libisocodes_la-iso_3166.lo \
@@ -245,6 +245,8 @@ GLIB_CFLAGS = @GLIB_CFLAGS@
 GLIB_LIBS = @GLIB_LIBS@
 GMSGFMT = @GMSGFMT@
 GMSGFMT_015 = @GMSGFMT_015@
+GOBJECT_CFLAGS = @GOBJECT_CFLAGS@
+GOBJECT_LIBS = @GOBJECT_LIBS@
 GREP = @GREP@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -380,11 +382,25 @@ VALAFLAGS = \
 
 # Here are two quotes needed due to expansion by libtool
 libisocodes_la_CPPFLAGS = -include config.h -DLOCALEDIR=\""$(localedir)"\"
-libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
-libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
+libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
+libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_ABI_VERSION)
-DISTCLEANFILES = libisocodes.h libisocodes.vapi libisocodes-$(VERSION).gir
+DISTCLEANFILES = libisocodes.h libisocodes.vapi \
+	libisocodes-$(VERSION).gir codetest
 MAINTAINERCLEANFILES = config.h.in~
+
+# All code below is needed for testing the package
+codetest_sources = \
+	tests/test_iso_3166.vala \
+	$(libisocodes_la_SOURCES)
+
+codetest_VALAFLAGS = \
+	--pkg libxml-2.0 \
+	--vapidir=vapi --pkg config \
+	-X -I. \
+	-X -DGETTEXT_PACKAGE=\"libisocodes\" \
+	-X -DLOCALEDIR=\"$(localedir)\"
+
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -935,6 +951,7 @@ distcleancheck: distclean
 	       $(distcleancheck_listfiles) ; \
 	       exit 1; } >&2
 check-am: all-am
+	$(MAKE) $(AM_MAKEFLAGS) check-local
 check: check-recursive
 all-am: Makefile $(LTLIBRARIES) $(HEADERS) config.h
 installdirs: installdirs-recursive
@@ -1055,15 +1072,15 @@ ps-am:
 
 uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 
-.MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) all \
+.MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) all check-am \
 	ctags-recursive install-am install-strip tags-recursive
 
 .PHONY: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) CTAGS GTAGS \
-	all all-am am--refresh check check-am clean clean-generic \
-	clean-libLTLIBRARIES clean-libtool ctags ctags-recursive dist \
-	dist-all dist-bzip2 dist-gzip dist-lzip dist-lzma dist-shar \
-	dist-tarZ dist-xz dist-zip distcheck distclean \
-	distclean-compile distclean-generic distclean-hdr \
+	all all-am am--refresh check check-am check-local clean \
+	clean-generic clean-libLTLIBRARIES clean-libtool ctags \
+	ctags-recursive dist dist-all dist-bzip2 dist-gzip dist-lzip \
+	dist-lzma dist-shar dist-tarZ dist-xz dist-zip distcheck \
+	distclean distclean-compile distclean-generic distclean-hdr \
 	distclean-libtool distclean-tags distcleancheck distdir \
 	distuninstallcheck dvi dvi-am html html-am info info-am \
 	install install-am install-data install-data-am install-dvi \
@@ -1080,6 +1097,12 @@ uninstall-am: uninstall-includeHEADERS uninstall-libLTLIBRARIES
 
 libisocodes.h:
 	touch $@
+
+codetest: $(codetest_sources)
+	$(VALAC) $(codetest_VALAFLAGS) --output=$@ $^
+
+check-local: codetest
+	gtester --verbose $<
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

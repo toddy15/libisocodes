@@ -46,9 +46,28 @@ VALAFLAGS = \
 
 # Here are two quotes needed due to expansion by libtool
 libisocodes_la_CPPFLAGS = -include config.h -DLOCALEDIR=\""$(localedir)"\"
-libisocodes_la_CFLAGS = $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
-libisocodes_la_LIBADD = $(GLIB_LIBS) $(LIBXML_LIBS)
+libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
+libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_ABI_VERSION)
 
 DISTCLEANFILES = libisocodes.h libisocodes.vapi libisocodes-$(VERSION).gir
 MAINTAINERCLEANFILES = config.h.in~
+
+# All code below is needed for testing the package
+codetest_sources = \
+	tests/test_iso_3166.vala \
+	$(libisocodes_la_SOURCES)
+codetest_VALAFLAGS = \
+	--pkg libxml-2.0 \
+	--vapidir=vapi --pkg config \
+	-X -I. \
+	-X -DGETTEXT_PACKAGE=\"libisocodes\" \
+	-X -DLOCALEDIR=\"$(localedir)\"
+
+codetest: $(codetest_sources)
+	$(VALAC) $(codetest_VALAFLAGS) --output=$@ $^
+
+check-local: codetest
+	gtester --verbose $<
+
+DISTCLEANFILES += codetest

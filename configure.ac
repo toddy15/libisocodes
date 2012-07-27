@@ -43,7 +43,8 @@ AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.18])
 AC_DEFINE([GETTEXT_PACKAGE], ["libisocodes"], [Gettext package name.])
 
-# Detect the two needed libraries
+# Detect the needed libraries
+PKG_CHECK_MODULES([GOBJECT], [gobject-2.0])
 PKG_CHECK_MODULES([GLIB], [glib-2.0])
 PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
 
