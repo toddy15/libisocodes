@@ -17,20 +17,10 @@
  */
 
 namespace isocodes {
-    public class Test_ISO_3166 : Object
+    void main(string[] args)
     {
-        public static void add_tests()
-        {
-            Test.add_func("/test/main", () => {
-                assert(true);
-            });
-            Test.add_func("/test/create_iso_codes", () => {
-                var i = new ISO_3166();
-                assert(i != null);
-            });
-            Test.add_func("/test/fail", () => {
-                assert(false != true);
-            });
-        }
+        Test.init(ref args);
+        Test_ISO_3166.add_tests();
+        Test.run();
     }
 }

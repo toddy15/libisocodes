@@ -24,7 +24,7 @@ LIBISOCODES_ABI_VERSION = 0:0:0
 # po/Makefile.in.in for a non-recursive approach.
 SUBDIRS = po
 
-EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi
+EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi $(codetest_testfiles)
 
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = \
@@ -54,17 +54,18 @@ DISTCLEANFILES = libisocodes.h libisocodes.vapi libisocodes-$(VERSION).gir
 MAINTAINERCLEANFILES = config.h.in~
 
 # All code below is needed for testing the package
-codetest_sources = \
-	tests/test_iso_3166.vala \
-	$(libisocodes_la_SOURCES)
+codetest_testfiles = \
+	tests/codetest.vala \
+	tests/test_iso_3166.vala
+codetest_sources = $(codetest_testfiles) $(libisocodes_la_SOURCES)
 codetest_VALAFLAGS = \
 	--pkg libxml-2.0 \
-	--vapidir=vapi --pkg config \
+	--vapidir=$(srcdir)/vapi --pkg config \
 	-X -I. \
 	-X -DGETTEXT_PACKAGE=\"libisocodes\" \
 	-X -DLOCALEDIR=\"$(localedir)\"
 
-codetest: $(codetest_sources)
+codetest: $(addprefix $(srcdir)/, $(codetest_sources))
 	$(VALAC) $(codetest_VALAFLAGS) --output=$@ $^
 
 check-local: codetest
