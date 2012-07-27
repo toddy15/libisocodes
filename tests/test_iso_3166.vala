@@ -21,15 +21,34 @@ namespace isocodes {
     {
         public static void add_tests()
         {
-            Test.add_func("/test/main", () => {
-                assert(true);
-            });
-            Test.add_func("/test/create_iso_codes", () => {
+            Test.add_func("/iso_3166/create class", () => {
                 var i = new ISO_3166();
                 assert(i != null);
+                assert(i.standard == "3166");
+                assert(i.filepath == "/usr/share/xml/iso-codes/iso_3166.xml");
             });
-            Test.add_func("/test/fail", () => {
-                assert(false != true);
+            Test.add_func("/iso_3166/create class with changes", () => {
+                var i = new ISO_3166();
+                i.filepath = "/this/is/a/new/path";
+                assert(i.filepath == "/this/is/a/new/path");
+            });
+            Test.add_func("/iso_3166/search code", () => {
+                var i = new ISO_3166();
+                try {
+                    i.open_file();
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+                try {
+                    var e = i.search_code("de");
+                    assert(e != null);
+                    assert(e is ISO_3166_Entry);
+                    assert(e.name == "Germany");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
             });
         }
     }
