@@ -44,7 +44,7 @@ namespace isocodes {
         /**
          * The ISO standard currently in use.
          */
-        public string standard { get; protected set; }
+        public string standard { get; internal set; }
         /**
          * Pointer to the Xml.Doc structure of LibXML.
          */
@@ -54,7 +54,7 @@ namespace isocodes {
          * 
          * This method needs to be called by every subclass.
          */
-        protected void _setup_i18n()
+        internal void _setup_i18n()
         {
             Intl.textdomain(Config.GETTEXT_PACKAGE);
             Intl.bindtextdomain(Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
@@ -110,7 +110,8 @@ namespace isocodes {
         /**
          * Find the given code in the given attributes of the current standard.
          */
-        protected void*[] _find_code_in_attributes(string[] attributes, string code) throws ISOCodesError
+         /*
+        internal void*[] _find_code_in_attributes(string[] attributes, string code) throws ISOCodesError
         {
 			void*[] result = {};
             
@@ -136,10 +137,11 @@ namespace isocodes {
             delete iterator;
             return result;
         }
+        */
         /**
          * Find the given code with the given XPath.
          */
-        protected XPath.NodeSet* _search_code(string xpath)
+        internal XPath.NodeSet* _search_code(string xpath)
         {
 			// Set up the XPath infrastructure
 			var context = new XPath.Context(_xml);
@@ -152,7 +154,7 @@ namespace isocodes {
         /**
          * Determine whether a given string represents a number.
          */
-        protected bool _is_number(string text)
+        internal bool _is_number(string text)
         {
 			var contains_only_digits = true;
 			var length = text.length;
