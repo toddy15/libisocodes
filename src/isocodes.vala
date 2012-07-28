@@ -44,7 +44,7 @@ namespace isocodes {
         /**
          * The ISO standard currently in use.
          */
-        public string standard { get; internal set; }
+        internal string standard { get; internal set; }
         /**
          * Pointer to the Xml.Doc structure of LibXML.
          */
@@ -69,7 +69,7 @@ namespace isocodes {
          * 
          * @param string Filename to open, defaults to filepath.
          */
-        public void open_file(string name = "") throws ISOCodesError
+        internal void _open_file(string name = "") throws ISOCodesError
         {
             // If the name is set, use it.
             if (name != "") {
@@ -145,7 +145,7 @@ namespace isocodes {
         {
             // Make sure the XML file is ready for reading
             if (_xml == null) {
-                open_file();
+                _open_file();
             }
             // Set up the XPath infrastructure
             var context = new XPath.Context(_xml);
