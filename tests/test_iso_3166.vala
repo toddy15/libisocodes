@@ -35,12 +35,6 @@ namespace isocodes {
             Test.add_func("/iso_3166/search code", () => {
                 var i = new ISO_3166();
                 try {
-                    i.open_file();
-                }
-                catch (ISOCodesError error) {
-                    assert_not_reached();
-                }
-                try {
                     var e = i.search_code("de");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);

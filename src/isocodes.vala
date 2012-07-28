@@ -141,15 +141,19 @@ namespace isocodes {
         /**
          * Find the given code with the given XPath.
          */
-        internal XPath.NodeSet* _search_code(string xpath)
+        internal XPath.NodeSet* _search_code(string xpath) throws ISOCodesError
         {
-			// Set up the XPath infrastructure
-			var context = new XPath.Context(_xml);
+            // Make sure the XML file is ready for reading
+            if (_xml == null) {
+                open_file();
+            }
+            // Set up the XPath infrastructure
+            var context = new XPath.Context(_xml);
             assert(context != null);
-			// Try to match nodes against the XPath
-			var obj = context.eval(xpath);
-			// Get the result nodeset
-			return obj->nodesetval;
+            // Try to match nodes against the XPath
+            var obj = context.eval(xpath);
+            // Get the result nodeset
+            return obj->nodesetval;
         }
         /**
          * Determine whether a given string represents a number.
