@@ -29,12 +29,12 @@ namespace isocodes {
         public string common_name;
         internal ISO_3166_Entry(Xml.Node* node)
         {
-			alpha_2_code = node->get_prop("alpha_2_code");
-			alpha_3_code = node->get_prop("alpha_3_code");
-			numeric_code = node->get_prop("numeric_code");
-			name = node->get_prop("name");
-			official_name = node->get_prop("official_name");
-			common_name = node->get_prop("common_name");
-		}
-	}
+            alpha_2_code = node->get_prop("alpha_2_code");
+            alpha_3_code = node->get_prop("alpha_3_code");
+            numeric_code = node->get_prop("numeric_code");
+            name = node->get_prop("name");
+            official_name = node->get_prop("official_name");
+            common_name = node->get_prop("common_name");
+        }
+    }
 }
