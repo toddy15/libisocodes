@@ -21,13 +21,13 @@ using Xml;
 namespace isocodes {
     public class ISO_3166_Entry : Object
     {
-        public string alpha_2_code { get; set; }
-        public string alpha_3_code { get; set; }
-        public string numeric_code { get; set; }
-        public string name { get; set; }
-        public string official_name { get; set; }
-        public string common_name { get; set; }
-        public ISO_3166_Entry(Xml.Node* node)
+        public string alpha_2_code;
+        public string alpha_3_code;
+        public string numeric_code;
+        public string name;
+        public string official_name;
+        public string common_name;
+        internal ISO_3166_Entry(Xml.Node* node)
         {
 			alpha_2_code = node->get_prop("alpha_2_code");
 			alpha_3_code = node->get_prop("alpha_3_code");
