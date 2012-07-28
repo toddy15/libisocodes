@@ -18,7 +18,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ACLOCAL_AMFLAGS = -I m4
-LIBISOCODES_ABI_VERSION = 0:0:0
 
 # This is needed for gettext, it is too much work to rewrite
 # po/Makefile.in.in for a non-recursive approach.
@@ -48,7 +47,7 @@ VALAFLAGS = \
 libisocodes_la_CPPFLAGS = -include config.h -DLOCALEDIR=\""$(localedir)"\"
 libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS)
-libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_ABI_VERSION)
+libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_LT_VERSION)
 
 DISTCLEANFILES = libisocodes.h libisocodes.vapi libisocodes-$(VERSION).gir
 MAINTAINERCLEANFILES = config.h.in~

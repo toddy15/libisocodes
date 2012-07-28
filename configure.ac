@@ -31,6 +31,8 @@ AM_MAINTAINER_MODE
 # Set up libtool
 LT_PREREQ([2.4.2])
 LT_INIT
+LIBISOCODES_LT_VERSION="0:0:0"
+AC_SUBST([LIBISOCODES_LT_VERSION])
 
 # Check for compilers and pkg-config
 AM_PROG_VALAC([0.14])

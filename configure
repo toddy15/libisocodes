@@ -703,6 +703,7 @@ PKG_CONFIG_LIBDIR
 PKG_CONFIG_PATH
 PKG_CONFIG
 VALAC
+LIBISOCODES_LT_VERSION
 CPP
 OTOOL64
 OTOOL
@@ -11374,6 +11375,8 @@ CC="$lt_save_CC"
 
 # Only expand once:
 
+
+LIBISOCODES_LT_VERSION="0:0:0"
 
 
 # Check for compilers and pkg-config

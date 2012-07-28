@@ -259,6 +259,7 @@ LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBICONV = @LIBICONV@
 LIBINTL = @LIBINTL@
+LIBISOCODES_LT_VERSION = @LIBISOCODES_LT_VERSION@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
@@ -358,7 +359,6 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
-LIBISOCODES_ABI_VERSION = 0:0:0
 
 # This is needed for gettext, it is too much work to rewrite
 # po/Makefile.in.in for a non-recursive approach.
@@ -384,7 +384,7 @@ VALAFLAGS = \
 libisocodes_la_CPPFLAGS = -include config.h -DLOCALEDIR=\""$(localedir)"\"
 libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
 libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS)
-libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_ABI_VERSION)
+libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_LT_VERSION)
 DISTCLEANFILES = libisocodes.h libisocodes.vapi \
 	libisocodes-$(VERSION).gir codetest
 MAINTAINERCLEANFILES = config.h.in~
