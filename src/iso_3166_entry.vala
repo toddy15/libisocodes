@@ -35,6 +35,14 @@ namespace isocodes {
             name = node->get_prop("name");
             official_name = node->get_prop("official_name");
             common_name = node->get_prop("common_name");
+            // Official name and common name might be null,
+            // so set them to an empty string instead.
+            if (official_name == null) {
+                official_name = "";
+            }
+            if (common_name == null) {
+                common_name = "";
+            }
         }
     }
 }
