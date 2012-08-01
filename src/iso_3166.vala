@@ -46,6 +46,11 @@ namespace isocodes {
         public ISO_3166_Entry[] all_entries() throws ISOCodesError
         {
             ISO_3166_Entry[] result = null;
+            var xpath = "//iso_3166_entry";
+            XPath.NodeSet* nodeset = _search_code(xpath);
+            for (var i = 0; i < nodeset->length(); i++) {
+                result += new ISO_3166_Entry(nodeset->item(i));
+            }
             return result;
         }
         /**
