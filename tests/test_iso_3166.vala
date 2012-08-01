@@ -44,6 +44,18 @@ namespace isocodes {
                     assert_not_reached();
                 }
             });
+            Test.add_func("/iso_3166/search non existant code", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code("not-there");
+                    // This assert is just to use the variable e,
+                    // otherwise the compiler emits a warning.
+                    // It is not reached.
+                    assert(e == null);
+                }
+                catch (ISOCodesError error) {
+                }
+            });
         }
     }
 }
