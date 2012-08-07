@@ -18,7 +18,7 @@
 
 using Xml;
 
-namespace isocodes {
+namespace libisocodes {
     public class ISO_Codes : Object
     {
         /**

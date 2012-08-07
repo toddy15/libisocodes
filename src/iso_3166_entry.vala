@@ -18,7 +18,7 @@
 
 using Xml;
 
-namespace isocodes {
+namespace libisocodes {
     public class ISO_3166_Entry : Object
     {
         public string alpha_2_code;

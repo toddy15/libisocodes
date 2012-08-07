@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace isocodes {
+namespace libisocodes {
     public class Test_ISO_3166 : Object
     {
         public static void add_tests()

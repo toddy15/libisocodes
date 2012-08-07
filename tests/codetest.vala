@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace isocodes {
+namespace libisocodes {
     void main(string[] args)
     {
         Test.init(ref args);

@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace isocodes {
+namespace libisocodes {
     public errordomain ISOCodesError {
         FILE_DOES_NOT_EXIST,
         CANNOT_PARSE_FILE,
