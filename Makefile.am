@@ -52,6 +52,18 @@ libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_LT_VERSION)
 DISTCLEANFILES = libisocodes.h libisocodes.vapi libisocodes-$(VERSION).gir
 MAINTAINERCLEANFILES = config.h.in~
 
+# Generate and install gir and typelib data
+girdir = $(datadir)/gir-1.0
+gir_DATA = libisocodes-$(VERSION).gir
+
+libisocodes-$(VERSION).typelib: libisocodes-$(VERSION).gir
+	g-ir-compiler --shared-library=.libs/libisocodes.so --output=$@ $<
+
+typelibdir = $(libdir)/girepository-1.0
+typelib_DATA = libisocodes-$(VERSION).typelib
+
+CLEANFILES = $(gir_DATA) $(typelib_DATA)
+
 # All code below is needed for testing the package
 codetest_testfiles = \
 	tests/codetest.vala \
