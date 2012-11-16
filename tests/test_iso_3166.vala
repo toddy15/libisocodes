@@ -27,18 +27,67 @@ namespace libisocodes {
                 assert(i.standard == "3166");
                 assert(i.filepath == "/usr/share/xml/iso-codes/iso_3166.xml");
             });
-            Test.add_func("/iso_3166/create class with changes", () => {
+            Test.add_func("/iso_3166/create class with changed filepath", () => {
                 var i = new ISO_3166();
                 i.filepath = "/this/is/a/new/path";
                 assert(i.filepath == "/this/is/a/new/path");
+                assert(i.standard == "3166");
             });
-            Test.add_func("/iso_3166/search code", () => {
+            Test.add_func("/iso_3166/search code 'de'", () => {
                 var i = new ISO_3166();
                 try {
                     var e = i.search_code("de");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.name == "Germany");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
+            Test.add_func("/iso_3166/search code 'FR'", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code("FR");
+                    assert(e != null);
+                    assert(e is ISO_3166_Entry);
+                    assert(e.name == "France");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
+            Test.add_func("/iso_3166/search code 'Gb'", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code("Gb");
+                    assert(e != null);
+                    assert(e is ISO_3166_Entry);
+                    assert(e.name == "United Kingdom");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
+            Test.add_func("/iso_3166/search code 'ukr'", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code("ukr");
+                    assert(e != null);
+                    assert(e is ISO_3166_Entry);
+                    assert(e.name == "Ukraine");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
+            Test.add_func("/iso_3166/search code '798'", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code("798");
+                    assert(e != null);
+                    assert(e is ISO_3166_Entry);
+                    assert(e.name == "Tuvalu");
                 }
                 catch (ISOCodesError error) {
                     assert_not_reached();
