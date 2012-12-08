@@ -188,6 +188,23 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
+            Test.add_func("/iso_3166/search code 'RUS' in non existant locale", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code("RUS", "does-not-exist");
+                    assert(e != null);
+                    assert(e is ISO_3166_Entry);
+                    assert(e.alpha_2_code == "RU");
+                    assert(e.alpha_3_code == "RUS");
+                    assert(e.numeric_code == "643");
+                    assert(e.name == "Russian Federation");
+                    assert(e.official_name == "");
+                    assert(e.common_name == "");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
         }
     }
 }
