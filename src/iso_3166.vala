@@ -31,6 +31,7 @@ namespace libisocodes {
             Parser.init();
             standard = "3166";
             filepath = "/usr/share/xml/iso-codes/iso_3166.xml";
+            domain = "iso_" + standard;
         }
         /**
          * Destructor of class.
@@ -85,6 +86,42 @@ namespace libisocodes {
                 );
             }
             return result;
+        }
+        /**
+         * Try to locate the given code in the XML file and return it localized.
+         * 
+         * @param string Code to search for.
+         * @param string Wanted locale.
+         */
+        public ISO_3166_Entry search_code_localized(string code = "", string locale = "") throws ISOCodesError
+        {
+            var entry = search_code(code);
+            // Try to get the localized code
+            if (entry != null) {
+                // Save the current locale
+                string loc_backup = Intl.setlocale(LocaleCategory.ALL, null);
+                // Use the user's locale
+                Intl.setlocale(LocaleCategory.ALL, "");
+                // Save the current setting of environment variable LANGUAGE.
+                unowned string a = Environment.get_variable("LANGUAGE");
+                var env_backup = a.dup();
+                // Use the wanted locale to look for a translation
+                Environment.set_variable("LANGUAGE", locale, true);
+                if (entry.name != "") {
+                    entry.name = dgettext(domain, entry.name);
+                }
+                if (entry.official_name != "") {
+                    entry.official_name = dgettext(domain, entry.official_name);
+                }
+                if (entry.common_name != "") {
+                    entry.common_name = dgettext(domain, entry.common_name);
+                }
+                // Restore the environment from backup
+                Environment.set_variable("LANGUAGE", env_backup, true);
+                // Restore the locale from backup
+                Intl.setlocale(LocaleCategory.ALL, loc_backup);
+            }
+            return entry;
         }
         /**
          * Set up the XPaths to try.

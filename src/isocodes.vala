@@ -46,6 +46,10 @@ namespace libisocodes {
          */
         internal string standard { get; internal set; }
         /**
+         * The domain used for localized entries.
+         */
+        internal string domain { get; internal set; }
+        /**
          * Pointer to the Xml.Doc structure of LibXML.
          */
         private Xml.Doc* _xml = null;
@@ -56,7 +60,6 @@ namespace libisocodes {
          */
         internal void _setup_i18n()
         {
-            Intl.textdomain(Config.GETTEXT_PACKAGE);
             Intl.bindtextdomain(Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
             Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "UTF-8");
             Intl.setlocale(LocaleCategory.ALL, "");
@@ -113,7 +116,7 @@ namespace libisocodes {
          /*
         internal void*[] _find_code_in_attributes(string[] attributes, string code) throws ISOCodesError
         {
-			void*[] result = {};
+            void*[] result = {};
             
             // Set up the expected tag name
             var tag_name = "iso_" + standard.replace("-", "_") + "_entry";
@@ -160,17 +163,17 @@ namespace libisocodes {
          */
         internal bool _is_number(string text)
         {
-			var contains_only_digits = true;
-			var length = text.length;
-			var index = 0;
-			while (index < length) {
-				if (!text[index].isdigit()) {
-					contains_only_digits = false;
-					break;
-				}
-				index++;
-			}
-			return contains_only_digits;
+            var contains_only_digits = true;
+            var length = text.length;
+            var index = 0;
+            while (index < length) {
+                if (!text[index].isdigit()) {
+                    contains_only_digits = false;
+                    break;
+                }
+                index++;
+            }
+            return contains_only_digits;
         }
     }
 }
