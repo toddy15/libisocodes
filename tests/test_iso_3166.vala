@@ -39,7 +39,12 @@ namespace libisocodes {
                     var e = i.search_code("de");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
+                    assert(e.alpha_2_code == "DE");
+                    assert(e.alpha_3_code == "DEU");
+                    assert(e.numeric_code == "276");
                     assert(e.name == "Germany");
+                    assert(e.official_name == "Federal Republic of Germany");
+                    assert(e.common_name == "");
                 }
                 catch (ISOCodesError error) {
                     assert_not_reached();
@@ -51,19 +56,29 @@ namespace libisocodes {
                     var e = i.search_code("FR");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
+                    assert(e.alpha_2_code == "FR");
+                    assert(e.alpha_3_code == "FRA");
+                    assert(e.numeric_code == "250");
                     assert(e.name == "France");
+                    assert(e.official_name == "French Republic");
+                    assert(e.common_name == "");
                 }
                 catch (ISOCodesError error) {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/search code 'Gb'", () => {
+            Test.add_func("/iso_3166/search code 'Tw'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("Gb");
+                    var e = i.search_code("Tw");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
-                    assert(e.name == "United Kingdom");
+                    assert(e.alpha_2_code == "TW");
+                    assert(e.alpha_3_code == "TWN");
+                    assert(e.numeric_code == "158");
+                    assert(e.name == "Taiwan, Province of China");
+                    assert(e.official_name == "Taiwan, Province of China");
+                    assert(e.common_name == "Taiwan");
                 }
                 catch (ISOCodesError error) {
                     assert_not_reached();
@@ -75,7 +90,12 @@ namespace libisocodes {
                     var e = i.search_code("ukr");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
+                    assert(e.alpha_2_code == "UA");
+                    assert(e.alpha_3_code == "UKR");
+                    assert(e.numeric_code == "804");
                     assert(e.name == "Ukraine");
+                    assert(e.official_name == "");
+                    assert(e.common_name == "");
                 }
                 catch (ISOCodesError error) {
                     assert_not_reached();
@@ -87,7 +107,12 @@ namespace libisocodes {
                     var e = i.search_code("798");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
+                    assert(e.alpha_2_code == "TV");
+                    assert(e.alpha_3_code == "TUV");
+                    assert(e.numeric_code == "798");
                     assert(e.name == "Tuvalu");
+                    assert(e.official_name == "");
+                    assert(e.common_name == "");
                 }
                 catch (ISOCodesError error) {
                     assert_not_reached();
