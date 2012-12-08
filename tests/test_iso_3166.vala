@@ -130,6 +130,40 @@ namespace libisocodes {
                 catch (ISOCodesError error) {
                 }
             });
+            Test.add_func("/iso_3166/search code 'ES' in locale 'de'", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code_localized("es", "de");
+                    assert(e != null);
+                    assert(e is ISO_3166_Entry);
+                    assert(e.alpha_2_code == "ES");
+                    assert(e.alpha_3_code == "ESP");
+                    assert(e.numeric_code == "724");
+                    assert(e.name == "Spanien");
+                    assert(e.official_name == "Königreich Spanien");
+                    assert(e.common_name == "");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
+            Test.add_func("/iso_3166/search code 'TW' in locale 'fr'", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code_localized("TW", "fr");
+                    assert(e != null);
+                    assert(e is ISO_3166_Entry);
+                    assert(e.alpha_2_code == "TW");
+                    assert(e.alpha_3_code == "TWN");
+                    assert(e.numeric_code == "158");
+                    assert(e.name == "Taïwan, province de Chine");
+                    assert(e.official_name == "Taïwan, province de Chine");
+                    assert(e.common_name == "Taïwan");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
         }
     }
 }
