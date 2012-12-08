@@ -111,37 +111,6 @@ namespace libisocodes {
             }
         }
         /**
-         * Find the given code in the given attributes of the current standard.
-         */
-         /*
-        internal void*[] _find_code_in_attributes(string[] attributes, string code) throws ISOCodesError
-        {
-            void*[] result = {};
-            
-            // Set up the expected tag name
-            var tag_name = "iso_" + standard.replace("-", "_") + "_entry";
-            
-            // Loop through all entries
-            var iterator = _xml->get_root_element()->children;
-            while (iterator != null) {
-                // Only use the nodes, not text or comments
-                if (iterator->type == ElementType.ELEMENT_NODE) {
-                    if (iterator->name == tag_name) {
-                        foreach (var attribute in attributes) {
-                            if (iterator->get_prop(attribute) == code) {
-                                result += (void*) new ISO_3166_Entry(iterator);
-                                break;
-                            }
-                        }
-                    }
-                }
-                iterator = iterator->next;
-            }
-            delete iterator;
-            return result;
-        }
-        */
-        /**
          * Find the given code with the given XPath.
          */
         internal XPath.NodeSet* _search_code(string xpath) throws ISOCodesError
