@@ -33,6 +33,30 @@ namespace libisocodes {
                 assert(i.filepath == "/this/is/a/new/path");
                 assert(i.standard == "3166");
             });
+            Test.add_func("/iso_3166/call search_code() without argument", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code();
+                    // This assert is just to use the variable e,
+                    // otherwise the compiler emits a warning.
+                    // It is not reached.
+                    assert(e == null);
+                }
+                catch (ISOCodesError error) {
+                }
+            });
+            Test.add_func("/iso_3166/search empty code", () => {
+                var i = new ISO_3166();
+                try {
+                    var e = i.search_code("");
+                    // This assert is just to use the variable e,
+                    // otherwise the compiler emits a warning.
+                    // It is not reached.
+                    assert(e == null);
+                }
+                catch (ISOCodesError error) {
+                }
+            });
             Test.add_func("/iso_3166/search code 'de'", () => {
                 var i = new ISO_3166();
                 try {
