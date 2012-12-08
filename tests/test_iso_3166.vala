@@ -157,7 +157,7 @@ namespace libisocodes {
             Test.add_func("/iso_3166/search code 'ES' in locale 'de'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code_localized("es", "de");
+                    var e = i.search_code("es", "de");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "ES");
@@ -174,7 +174,7 @@ namespace libisocodes {
             Test.add_func("/iso_3166/search code 'TW' in locale 'fr'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code_localized("TW", "fr");
+                    var e = i.search_code("TW", "fr");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "TW");

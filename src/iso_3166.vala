@@ -58,8 +58,9 @@ namespace libisocodes {
          * Try to locate the given code in the XML file.
          * 
          * @param string Code to search for.
+         * @param string Wanted locale, might be empty for default locale.
          */
-        public ISO_3166_Entry search_code(string code = "") throws ISOCodesError
+        public ISO_3166_Entry search_code(string code = "", string locale = "") throws ISOCodesError
         {
             ISO_3166_Entry result = null;
             var xpaths = _get_xpaths(code);
@@ -85,43 +86,32 @@ namespace libisocodes {
                     _("The code \"%s\" is not defined in ISO %s.").printf(code, standard)
                 );
             }
-            return result;
-        }
-        /**
-         * Try to locate the given code in the XML file and return it localized.
-         * 
-         * @param string Code to search for.
-         * @param string Wanted locale.
-         */
-        public ISO_3166_Entry search_code_localized(string code = "", string locale = "") throws ISOCodesError
-        {
-            var entry = search_code(code);
-            // Try to get the localized code
-            if (entry != null) {
+            // Try to get translations, if wanted
+            if (locale != "") {
                 // Save the current locale
                 string loc_backup = Intl.setlocale(LocaleCategory.ALL, null);
                 // Use the user's locale
                 Intl.setlocale(LocaleCategory.ALL, "");
                 // Save the current setting of environment variable LANGUAGE.
-                unowned string a = Environment.get_variable("LANGUAGE");
-                var env_backup = a.dup();
+                unowned string env = Environment.get_variable("LANGUAGE");
+                var env_backup = env.dup();
                 // Use the wanted locale to look for a translation
                 Environment.set_variable("LANGUAGE", locale, true);
-                if (entry.name != "") {
-                    entry.name = dgettext(domain, entry.name);
+                if (result.name != "") {
+                    result.name = dgettext(domain, result.name);
                 }
-                if (entry.official_name != "") {
-                    entry.official_name = dgettext(domain, entry.official_name);
+                if (result.official_name != "") {
+                    result.official_name = dgettext(domain, result.official_name);
                 }
-                if (entry.common_name != "") {
-                    entry.common_name = dgettext(domain, entry.common_name);
+                if (result.common_name != "") {
+                    result.common_name = dgettext(domain, result.common_name);
                 }
                 // Restore the environment from backup
                 Environment.set_variable("LANGUAGE", env_backup, true);
                 // Restore the locale from backup
                 Intl.setlocale(LocaleCategory.ALL, loc_backup);
             }
-            return entry;
+            return result;
         }
         /**
          * Set up the XPaths to try.
