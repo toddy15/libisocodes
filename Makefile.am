@@ -38,6 +38,7 @@ libisocodes.h:
 
 VALAFLAGS = \
 	--pkg libxml-2.0 \
+	--pkg gee-1.0 \
 	--library=libisocodes \
 	--vapidir=vapi --pkg config \
 	--header=libisocodes.h \
@@ -45,8 +46,8 @@ VALAFLAGS = \
 
 # Here are two quotes needed due to expansion by libtool
 libisocodes_la_CPPFLAGS = -include config.h -DLOCALEDIR=\""$(localedir)"\"
-libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS)
-libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS)
+libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS) $(GEE_CFLAGS)
+libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS) $(GEE_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_LT_VERSION)
 
 DISTCLEANFILES = libisocodes.h libisocodes.vapi libisocodes-$(VERSION).gir
@@ -71,6 +72,7 @@ codetest_testfiles = \
 codetest_sources = $(codetest_testfiles) $(libisocodes_la_SOURCES)
 codetest_VALAFLAGS = \
 	--pkg libxml-2.0 \
+	--pkg gee-1.0 \
 	--vapidir=$(srcdir)/vapi --pkg config \
 	-X -I. \
 	-X -DGETTEXT_PACKAGE=\"libisocodes\" \

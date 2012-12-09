@@ -49,6 +49,7 @@ AC_DEFINE([GETTEXT_PACKAGE], ["libisocodes"], [Gettext package name.])
 PKG_CHECK_MODULES([GOBJECT], [gobject-2.0])
 PKG_CHECK_MODULES([GLIB], [glib-2.0])
 PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
+PKG_CHECK_MODULES([GEE], [gee-1.0])
 
 # Write configuration files
 AC_CONFIG_FILES([
