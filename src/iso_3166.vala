@@ -17,6 +17,7 @@
  */
 
 using Xml;
+using Gee;
 
 namespace libisocodes {
     public class ISO_3166 : ISO_Codes
@@ -47,11 +48,13 @@ namespace libisocodes {
         public ISO_3166_Entry[] all_entries() throws ISOCodesError
         {
             ISO_3166_Entry[] result = null;
+            /*
             var xpath = "//iso_3166_entry";
             XPath.NodeSet* nodeset = _search_code(xpath);
             for (var i = 0; i < nodeset->length(); i++) {
                 result += new ISO_3166_Entry(nodeset->item(i));
             }
+            */
             return result;
         }
         /**
@@ -62,30 +65,9 @@ namespace libisocodes {
          */
         public ISO_3166_Entry search_code(string code = "", string locale = "") throws ISOCodesError
         {
-            ISO_3166_Entry result = null;
-            var xpaths = _get_xpaths(code);
-            // See if there are results for any of the XPaths
-            foreach (var xpath in xpaths) {
-                XPath.NodeSet* nodeset = _search_code(xpath);
-                // There can be only 1 matching node.
-                if (nodeset->length() == 1) {
-                    result = new ISO_3166_Entry(nodeset->item(0));
-                    // Exit after successful match, to avoid matching the same
-                    // entry another time (can happen e.g. in ISO 639, where
-                    // most entries have the same value for their 2B and 2T code
-                    break;
-                }
-            }
-            // If the result is still null, it means that
-            // no result could be found. Therefore, throw an error.
-            if (result == null) {
-                throw new ISOCodesError.CODE_NOT_DEFINED(
-                    // TRANSLATORS:
-                    // The first placeholder is a code, e.g. 'de' or 'hurgh'.
-                    // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
-                    _("The code \"%s\" is not defined in ISO %s.").printf(code, standard)
-                );
-            }
+            var res = _search_code(code);
+            return new ISO_3166_Entry(res);
+            /*
             // Try to get translations, if wanted
             if (locale != "") {
                 // Save the current locale
@@ -111,14 +93,14 @@ namespace libisocodes {
                 // Restore the locale from backup
                 Intl.setlocale(LocaleCategory.ALL, loc_backup);
             }
-            return result;
+            */
         }
         /**
          * Set up the XPaths to try.
          * 
          * @param string Code to search for.
          */
-        private string[] _get_xpaths(string code)
+        internal override string[] _get_xpaths(string code)
         {
             string[] xpaths = {};
             if (code.length == 2) {
@@ -131,6 +113,20 @@ namespace libisocodes {
                 xpaths += "//iso_3166_entry[@alpha_3_code='" + code.up() + "']";
             }
             return xpaths;
+        }
+        /**
+         * @inheritDoc
+         */
+        internal override string[] _get_fields()
+        {
+            return {
+                "alpha_2_code",
+                "alpha_3_code",
+                "numeric_code",
+                "name",
+                "official_name",
+                "common_name"
+            };
         }
     }
 }

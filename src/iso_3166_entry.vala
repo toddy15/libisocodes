@@ -17,6 +17,7 @@
  */
 
 using Xml;
+using Gee;
 
 namespace libisocodes {
     public class ISO_3166_Entry : Object
@@ -27,22 +28,14 @@ namespace libisocodes {
         public string name;
         public string official_name;
         public string common_name;
-        internal ISO_3166_Entry(Xml.Node* node)
+        internal ISO_3166_Entry(HashMap<string, string> entry)
         {
-            alpha_2_code = node->get_prop("alpha_2_code");
-            alpha_3_code = node->get_prop("alpha_3_code");
-            numeric_code = node->get_prop("numeric_code");
-            name = node->get_prop("name");
-            official_name = node->get_prop("official_name");
-            common_name = node->get_prop("common_name");
-            // Official name and common name might be null,
-            // so set them to an empty string instead.
-            if (official_name == null) {
-                official_name = "";
-            }
-            if (common_name == null) {
-                common_name = "";
-            }
+            alpha_2_code = entry["alpha_2_code"];
+            alpha_3_code = entry["alpha_3_code"];
+            numeric_code = entry["numeric_code"];
+            name = entry["name"];
+            official_name = entry["official_name"];
+            common_name = entry["common_name"];
         }
     }
 }

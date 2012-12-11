@@ -17,9 +17,10 @@
  */
 
 using Xml;
+using Gee;
 
 namespace libisocodes {
-    public class ISO_Codes : Object
+    public abstract class ISO_Codes : Object
     {
         /**
          * Path of the XML file with iso-codes data.
@@ -113,8 +114,10 @@ namespace libisocodes {
         /**
          * Find the given code with the given XPath.
          */
-        internal XPath.NodeSet* _search_code(string xpath) throws ISOCodesError
+        public HashMap<string, string> _search_code(string code = "") throws ISOCodesError
         {
+            var did_not_find_code = true;
+            var result = new HashMap<string, string>();
             // Make sure the XML file is ready for reading
             if (_xml == null) {
                 _open_file();
@@ -122,10 +125,43 @@ namespace libisocodes {
             // Set up the XPath infrastructure
             var context = new XPath.Context(_xml);
             assert(context != null);
-            // Try to match nodes against the XPath
-            var obj = context.eval(xpath);
-            // Get the result nodeset
-            return obj->nodesetval;
+            // Get the XPaths needed for this code
+            var xpaths = _get_xpaths(code);
+            // See if there are results for any of the XPaths
+            foreach (var xpath in xpaths) {
+                // Try to match nodes against the XPath
+                var obj = context.eval(xpath);
+                // Get the result nodeset
+                var nodeset = obj->nodesetval;
+                // There can be only 1 matching node.
+                if (nodeset->length() == 1) {
+                    var fields = _get_fields();
+                    var node = nodeset->item(0);
+                    foreach (var field in fields) {
+                        result[field] = node->get_prop(field);
+                        // Fields might be null, e.g. official name and
+                        // common name. Set them to an empty string instead.
+                        if (result[field] == null) {
+                            result[field] = "";
+                        }
+                    }
+                    did_not_find_code = false;
+                    // Exit after successful match, to avoid matching the same
+                    // entry another time (can happen e.g. in ISO 639, where
+                    // most entries have the same value for their 2B and 2T code.
+                    break;
+                }
+            }
+            // Throw an error, if the code could not be found.
+            if (did_not_find_code) {
+                throw new ISOCodesError.CODE_NOT_DEFINED(
+                    // TRANSLATORS:
+                    // The first placeholder is a code, e.g. 'de' or 'hurgh'.
+                    // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
+                    _("The code \"%s\" is not defined in ISO %s.").printf(code, standard)
+                );
+            }
+            return result;
         }
         /**
          * Determine whether a given string represents a number.
@@ -144,5 +180,20 @@ namespace libisocodes {
             }
             return contains_only_digits;
         }
+        /**
+         * Return all XPaths which should be tested with the given code.
+         * 
+         * @param string Code to search for, e.g. 'DE', 'DEU', '788'.
+         * @return string[] Array of XPaths which are applicable to the code.
+         */
+        internal abstract string[] _get_xpaths(string code);
+        /**
+         * Return all fields of the current ISO standard.
+         * 
+         * This is needed for constructing the HashMap.
+         * 
+         * @return string[] Array with the names of all fields in the current standard.
+         */
+        internal abstract string[] _get_fields();
     }
 }
