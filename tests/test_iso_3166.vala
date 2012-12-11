@@ -41,6 +41,7 @@ namespace libisocodes {
                     // otherwise the compiler emits a warning.
                     // It is not reached.
                     assert(e == null);
+                    assert_not_reached();
                 }
                 catch (ISOCodesError error) {
                 }
@@ -53,6 +54,7 @@ namespace libisocodes {
                     // otherwise the compiler emits a warning.
                     // It is not reached.
                     assert(e == null);
+                    assert_not_reached();
                 }
                 catch (ISOCodesError error) {
                 }
@@ -150,6 +152,7 @@ namespace libisocodes {
                     // otherwise the compiler emits a warning.
                     // It is not reached.
                     assert(e == null);
+                    assert_not_reached();
                 }
                 catch (ISOCodesError error) {
                 }
