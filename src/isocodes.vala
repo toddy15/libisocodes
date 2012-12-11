@@ -114,7 +114,7 @@ namespace libisocodes {
         /**
          * Find the given code with the given XPath.
          */
-        public HashMap<string, string> _search_code(string code = "", string locale = "") throws ISOCodesError
+        internal HashMap<string, string> _search_code(string code = "", string locale = "") throws ISOCodesError
         {
             var did_not_find_code = true;
             var result = new HashMap<string, string>();
@@ -163,31 +163,42 @@ namespace libisocodes {
             }
             // Try to get translations, if wanted
             if (locale != "") {
-                // Save the current locale
-                string loc_backup = Intl.setlocale(LocaleCategory.ALL, null);
-                // Use the user's locale
-                Intl.setlocale(LocaleCategory.ALL, "");
-                // Save the current setting of environment variable LANGUAGE.
-                unowned string env = Environment.get_variable("LANGUAGE");
-                var env_backup = env.dup();
-                // Use the wanted locale to look for a translation
-                Environment.set_variable("LANGUAGE", locale, true);
-                string[] fields = {
-                    "name",
-                    "official_name",
-                    "common_name"
-                };
-                foreach (var field in fields) {
-                    if (result.has_key(field) && (result[field] != "")) {
-                        result[field] = dgettext(domain, result[field]);
-                    }
-                }
-                // Restore the environment from backup
-                Environment.set_variable("LANGUAGE", env_backup, true);
-                // Restore the locale from backup
-                Intl.setlocale(LocaleCategory.ALL, loc_backup);
+                _translate(result, locale);
             }
             return result;
+        }
+        /**
+         * Translate an entry to the wanted locale.
+         * 
+         * @param HashMap<string, string> Entry to be translated
+         * @param string Locale to use for translation
+         */
+        internal void _translate(HashMap<string, string> entry, string locale)
+        {
+            // Specify which fields need translation
+            string[] fields_to_translate = {
+                "name",
+                "official_name",
+                "common_name"
+            };
+            // Save the current locale
+            string loc_backup = Intl.setlocale(LocaleCategory.ALL, null);
+            // Use the user's locale
+            Intl.setlocale(LocaleCategory.ALL, "");
+            // Save the current setting of environment variable LANGUAGE.
+            unowned string env = Environment.get_variable("LANGUAGE");
+            var env_backup = env.dup();
+            // Use the wanted locale to look for a translation
+            Environment.set_variable("LANGUAGE", locale, true);
+            foreach (var field in fields_to_translate) {
+                if (entry.has_key(field) && (entry[field] != "")) {
+                    entry[field] = dgettext(domain, entry[field]);
+                }
+            }
+            // Restore the environment from backup
+            Environment.set_variable("LANGUAGE", env_backup, true);
+            // Restore the locale from backup
+            Intl.setlocale(LocaleCategory.ALL, loc_backup);
         }
         /**
          * Determine whether a given string represents a number.
