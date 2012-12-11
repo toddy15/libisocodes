@@ -65,35 +65,8 @@ namespace libisocodes {
          */
         public ISO_3166_Entry search_code(string code = "", string locale = "") throws ISOCodesError
         {
-            var res = _search_code(code);
+            var res = _search_code(code, locale);
             return new ISO_3166_Entry(res);
-            /*
-            // Try to get translations, if wanted
-            if (locale != "") {
-                // Save the current locale
-                string loc_backup = Intl.setlocale(LocaleCategory.ALL, null);
-                // Use the user's locale
-                Intl.setlocale(LocaleCategory.ALL, "");
-                // Save the current setting of environment variable LANGUAGE.
-                unowned string env = Environment.get_variable("LANGUAGE");
-                var env_backup = env.dup();
-                // Use the wanted locale to look for a translation
-                Environment.set_variable("LANGUAGE", locale, true);
-                if (result.name != "") {
-                    result.name = dgettext(domain, result.name);
-                }
-                if (result.official_name != "") {
-                    result.official_name = dgettext(domain, result.official_name);
-                }
-                if (result.common_name != "") {
-                    result.common_name = dgettext(domain, result.common_name);
-                }
-                // Restore the environment from backup
-                Environment.set_variable("LANGUAGE", env_backup, true);
-                // Restore the locale from backup
-                Intl.setlocale(LocaleCategory.ALL, loc_backup);
-            }
-            */
         }
         /**
          * Set up the XPaths to try.
