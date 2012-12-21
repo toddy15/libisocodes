@@ -112,7 +112,52 @@ namespace libisocodes {
             }
         }
         /**
-         * Find the given code with the given XPath.
+         * Return an array of all entries in the ISO standard.
+         * 
+         * @param string Wanted locale, might be empty for English text.
+         * 
+         * @return array All ISO 3166 entries.
+         */
+        internal ArrayList<HashMap<string, string>> _find_all(string locale = "") throws ISOCodesError
+        {
+            var result = new ArrayList<HashMap<string, string>>();
+            var xpath = "//iso_3166_entry";
+            // Make sure the XML file is ready for reading
+            if (_xml == null) {
+                _open_file();
+            }
+            // Set up the XPath infrastructure
+            var context = new XPath.Context(_xml);
+            assert(context != null);
+            // Try to match nodes against the XPath
+            var obj = context.eval(xpath);
+            // Get the result nodeset
+            var nodeset = obj->nodesetval;
+            var fields = _get_fields();
+            for (var i = 0; i < nodeset->length(); i++) {
+                var node = nodeset->item(i);
+                var entry = new HashMap<string, string>();
+                foreach (var field in fields) {
+                    entry[field] = node->get_prop(field);
+                    // Fields might be null, e.g. official name and
+                    // common name. Set them to an empty string instead.
+                    if (entry[field] == null) {
+                        entry[field] = "";
+                    }
+                }
+                // Try to get translations, if wanted
+                if (locale != "") {
+                    _translate(entry, locale);
+                }
+                result.add(entry);
+            }
+            return result;
+        }
+        /**
+         * Find the given code or codes with the given XPath.
+         * 
+         * @param string Code to search for.
+         * @param string Wanted locale, might be empty for English text.
          */
         internal HashMap<string, string> _search_code(string code = "", string locale = "") throws ISOCodesError
         {

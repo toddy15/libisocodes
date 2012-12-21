@@ -44,24 +44,27 @@ namespace libisocodes {
         }
         /**
          * Return an array of all entries in the ISO standard.
+         * 
+         * @param string Wanted locale, might be empty for English text.
+         * 
+         * @return array All ISO 3166 entries.
          */
-        public ISO_3166_Entry[] all_entries() throws ISOCodesError
+        public ISO_3166_Entry[] find_all(string locale = "") throws ISOCodesError
         {
             ISO_3166_Entry[] result = null;
-            /*
-            var xpath = "//iso_3166_entry";
-            XPath.NodeSet* nodeset = _search_code(xpath);
-            for (var i = 0; i < nodeset->length(); i++) {
-                result += new ISO_3166_Entry(nodeset->item(i));
+            var entries = _find_all(locale);
+            foreach (var entry in entries) {
+                result += new ISO_3166_Entry(entry);
             }
-            */
             return result;
         }
         /**
          * Try to locate the given code in the XML file.
          * 
          * @param string Code to search for.
-         * @param string Wanted locale, might be empty for default locale.
+         * @param string Wanted locale, might be empty for English text.
+         * 
+         * @return struct A matching ISO 3166 entry, if found.
          */
         public ISO_3166_Entry search_code(string code = "", string locale = "") throws ISOCodesError
         {
