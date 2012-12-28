@@ -33,10 +33,10 @@ namespace libisocodes {
                 assert(i.filepath == "/this/is/a/new/path");
                 assert(i.standard == "3166");
             });
-            Test.add_func("/iso_3166/call search_code() without argument", () => {
+            Test.add_func("/iso_3166/call find_code() without argument", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code();
+                    var e = i.find_code();
                     // This assert is just to use the variable e,
                     // otherwise the compiler emits a warning.
                     // It is not reached.
@@ -49,7 +49,7 @@ namespace libisocodes {
             Test.add_func("/iso_3166/search empty code", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("");
+                    var e = i.find_code("");
                     // This assert is just to use the variable e,
                     // otherwise the compiler emits a warning.
                     // It is not reached.
@@ -59,10 +59,10 @@ namespace libisocodes {
                 catch (ISOCodesError error) {
                 }
             });
-            Test.add_func("/iso_3166/search code 'de'", () => {
+            Test.add_func("/iso_3166/find code 'de'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("de");
+                    var e = i.find_code("de");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "DE");
@@ -76,10 +76,10 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/search code 'FR'", () => {
+            Test.add_func("/iso_3166/find code 'FR'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("FR");
+                    var e = i.find_code("FR");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "FR");
@@ -93,10 +93,10 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/search code 'Tw'", () => {
+            Test.add_func("/iso_3166/find code 'Tw'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("Tw");
+                    var e = i.find_code("Tw");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "TW");
@@ -110,10 +110,10 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/search code 'ukr'", () => {
+            Test.add_func("/iso_3166/find code 'ukr'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("ukr");
+                    var e = i.find_code("ukr");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "UA");
@@ -127,10 +127,10 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/search code '798'", () => {
+            Test.add_func("/iso_3166/find code '798'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("798");
+                    var e = i.find_code("798");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "TV");
@@ -147,7 +147,7 @@ namespace libisocodes {
             Test.add_func("/iso_3166/search non existant code", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("not-there");
+                    var e = i.find_code("not-there");
                     // This assert is just to use the variable e,
                     // otherwise the compiler emits a warning.
                     // It is not reached.
@@ -157,10 +157,10 @@ namespace libisocodes {
                 catch (ISOCodesError error) {
                 }
             });
-            Test.add_func("/iso_3166/search code 'ES' in locale 'de'", () => {
+            Test.add_func("/iso_3166/find code 'ES' in locale 'de'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("es", "de");
+                    var e = i.find_code("es", "de");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "ES");
@@ -174,10 +174,10 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/search code 'TW' in locale 'fr'", () => {
+            Test.add_func("/iso_3166/find code 'TW' in locale 'fr'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("TW", "fr");
+                    var e = i.find_code("TW", "fr");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "TW");
@@ -191,10 +191,10 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/search code 'RUS' in non existant locale", () => {
+            Test.add_func("/iso_3166/find code 'RUS' in non existant locale", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.search_code("RUS", "does-not-exist");
+                    var e = i.find_code("RUS", "does-not-exist");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "RU");

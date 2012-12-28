@@ -159,7 +159,7 @@ namespace libisocodes {
          * @param string Code to search for.
          * @param string Wanted locale, might be empty for English text.
          */
-        internal HashMap<string, string> _search_code(string code = "", string locale = "") throws ISOCodesError
+        internal HashMap<string, string> _find_code(string code = "", string locale = "") throws ISOCodesError
         {
             var did_not_find_code = true;
             var result = new HashMap<string, string>();

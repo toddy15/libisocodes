@@ -66,9 +66,9 @@ namespace libisocodes {
          * 
          * @return struct A matching ISO 3166 entry, if found.
          */
-        public ISO_3166_Entry search_code(string code = "", string locale = "") throws ISOCodesError
+        public ISO_3166_Entry find_code(string code = "", string locale = "") throws ISOCodesError
         {
-            var res = _search_code(code, locale);
+            var res = _find_code(code, locale);
             return new ISO_3166_Entry(res);
         }
         /**
