@@ -57,8 +57,10 @@ MAINTAINERCLEANFILES = config.h.in~
 girdir = $(datadir)/gir-1.0
 gir_DATA = libisocodes-$(VERSION).gir
 
+libisocodes-$(VERSION).gir: $(lib_LTLIBRARIES)
+
 libisocodes-$(VERSION).typelib: libisocodes-$(VERSION).gir
-	g-ir-compiler --shared-library=.libs/libisocodes.so --output=$@ $<
+	g-ir-compiler --shared-library=libisocodes.so --output=$@ $<
 
 typelibdir = $(libdir)/girepository-1.0
 typelib_DATA = libisocodes-$(VERSION).typelib

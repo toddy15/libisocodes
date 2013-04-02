@@ -1184,8 +1184,10 @@ uninstall-am: uninstall-girDATA uninstall-includeHEADERS \
 libisocodes.h:
 	touch $@
 
+libisocodes-$(VERSION).gir: $(lib_LTLIBRARIES)
+
 libisocodes-$(VERSION).typelib: libisocodes-$(VERSION).gir
-	g-ir-compiler --shared-library=.libs/libisocodes.so --output=$@ $<
+	g-ir-compiler --shared-library=libisocodes.so --output=$@ $<
 
 codetest: $(addprefix $(srcdir)/, $(codetest_sources))
 	$(VALAC) $(codetest_VALAFLAGS) --output=$@ $^
