@@ -1,7 +1,7 @@
 # English translations for libisocodes package.
-# Copyright (C) 2012 Tobias Quathamer
+# Copyright (C) 2013 Tobias Quathamer
 # This file is distributed under the same license as the libisocodes package.
-# Automatically generated, 2012.
+# Automatically generated, 2013.
 #
 # All this catalog "translates" are quotation characters.
 # The msgids must be ASCII and therefore cannot contain real quotation
@@ -32,8 +32,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libisocodes 1.0\n"
 "Report-Msgid-Bugs-To: toddy@debian.org\n"
-"POT-Creation-Date: 2012-07-27 00:33+0200\n"
-"PO-Revision-Date: 2012-07-27 00:33+0200\n"
+"POT-Creation-Date: 2013-04-02 12:18+0200\n"
+"PO-Revision-Date: 2013-04-02 12:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en@boldquot\n"
@@ -43,23 +43,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS:
-#. The first placeholder is a code, e.g. 'de' or 'hurgh'.
-#. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
-#: src/iso_3166.vala:79
-#, c-format
-msgid "The code \"%s\" is not defined in ISO %s."
-msgstr "The code “[1m%s[0m” is not defined in ISO %s."
-
-#. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
-#: src/isocodes.vala:83
+#: src/isocodes.vala:87
 #, c-format
 msgid "The file \"%s\" could not be opened."
 msgstr "The file “[1m%s[0m” could not be opened."
 
 #. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
-#: src/isocodes.vala:92
+#: src/isocodes.vala:96
 #, c-format
 msgid "The file \"%s\" could not be parsed correctly."
 msgstr "The file “[1m%s[0m” could not be parsed correctly."
@@ -67,7 +59,15 @@ msgstr "The file “[1m%s[0m” could not be parsed correctly."
 #. TRANSLATORS:
 #. The first placeholder is a filename, including the directory path.
 #. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
-#: src/isocodes.vala:106
+#: src/isocodes.vala:110
 #, c-format
 msgid "The file \"%s\" does not contain valid ISO %s data."
 msgstr "The file “[1m%s[0m” does not contain valid ISO %s data."
+
+#. TRANSLATORS:
+#. The first placeholder is a code, e.g. 'de' or 'hurgh'.
+#. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
+#: src/isocodes.vala:206
+#, c-format
+msgid "The code \"%s\" is not defined in ISO %s."
+msgstr "The code “[1m%s[0m” is not defined in ISO %s."
