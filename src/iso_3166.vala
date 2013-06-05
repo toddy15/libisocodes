@@ -43,9 +43,9 @@ namespace libisocodes {
         public void setup() {
             _setup_i18n();
             Parser.init();
-            standard = "3166";
+            set_standard("3166");
             set_filepath("/usr/share/xml/iso-codes/iso_3166.xml");
-            domain = "iso_" + standard;
+            domain = "iso_" + get_standard();
         }
         /**
          * Destructor of class.

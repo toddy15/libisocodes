@@ -27,7 +27,7 @@ namespace libisocodes {
          */
         private string _filepath;
         /**
-         * Get and set methods for path of the XML file.
+         * Get method for filepath of the XML file.
          * 
          * Currently, these methods need to be implemented instead
          * of using the built-in get/set methods.
@@ -35,6 +35,12 @@ namespace libisocodes {
         public string get_filepath() {
             return _filepath;
         }
+        /**
+         * Set method for filepath of the XML file.
+         * 
+         * Currently, these methods need to be implemented instead
+         * of using the built-in get/set methods.
+         */
         public void set_filepath(string path) {
             _filepath = path;
             // If there is an open file, close it
@@ -46,7 +52,25 @@ namespace libisocodes {
         /**
          * The ISO standard currently in use.
          */
-        internal string standard { get; internal set; }
+        private string _standard;
+        /**
+         * Get method for ISO standard.
+         * 
+         * Currently, these methods need to be implemented instead
+         * of using the built-in get/set methods.
+         */
+        public string get_standard() {
+            return _standard;
+        }
+        /**
+         * Set method for ISO standard.
+         * 
+         * Currently, these methods need to be implemented instead
+         * of using the built-in get/set methods.
+         */
+        public void set_standard(string standard) {
+            _standard = standard;
+        }
         /**
          * The domain used for localized entries.
          */
@@ -101,7 +125,7 @@ namespace libisocodes {
             var root_name = _xml->get_root_element()->name;
             // Make sure the expected standard uses the same notation,
             // e.g. 3166_2 instead of 3166-2.
-            standard.replace("-", "_");
+            string standard = get_standard().replace("-", "_");
             var expected_name = "iso_" + standard + "_entries";
             if (root_name != expected_name) {
                 throw new ISOCodesError.FILE_DOES_NOT_CONTAIN_ISO_DATA(
@@ -204,7 +228,7 @@ namespace libisocodes {
                     // TRANSLATORS:
                     // The first placeholder is a code, e.g. 'de' or 'hurgh'.
                     // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
-                    _("The code \"%s\" is not defined in ISO %s.").printf(code, standard)
+                    _("The code \"%s\" is not defined in ISO %s.").printf(code, get_standard())
                 );
             }
             // Try to get translations, if wanted
