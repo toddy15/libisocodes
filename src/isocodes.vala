@@ -28,18 +28,19 @@ namespace libisocodes {
         private string _filepath;
         /**
          * Get and set methods for path of the XML file.
+         * 
+         * Currently, these methods need to be implemented instead
+         * of using the built-in get/set methods.
          */
-        public string filepath {
-            get {
-                return _filepath;
-            }
-            set {
-                _filepath = value;
-                // If there is an open file, close it
-                if (_xml != null) {
-                    delete _xml;
-                    _xml = null;
-                }
+        public string get_filepath() {
+            return _filepath;
+        }
+        public void set_filepath(string path) {
+            _filepath = path;
+            // If there is an open file, close it
+            if (_xml != null) {
+                delete _xml;
+                _xml = null;
             }
         }
         /**
@@ -77,23 +78,23 @@ namespace libisocodes {
         {
             // If the name is set, use it.
             if (name != "") {
-                filepath = name;
+                set_filepath(name);
             }
             // Check that the file exists.
-            if (FileUtils.test(filepath, FileTest.EXISTS) == false) {
+            if (FileUtils.test(get_filepath(), FileTest.EXISTS) == false) {
                 throw new ISOCodesError.FILE_DOES_NOT_EXIST(
                     // TRANSLATORS:
                     // The placeholder is a filename, including the directory path.
-                    _("The file \"%s\" could not be opened.").printf(filepath)
+                    _("The file \"%s\" could not be opened.").printf(get_filepath())
                 );
             }
             // Try parsing the file and handle errors.
-            _xml = Parser.parse_file(filepath);
+            _xml = Parser.parse_file(get_filepath());
             if (_xml == null) {
                 throw new ISOCodesError.CANNOT_PARSE_FILE(
                     // TRANSLATORS:
                     // The placeholder is a filename, including the directory path.
-                    _("The file \"%s\" could not be parsed correctly.").printf(filepath)
+                    _("The file \"%s\" could not be parsed correctly.").printf(get_filepath())
                 );
             }
             // Check that the file contains the expected data.
@@ -107,7 +108,7 @@ namespace libisocodes {
                     // TRANSLATORS:
                     // The first placeholder is a filename, including the directory path.
                     // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
-                    _("The file \"%s\" does not contain valid ISO %s data.").printf(filepath, standard)
+                    _("The file \"%s\" does not contain valid ISO %s data.").printf(get_filepath(), standard)
                 );
             }
         }

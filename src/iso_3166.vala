@@ -25,13 +25,26 @@ namespace libisocodes {
         /**
          * Constructor of class.
          * 
-         * It is needed to initialize the LibXML parser here.
+         * Call the setup() method, see there for reasoning.
          */
         public ISO_3166() {
+            setup();
+        }
+        /**
+         * Setup of the class.
+         * 
+         * Due to a bug somewhere in the GObject introspection routines
+         * with vala, the constructor of a class is not called when
+         * the class is instanciated. Therefore, we use a separate
+         * setup method which can be called, if necessary.
+         * 
+         * For LibXML, it is needed to initialize the parser here.
+         */
+        public void setup() {
             _setup_i18n();
             Parser.init();
             standard = "3166";
-            filepath = "/usr/share/xml/iso-codes/iso_3166.xml";
+            set_filepath("/usr/share/xml/iso-codes/iso_3166.xml");
             domain = "iso_" + standard;
         }
         /**
