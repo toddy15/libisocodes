@@ -72,10 +72,6 @@ namespace libisocodes {
             _standard = standard;
         }
         /**
-         * The domain used for localized entries.
-         */
-        internal string domain { get; internal set; }
-        /**
          * Pointer to the Xml.Doc structure of LibXML.
          */
         private Xml.Doc* _xml = null;
@@ -260,6 +256,8 @@ namespace libisocodes {
             var env_backup = env.dup();
             // Use the wanted locale to look for a translation
             Environment.set_variable("LANGUAGE", locale, true);
+            // Determine the gettext domain from the standard
+            var domain = "iso_" + get_standard().replace("-", "_");
             foreach (var field in fields_to_translate) {
                 if (entry.has_key(field) && (entry[field] != "")) {
                     entry[field] = dgettext(domain, entry[field]);
