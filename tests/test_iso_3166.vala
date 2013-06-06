@@ -25,12 +25,12 @@ namespace libisocodes {
                 var i = new ISO_3166();
                 assert(i != null);
                 assert(i.standard == "3166");
-                assert(i.filepath == "/usr/share/xml/iso-codes/iso_3166.xml");
+                assert(i.get_filepath() == "/usr/share/xml/iso-codes/iso_3166.xml");
             });
             Test.add_func("/iso_3166/create class with changed filepath", () => {
                 var i = new ISO_3166();
-                i.filepath = "/this/is/a/new/path";
-                assert(i.filepath == "/this/is/a/new/path");
+                i.set_filepath("/this/is/a/new/path");
+                assert(i.get_filepath() == "/this/is/a/new/path");
                 assert(i.standard == "3166");
             });
             Test.add_func("/iso_3166/call find_code() without argument", () => {
@@ -160,7 +160,8 @@ namespace libisocodes {
             Test.add_func("/iso_3166/find code 'ES' in locale 'de'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.find_code("es", "de");
+                    i.set_locale("de");
+                    var e = i.find_code("es");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "ES");
@@ -177,7 +178,8 @@ namespace libisocodes {
             Test.add_func("/iso_3166/find code 'TW' in locale 'fr'", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.find_code("TW", "fr");
+                    i.set_locale("fr");
+                    var e = i.find_code("TW");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "TW");
@@ -194,7 +196,8 @@ namespace libisocodes {
             Test.add_func("/iso_3166/find code 'RUS' in non existant locale", () => {
                 var i = new ISO_3166();
                 try {
-                    var e = i.find_code("RUS", "does-not-exist");
+                    i.set_locale("does-not-exist");
+                    var e = i.find_code("RUS");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "RU");

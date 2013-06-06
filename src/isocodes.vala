@@ -52,24 +52,28 @@ namespace libisocodes {
         /**
          * The ISO standard currently in use.
          */
-        private string _standard;
+        internal string standard { get; set; }
         /**
-         * Get method for ISO standard.
+         * The output locale currently in use.
+         */
+        private string _locale;
+        /**
+         * Get method for output locale.
          * 
          * Currently, these methods need to be implemented instead
          * of using the built-in get/set methods.
          */
-        public string get_standard() {
-            return _standard;
+        public string get_locale() {
+            return _locale;
         }
         /**
-         * Set method for ISO standard.
+         * Set method for output locale.
          * 
          * Currently, these methods need to be implemented instead
          * of using the built-in get/set methods.
          */
-        public void set_standard(string standard) {
-            _standard = standard;
+        public void set_locale(string locale) {
+            _locale = locale;
         }
         /**
          * Pointer to the Xml.Doc structure of LibXML.
@@ -121,8 +125,7 @@ namespace libisocodes {
             var root_name = _xml->get_root_element()->name;
             // Make sure the expected standard uses the same notation,
             // e.g. 3166_2 instead of 3166-2.
-            string standard = get_standard().replace("-", "_");
-            var expected_name = "iso_" + standard + "_entries";
+            var expected_name = "iso_" + standard.replace("-", "_") + "_entries";
             if (root_name != expected_name) {
                 throw new ISOCodesError.FILE_DOES_NOT_CONTAIN_ISO_DATA(
                     // TRANSLATORS:
@@ -139,7 +142,7 @@ namespace libisocodes {
          * 
          * @return array All ISO 3166 entries.
          */
-        internal ArrayList<HashMap<string, string>> _find_all(string locale = "") throws ISOCodesError
+        internal ArrayList<HashMap<string, string>> _find_all() throws ISOCodesError
         {
             var result = new ArrayList<HashMap<string, string>>();
             var xpath = "//iso_3166_entry";
@@ -167,8 +170,8 @@ namespace libisocodes {
                     }
                 }
                 // Try to get translations, if wanted
-                if (locale != "") {
-                    _translate(entry, locale);
+                if (_locale != null && _locale != "") {
+                    _translate(entry, _locale);
                 }
                 result.add(entry);
             }
@@ -180,7 +183,7 @@ namespace libisocodes {
          * @param string Code to search for.
          * @param string Wanted locale, might be empty for English text.
          */
-        internal HashMap<string, string> _find_code(string code = "", string locale = "") throws ISOCodesError
+        internal HashMap<string, string> _find_code(string code = "") throws ISOCodesError
         {
             var did_not_find_code = true;
             var result = new HashMap<string, string>();
@@ -224,12 +227,12 @@ namespace libisocodes {
                     // TRANSLATORS:
                     // The first placeholder is a code, e.g. 'de' or 'hurgh'.
                     // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
-                    _("The code \"%s\" is not defined in ISO %s.").printf(code, get_standard())
+                    _("The code \"%s\" is not defined in ISO %s.").printf(code, standard)
                 );
             }
             // Try to get translations, if wanted
-            if (locale != "") {
-                _translate(result, locale);
+            if (_locale != null && _locale != "") {
+                _translate(result, _locale);
             }
             return result;
         }
@@ -257,7 +260,7 @@ namespace libisocodes {
             // Use the wanted locale to look for a translation
             Environment.set_variable("LANGUAGE", locale, true);
             // Determine the gettext domain from the standard
-            var domain = "iso_" + get_standard().replace("-", "_");
+            var domain = "iso_" + standard.replace("-", "_");
             foreach (var field in fields_to_translate) {
                 if (entry.has_key(field) && (entry[field] != "")) {
                     entry[field] = dgettext(domain, entry[field]);

@@ -43,7 +43,7 @@ namespace libisocodes {
         public void setup() {
             _setup_i18n();
             Parser.init();
-            set_standard("3166");
+            standard = "3166";
             set_filepath("/usr/share/xml/iso-codes/iso_3166.xml");
         }
         /**
@@ -57,14 +57,12 @@ namespace libisocodes {
         /**
          * Return an array of all entries in the ISO standard.
          * 
-         * @param string Wanted locale, might be empty for English text.
-         * 
          * @return array All ISO 3166 entries.
          */
-        public ISO_3166_Entry[] find_all(string locale = "") throws ISOCodesError
+        public ISO_3166_Entry[] find_all() throws ISOCodesError
         {
             ISO_3166_Entry[] result = null;
-            var entries = _find_all(locale);
+            var entries = _find_all();
             foreach (var entry in entries) {
                 result += new ISO_3166_Entry(entry);
             }
@@ -74,13 +72,12 @@ namespace libisocodes {
          * Try to locate the given code in the XML file.
          * 
          * @param string Code to search for.
-         * @param string Wanted locale, might be empty for English text.
          * 
          * @return struct A matching ISO 3166 entry, if found.
          */
-        public ISO_3166_Entry find_code(string code = "", string locale = "") throws ISOCodesError
+        public ISO_3166_Entry find_code(string code = "") throws ISOCodesError
         {
-            var res = _find_code(code, locale);
+            var res = _find_code(code);
             return new ISO_3166_Entry(res);
         }
         /**
