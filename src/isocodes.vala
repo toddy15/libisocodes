@@ -23,6 +23,22 @@ namespace libisocodes {
     public abstract class ISO_Codes : Object
     {
         /**
+         * Major version of the iso-codes XML files.
+         */
+        private string _iso_codes_xml_version;
+        /**
+         * Get method for major version of the iso-codes XML files.
+         * 
+         * There is no set method because it does not make sense and
+         * is therefore not necessary.
+         * 
+         * Currently, these methods need to be implemented instead
+         * of using the built-in get/set methods.
+         */
+        public string get_iso_codes_xml_version() {
+            return _iso_codes_xml_version;
+        }
+        /**
          * Path of the XML file with iso-codes data.
          */
         private string _filepath;
@@ -134,11 +150,11 @@ namespace libisocodes {
                     _("The file \"%s\" does not contain valid ISO %s data.").printf(get_filepath(), standard)
                 );
             }
+            // @TODO: This must not be hardcoded after the new iso-codes XML structure is adopted.
+            _iso_codes_xml_version = "3";
         }
         /**
          * Return an array of all entries in the ISO standard.
-         * 
-         * @param string Wanted locale, might be empty for English text.
          * 
          * @return array All ISO 3166 entries.
          */
@@ -181,7 +197,6 @@ namespace libisocodes {
          * Find the given code or codes with the given XPath.
          * 
          * @param string Code to search for.
-         * @param string Wanted locale, might be empty for English text.
          */
         internal HashMap<string, string> _find_code(string code = "") throws ISOCodesError
         {
