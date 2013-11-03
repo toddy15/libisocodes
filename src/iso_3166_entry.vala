@@ -1,4 +1,4 @@
-/* Copyright © 2012 Tobias Quathamer
+/* Copyright © 2012-2013 Tobias Quathamer
  *
  * This file is part of libisocodes.
  *
