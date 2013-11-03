@@ -81,7 +81,8 @@ codetest_VALAFLAGS = \
 	--vapidir=$(srcdir)/vapi --pkg config \
 	-X -I. \
 	-X -DGETTEXT_PACKAGE=\"libisocodes\" \
-	-X -DLOCALEDIR=\"$(localedir)\"
+	-X -DLOCALEDIR=\"$(localedir)\" \
+	-X -DTESTDIR=\"$(top_srcdir)/tests/data\"
 
 codetest: $(addprefix $(srcdir)/, $(codetest_sources))
 	$(VALAC) $(codetest_VALAFLAGS) --output=$@ $^

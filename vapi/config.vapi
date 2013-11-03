@@ -21,4 +21,6 @@ namespace Config {
     public const string GETTEXT_PACKAGE;
     // LOCALEDIR is not defined in config.h, but on the command line via -D
     public const string LOCALEDIR;
+    // TESTDIR is not defined in config.h, but on the command line via -D
+    public const string TESTDIR;
 }
