@@ -23,7 +23,7 @@ ACLOCAL_AMFLAGS = -I m4
 # po/Makefile.in.in for a non-recursive approach.
 SUBDIRS = po
 
-EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi $(codetest_testfiles)
+EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi $(codetest_testfiles) $(codetest_datafiles)
 
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = \
@@ -74,6 +74,9 @@ codetest_testfiles = \
 	tests/codetest.vala \
 	tests/test_iso_3166.vala \
 	tests/test_iso_3166_2.vala
+codetest_datafiles = \
+	tests/data/iso_3166.xml \
+	tests/data/iso_3166_2.xml
 codetest_sources = $(codetest_testfiles) $(libisocodes_la_SOURCES)
 codetest_VALAFLAGS = \
 	--pkg libxml-2.0 \

@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+This file gives a list of all country subdivisions in the ISO 3166-2
+standard, and is used to provide translations via gettext
+
+The following conventions are used in this file:
+If the standard lists a subdivision name in more than one language
+and/or romanization system, only the first listed name is shown.
+
+For some countries the standard also lists a second level of
+regional divisions (e.g. for BE, FR, GB, IT, etc.). The codes
+for these regional divisions are shown as 'XX YYYY', i.e. with a
+space character instead of the '-'.
+
+Copyright (C) 2004-2006 Alastair McKinstry <mckinstry@computer.org>
+Copyright (C) 2004, 2007 Christian Perrier <bubulle@debian.org>
+Copyright (C) 2005-2007 Tobias Quathamer <toddy@debian.org>
+Copyright (C) 2007, 2009 LI Daobing <lidaobing@gmail.com>
+Copyright (C) 2007-2010 Alexis Darrasse <alexis@ortsa.com>
+
+    This file is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This file is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this file; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+Source: <http://www.iso.org/iso/country_codes/background_on_iso_3166/iso_3166-2.htm>
+-->
+
+
+<!DOCTYPE iso_3166_2_entries [
+	<!ELEMENT iso_3166_2_entries (iso_3166_country+)>
+  <!ELEMENT iso_3166_country (iso_3166_subset*)>
+	<!ATTLIST iso_3166_country
+		code			CDATA	#REQUIRED
+	>
+	<!ELEMENT iso_3166_subset (iso_3166_2_entry+)>
+	<!ATTLIST iso_3166_subset
+		type			CDATA	#REQUIRED
+	>
+	<!ELEMENT iso_3166_2_entry EMPTY>
+	<!ATTLIST iso_3166_2_entry
+		code			CDATA	#REQUIRED
+		name			CDATA	#REQUIRED
+		parent			CDATA	#IMPLIED
+	>
+]>
+
+<iso_3166_2_entries>
+	<!-- Germany -->
+<iso_3166_country code="DE">
+<iso_3166_subset type="State">
+	<!-- Germany uses the Bundeslander codes for ISO 3166-2 codes (any others?) -->
+	<iso_3166_2_entry
+		code="DE-BW"	name="Baden-Württemberg" />
+	<iso_3166_2_entry
+		code="DE-BY"	name="Bayern" />
+	<iso_3166_2_entry
+		code="DE-HB"	name="Bremen" />
+	<iso_3166_2_entry
+		code="DE-HH"	name="Hamburg" />
+	<iso_3166_2_entry
+		code="DE-HE"	name="Hessen" />
+	<iso_3166_2_entry
+		code="DE-NI"	name="Niedersachsen" />
+	<iso_3166_2_entry
+		code="DE-NW"	name="Nordrhein-Westfalen" />
+	<iso_3166_2_entry
+		code="DE-RP"	name="Rheinland-Pfalz" />
+	<iso_3166_2_entry
+		code="DE-SL"	name="Saarland" />
+	<iso_3166_2_entry
+		code="DE-SH"	name="Schleswig-Holstein" />
+	<iso_3166_2_entry
+		code="DE-BE"	name="Berlin" />
+	<iso_3166_2_entry
+		code="DE-BB"	name="Brandenburg" />
+	<iso_3166_2_entry
+		code="DE-MV"	name="Mecklenburg-Vorpommern" />
+	<iso_3166_2_entry
+		code="DE-SN"	name="Sachsen" />
+	<iso_3166_2_entry
+		code="DE-ST"	name="Sachsen-Anhalt" />
+	<iso_3166_2_entry
+		code="DE-TH"	name="Thüringen" />
+</iso_3166_subset>
+</iso_3166_country>
+	<!-- France -->
+<iso_3166_country code="FR">
+<iso_3166_subset type="Metropolitan region">
+	<iso_3166_2_entry
+		code="FR-A"	name="Alsace" />
+	<iso_3166_2_entry
+		code="FR-B"	name="Aquitaine" />
+	<iso_3166_2_entry
+		code="FR-C"	name="Auvergne" />
+	<iso_3166_2_entry
+		code="FR-P"	name="Basse-Normandie" />
+	<iso_3166_2_entry
+		code="FR-D"	name="Bourgogne" />
+	<iso_3166_2_entry
+		code="FR-E"	name="Bretagne" />
+	<iso_3166_2_entry
+		code="FR-F"	name="Centre" />
+	<iso_3166_2_entry
+		code="FR-G"	name="Champagne-Ardenne" />
+	<iso_3166_2_entry
+		code="FR-H"	name="Corse" />
+	<iso_3166_2_entry
+		code="FR-I"	name="Franche-Comté" />
+	<iso_3166_2_entry
+		code="FR-Q"	name="Haute-Normandie" />
+	<iso_3166_2_entry
+		code="FR-J"	name="Île-de-France" />
+	<iso_3166_2_entry
+		code="FR-K"	name="Languedoc-Roussillon" />
+	<iso_3166_2_entry
+		code="FR-L"	name="Limousin" />
+	<iso_3166_2_entry
+		code="FR-M"	name="Lorraine" />
+	<iso_3166_2_entry
+		code="FR-N"	name="Midi-Pyrénées" />
+	<iso_3166_2_entry
+		code="FR-O"	name="Nord - Pas-de-Calais" />
+	<iso_3166_2_entry
+		code="FR-R"	name="Pays de la Loire" />
+	<iso_3166_2_entry
+		code="FR-S"	name="Picardie" />
+	<iso_3166_2_entry
+		code="FR-T"	name="Poitou-Charentes" />
+	<iso_3166_2_entry
+		code="FR-U"	name="Provence-Alpes-Côte d'Azur" />
+	<iso_3166_2_entry
+		code="FR-V"	name="Rhône-Alpes" />
+</iso_3166_subset>
+<iso_3166_subset type="Metropolitan department">
+	<iso_3166_2_entry
+		code="FR-01"	name="Ain"	parent="V" />
+	<iso_3166_2_entry
+		code="FR-02"	name="Aisne"	parent="S" />
+	<iso_3166_2_entry
+		code="FR-03"	name="Allier"	parent="C" />
+	<iso_3166_2_entry
+		code="FR-04"	name="Alpes-de-Haute-Provence"	parent="U" />
+	<iso_3166_2_entry
+		code="FR-06"	name="Alpes-Maritimes"	parent="U" />
+	<iso_3166_2_entry
+		code="FR-07"	name="Ardèche"	parent="V" />
+	<iso_3166_2_entry
+		code="FR-08"	name="Ardennes"	parent="G" />
+	<iso_3166_2_entry
+		code="FR-09"	name="Ariège"	parent="N" />
+	<iso_3166_2_entry
+		code="FR-10"	name="Aube"	parent="G" />
+	<iso_3166_2_entry
+		code="FR-11"	name="Aude"	parent="K" />
+	<iso_3166_2_entry
+		code="FR-12"	name="Aveyron"	parent="N" />
+	<iso_3166_2_entry
+		code="FR-67"	name="Bas-Rhin"	parent="A" />
+	<iso_3166_2_entry
+		code="FR-13"	name="Bouches-du-Rhône"	parent="U" />
+	<iso_3166_2_entry
+		code="FR-14"	name="Calvados"	parent="P" />
+	<iso_3166_2_entry
+		code="FR-15"	name="Cantal"	parent="C" />
+	<iso_3166_2_entry
+		code="FR-16"	name="Charente"	parent="T" />
+	<iso_3166_2_entry
+		code="FR-17"	name="Charente-Maritime"	parent="T" />
+	<iso_3166_2_entry
+		code="FR-18"	name="Cher"	parent="F" />
+	<iso_3166_2_entry
+		code="FR-19"	name="Corrèze"	parent="L" />
+	<iso_3166_2_entry
+		code="FR-2A"	name="Corse-du-Sud"	parent="H" />
+	<iso_3166_2_entry
+		code="FR-21"	name="Côte-d'Or"	parent="D" />
+	<iso_3166_2_entry
+		code="FR-22"	name="Côtes-d'Armor"	parent="E" />
+	<iso_3166_2_entry
+		code="FR-23"	name="Creuse"	parent="L" />
+	<iso_3166_2_entry
+		code="FR-79"	name="Deux-Sèvres"	parent="T" />
+	<iso_3166_2_entry
+		code="FR-24"	name="Dordogne"	parent="B" />
+	<iso_3166_2_entry
+		code="FR-25"	name="Doubs"	parent="I" />
+	<iso_3166_2_entry
+		code="FR-26"	name="Drôme"	parent="V" />
+	<iso_3166_2_entry
+		code="FR-91"	name="Essonne"	parent="J" />
+	<iso_3166_2_entry
+		code="FR-27"	name="Eure"	parent="Q" />
+	<iso_3166_2_entry
+		code="FR-28"	name="Eure-et-Loir"	parent="F" />
+	<iso_3166_2_entry
+		code="FR-29"	name="Finistère"	parent="E" />
+	<iso_3166_2_entry
+		code="FR-30"	name="Gard"	parent="K" />
+	<iso_3166_2_entry
+		code="FR-32"	name="Gers"	parent="N" />
+	<iso_3166_2_entry
+		code="FR-33"	name="Gironde"	parent="B" />
+	<iso_3166_2_entry
+		code="FR-2B"	name="Haute-Corse"	parent="H" />
+	<iso_3166_2_entry
+		code="FR-31"	name="Haute-Garonne"	parent="N" />
+	<iso_3166_2_entry
+		code="FR-43"	name="Haute-Loire"	parent="C" />
+	<iso_3166_2_entry
+		code="FR-52"	name="Haute-Marne"	parent="G" />
+	<iso_3166_2_entry
+		code="FR-05"	name="Hautes-Alpes"	parent="U" />
+	<iso_3166_2_entry
+		code="FR-70"	name="Haute-Saône"	parent="I" />
+	<iso_3166_2_entry
+		code="FR-74"	name="Haute-Savoie"	parent="V" />
+	<iso_3166_2_entry
+		code="FR-65"	name="Hautes-Pyrénées"	parent="N" />
+	<iso_3166_2_entry
+		code="FR-87"	name="Haute-Vienne"	parent="L" />
+	<iso_3166_2_entry
+		code="FR-68"	name="Haut-Rhin"	parent="A" />
+	<iso_3166_2_entry
+		code="FR-92"	name="Hauts-de-Seine"	parent="J" />
+	<iso_3166_2_entry
+		code="FR-34"	name="Hérault"	parent="K" />
+	<iso_3166_2_entry
+		code="FR-35"	name="Ille-et-Vilaine"	parent="E" />
+	<iso_3166_2_entry
+		code="FR-36"	name="Indre"	parent="F" />
+	<iso_3166_2_entry
+		code="FR-37"	name="Indre-et-Loire"	parent="F" />
+	<iso_3166_2_entry
+		code="FR-38"	name="Isère"	parent="V" />
+	<iso_3166_2_entry
+		code="FR-39"	name="Jura"	parent="I" />
+	<iso_3166_2_entry
+		code="FR-40"	name="Landes"	parent="B" />
+	<iso_3166_2_entry
+		code="FR-41"	name="Loir-et-Cher"	parent="F" />
+	<iso_3166_2_entry
+		code="FR-42"	name="Loire"	parent="V" />
+	<iso_3166_2_entry
+		code="FR-44"	name="Loire-Atlantique"	parent="R" />
+	<iso_3166_2_entry
+		code="FR-45"	name="Loiret"	parent="F" />
+	<iso_3166_2_entry
+		code="FR-46"	name="Lot"	parent="N" />
+	<iso_3166_2_entry
+		code="FR-47"	name="Lot-et-Garonne"	parent="B" />
+	<iso_3166_2_entry
+		code="FR-48"	name="Lozère"	parent="K" />
+	<iso_3166_2_entry
+		code="FR-49"	name="Maine-et-Loire"	parent="R" />
+	<iso_3166_2_entry
+		code="FR-50"	name="Manche"	parent="P" />
+	<iso_3166_2_entry
+		code="FR-51"	name="Marne"	parent="G" />
+	<iso_3166_2_entry
+		code="FR-53"	name="Mayenne"	parent="R" />
+	<iso_3166_2_entry
+		code="FR-54"	name="Meurthe-et-Moselle"	parent="M" />
+	<iso_3166_2_entry
+		code="FR-55"	name="Meuse"	parent="M" />
+	<iso_3166_2_entry
+		code="FR-56"	name="Morbihan"	parent="E" />
+	<iso_3166_2_entry
+		code="FR-57"	name="Moselle"	parent="M" />
+	<iso_3166_2_entry
+		code="FR-58"	name="Nièvre"	parent="D" />
+	<iso_3166_2_entry
+		code="FR-59"	name="Nord"	parent="O" />
+	<iso_3166_2_entry
+		code="FR-60"	name="Oise"	parent="S" />
+	<iso_3166_2_entry
+		code="FR-61"	name="Orne"	parent="P" />
+	<iso_3166_2_entry
+		code="FR-75"	name="Paris"	parent="J" />
+	<iso_3166_2_entry
+		code="FR-62"	name="Pas-de-Calais"	parent="O" />
+	<iso_3166_2_entry
+		code="FR-63"	name="Puy-de-Dôme"	parent="C" />
+	<iso_3166_2_entry
+		code="FR-64"	name="Pyrénées-Atlantiques"	parent="B" />
+	<iso_3166_2_entry
+		code="FR-66"	name="Pyrénées-Orientales"	parent="K" />
+	<iso_3166_2_entry
+		code="FR-69"	name="Rhône"	parent="V" />
+	<iso_3166_2_entry
+		code="FR-71"	name="Saône-et-Loire"	parent="D" />
+	<iso_3166_2_entry
+		code="FR-72"	name="Sarthe"	parent="R" />
+	<iso_3166_2_entry
+		code="FR-73"	name="Savoie"	parent="V" />
+	<iso_3166_2_entry
+		code="FR-77"	name="Seine-et-Marne"	parent="J" />
+	<iso_3166_2_entry
+		code="FR-76"	name="Seine-Maritime"	parent="Q" />
+	<iso_3166_2_entry
+		code="FR-93"	name="Seine-Saint-Denis"	parent="J" />
+	<iso_3166_2_entry
+		code="FR-80"	name="Somme"	parent="S" />
+	<iso_3166_2_entry
+		code="FR-81"	name="Tarn"	parent="N" />
+	<iso_3166_2_entry
+		code="FR-82"	name="Tarn-et-Garonne"	parent="N" />
+	<iso_3166_2_entry
+		code="FR-90"	name="Territoire de Belfort"	parent="I" />
+	<iso_3166_2_entry
+		code="FR-94"	name="Val-de-Marne"	parent="J" />
+	<iso_3166_2_entry
+		code="FR-95"	name="Val d'Oise"	parent="J" />
+	<iso_3166_2_entry
+		code="FR-83"	name="Var"	parent="U" />
+	<iso_3166_2_entry
+		code="FR-84"	name="Vaucluse"	parent="U" />
+	<iso_3166_2_entry
+		code="FR-85"	name="Vendée"	parent="R" />
+	<iso_3166_2_entry
+		code="FR-86"	name="Vienne"	parent="T" />
+	<iso_3166_2_entry
+		code="FR-88"	name="Vosges"	parent="M" />
+	<iso_3166_2_entry
+		code="FR-89"	name="Yonne"	parent="D" />
+	<iso_3166_2_entry
+		code="FR-78"	name="Yvelines"	parent="J" />
+</iso_3166_subset>
+<iso_3166_subset type="Overseas region/department">
+	<iso_3166_2_entry
+		code="FR-GP"	name="Guadeloupe" />
+	<iso_3166_2_entry
+		code="FR-GF"	name="Guyane" />
+	<iso_3166_2_entry
+		code="FR-MQ"	name="Martinique" />
+	<iso_3166_2_entry
+		code="FR-YT"	name="Mayotte" />
+	<iso_3166_2_entry
+		code="FR-RE"	name="Réunion" />
+</iso_3166_subset>
+<iso_3166_subset type="Dependency">
+	<iso_3166_2_entry
+		code="FR-CP"	name="Clipperton" />
+</iso_3166_subset>
+<iso_3166_subset type="Overseas territorial collectivity">
+	<iso_3166_2_entry
+		code="FR-NC"	name="Nouvelle-Calédonie" />
+	<iso_3166_2_entry
+		code="FR-PF"	name="Polynésie française" />
+	<iso_3166_2_entry
+		code="FR-BL"	name="Saint-Barthélemy" />
+	<iso_3166_2_entry
+		code="FR-MF"	name="Saint-Martin" />
+	<iso_3166_2_entry
+		code="FR-PM"	name="Saint-Pierre-et-Miquelon" />
+	<iso_3166_2_entry
+		code="FR-TF"	name="Terres australes françaises" />
+	<iso_3166_2_entry
+		code="FR-WF"	name="Wallis-et-Futuna" />
+</iso_3166_subset>
+</iso_3166_country>
+	<!-- Norway -->
+<iso_3166_country code="NO">
+<iso_3166_subset type="County">
+	<!-- Derived from http://geotags.com/geo/DMS3.html -->
+	<!-- See also Country code 'SJ' for Jan Mayen & Svalbard -->
+	<iso_3166_2_entry
+		code="NO-02"	name="Akershus" />
+	<iso_3166_2_entry
+		code="NO-09"	name="Aust-Agder" />
+	<iso_3166_2_entry
+		code="NO-06"	name="Buskerud" />
+	<iso_3166_2_entry
+		code="NO-20"	name="Finnmark" />
+	<iso_3166_2_entry
+		code="NO-04"	name="Hedmark" />
+	<iso_3166_2_entry
+		code="NO-12"	name="Hordaland" />
+	<iso_3166_2_entry
+		code="NO-15"	name="Møre og Romsdal" />
+	<iso_3166_2_entry
+		code="NO-18"	name="Nordland" />
+	<iso_3166_2_entry
+		code="NO-17"	name="Nord-Trøndelag" />
+	<iso_3166_2_entry
+		code="NO-05"	name="Oppland" />
+	<iso_3166_2_entry
+		code="NO-03"	name="Oslo" />
+	<iso_3166_2_entry
+		code="NO-11"	name="Rogaland" />
+	<iso_3166_2_entry
+		code="NO-14"	name="Sogn og Fjordane" />
+	<iso_3166_2_entry
+		code="NO-16"	name="Sør-Trøndelag" />
+	<iso_3166_2_entry
+		code="NO-08"	name="Telemark" />
+	<iso_3166_2_entry
+		code="NO-19"	name="Troms" />
+	<iso_3166_2_entry
+		code="NO-10"	name="Vest-Agder" />
+	<iso_3166_2_entry
+		code="NO-07"	name="Vestfold" />
+	<iso_3166_2_entry
+		code="NO-01"	name="Østfold" />
+</iso_3166_subset>
+<iso_3166_subset type="Arctic Region">
+	<iso_3166_2_entry
+		code="NO-22"	name="Jan Mayen (Arctic Region)" />
+	<iso_3166_2_entry
+		code="NO-21"	name="Svalbard (Arctic Region)" />
+</iso_3166_subset>
+</iso_3166_country>
+	<!-- Spain -->
+<iso_3166_country code="ES">
+<iso_3166_subset type="Autonomous community">
+	<iso_3166_2_entry
+		code="ES-AN"	name="Andalucía" />
+	<iso_3166_2_entry
+		code="ES-AR"	name="Aragón" />
+	<iso_3166_2_entry
+		code="ES-AS"	name="Asturias, Principado de" />
+	<iso_3166_2_entry
+		code="ES-CN"	name="Canarias" />
+	<iso_3166_2_entry
+		code="ES-CB"	name="Cantabria" />
+	<iso_3166_2_entry
+		code="ES-CM"	name="Castilla-La Mancha" />
+	<iso_3166_2_entry
+		code="ES-CL"	name="Castilla y León" />
+	<iso_3166_2_entry
+		code="ES-CT"	name="Catalunya" />
+	<iso_3166_2_entry
+		code="ES-EX"	name="Extremadura" />
+	<iso_3166_2_entry
+		code="ES-GA"	name="Galicia" />
+	<iso_3166_2_entry
+		code="ES-IB"	name="Illes Balears" />
+	<iso_3166_2_entry
+		code="ES-RI"	name="La Rioja" />
+	<iso_3166_2_entry
+		code="ES-MD"	name="Madrid, Comunidad de" />
+	<iso_3166_2_entry
+		code="ES-MC"	name="Murcia, Región de" />
+	<iso_3166_2_entry
+		code="ES-NC"	name="Navarra, Comunidad Foral de / Nafarroako Foru Komunitatea" />
+	<iso_3166_2_entry
+		code="ES-PV"	name="País Vasco / Euskal Herria" />
+	<iso_3166_2_entry
+		code="ES-VC"	name="Valenciana, Comunidad / Valenciana, Comunitat " />
+</iso_3166_subset>
+<iso_3166_subset type="Province">
+	<iso_3166_2_entry
+		code="ES-C"	name="A Coruña"	parent="GA" />
+	<iso_3166_2_entry
+		code="ES-VI"	name="Álava"	parent="PV" />
+	<iso_3166_2_entry
+		code="ES-AB"	name="Albacete"	parent="CM" />
+	<iso_3166_2_entry
+		code="ES-A"	name="Alicante"	parent="VC" />
+	<iso_3166_2_entry
+		code="ES-AL"	name="Almería"	parent="AN" />
+	<iso_3166_2_entry
+		code="ES-O"	name="Asturias"	parent="AS" />
+	<iso_3166_2_entry
+		code="ES-AV"	name="Ávila"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-BA"	name="Badajoz"	parent="EX" />
+	<iso_3166_2_entry
+		code="ES-B"	name="Barcelona"	parent="CT" />
+	<iso_3166_2_entry
+		code="ES-BU"	name="Burgos"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-CC"	name="Cáceres"	parent="EX" />
+	<iso_3166_2_entry
+		code="ES-CA"	name="Cádiz"	parent="AN" />
+	<iso_3166_2_entry
+		code="ES-S"	name="Cantabria"	parent="CB" />
+	<iso_3166_2_entry
+		code="ES-CS"	name="Castellón"	parent="VC" />
+	<iso_3166_2_entry
+		code="ES-CR"	name="Ciudad Real"	parent="CM" />
+	<iso_3166_2_entry
+		code="ES-CO"	name="Córdoba"	parent="AN" />
+	<iso_3166_2_entry
+		code="ES-CU"	name="Cuenca"	parent="CM" />
+	<iso_3166_2_entry
+		code="ES-GI"	name="Girona"	parent="CT" />
+	<iso_3166_2_entry
+		code="ES-GR"	name="Granada"	parent="AN" />
+	<iso_3166_2_entry
+		code="ES-GU"	name="Guadalajara"	parent="CM" />
+	<iso_3166_2_entry
+		code="ES-SS"	name="Guipúzcoa / Gipuzkoa"	parent="PV" />
+	<iso_3166_2_entry
+		code="ES-H"	name="Huelva"	parent="AN" />
+	<iso_3166_2_entry
+		code="ES-HU"	name="Huesca"	parent="AR" />
+	<iso_3166_2_entry
+		code="ES-J"	name="Jaén"	parent="AN" />
+	<iso_3166_2_entry
+		code="ES-LO"	name="La Rioja"	parent="RI" />
+	<iso_3166_2_entry
+		code="ES-GC"	name="Las Palmas"	parent="CN" />
+	<iso_3166_2_entry
+		code="ES-LE"	name="León"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-L"	name="Lleida"	parent="CT" />
+	<iso_3166_2_entry
+		code="ES-LU"	name="Lugo"	parent="GA" />
+	<iso_3166_2_entry
+		code="ES-M"	name="Madrid"	parent="MD" />
+	<iso_3166_2_entry
+		code="ES-MA"	name="Málaga"	parent="AN" />
+	<iso_3166_2_entry
+		code="ES-MU"	name="Murcia"	parent="MC" />
+	<iso_3166_2_entry
+		code="ES-NA"	name="Navarra / Nafarroa"	parent="NC" />
+	<iso_3166_2_entry
+		code="ES-OR"	name="Ourense"	parent="GA" />
+	<iso_3166_2_entry
+		code="ES-P"	name="Palencia"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-PM"	name="Balears"	parent="IB" />
+	<iso_3166_2_entry
+		code="ES-PO"	name="Pontevedra"	parent="GA" />
+	<iso_3166_2_entry
+		code="ES-SA"	name="Salamanca"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-TF"	name="Santa Cruz de Tenerife"	parent="CN" />
+	<iso_3166_2_entry
+		code="ES-SG"	name="Segovia"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-SE"	name="Sevilla"	parent="AN" />
+	<iso_3166_2_entry
+		code="ES-SO"	name="Soria"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-T"	name="Tarragona"	parent="CT" />
+	<iso_3166_2_entry
+		code="ES-TE"	name="Teruel"	parent="AR" />
+	<iso_3166_2_entry
+		code="ES-TO"	name="Toledo"	parent="CM" />
+	<iso_3166_2_entry
+		code="ES-V"	name="Valencia / València"	parent="VC" />
+	<iso_3166_2_entry
+		code="ES-VA"	name="Valladolid"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-BI"	name="Vizcayaa / Bizkaia"	parent="PV" />
+	<iso_3166_2_entry
+		code="ES-ZA"	name="Zamora"	parent="CL" />
+	<iso_3166_2_entry
+		code="ES-Z"	name="Zaragoza"	parent="AR" />
+</iso_3166_subset>
+<iso_3166_subset type="Autonomous city">
+	<iso_3166_2_entry
+		code="ES-CE"	name="Ceuta" />
+	<iso_3166_2_entry
+		code="ES-ML"	name="Melilla" />
+</iso_3166_subset>
+</iso_3166_country>
+</iso_3166_2_entries>
