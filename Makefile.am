@@ -30,6 +30,8 @@ libisocodes_la_SOURCES = \
 	src/isocodes.vala \
 	src/iso_3166.vala \
 	src/iso_3166_entry.vala \
+	src/iso_3166_2.vala \
+	src/iso_3166_2_entry.vala \
 	src/exceptions.vala
 include_HEADERS = libisocodes.h
 

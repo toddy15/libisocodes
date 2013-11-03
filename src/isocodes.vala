@@ -229,6 +229,12 @@ namespace libisocodes {
                             result[field] = "";
                         }
                     }
+                    // Special case for ISO 3166-2: Extract the country
+                    // and the type from the parent elements.
+                    if (standard == "3166-2") {
+                        result["country"] = node->parent->parent->get_prop("code");
+                        result["type"] = node->parent->get_prop("type");
+                    }
                     did_not_find_code = false;
                     // Exit after successful match, to avoid matching the same
                     // entry another time (can happen e.g. in ISO 639, where
