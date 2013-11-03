@@ -25,7 +25,7 @@ AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 
 # Set up automake
-AM_INIT_AUTOMAKE([1.11 foreign subdir-objects silent-rules no-dist-gzip dist-bzip2])
+AM_INIT_AUTOMAKE([1.11 foreign subdir-objects silent-rules no-dist-gzip dist-xz])
 AM_MAINTAINER_MODE
 
 # Set up libtool
