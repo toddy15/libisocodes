@@ -33,6 +33,30 @@ namespace libisocodes {
                 assert(i.get_filepath() == "/this/is/a/new/path");
                 assert(i.standard == "3166-2");
             });
+            Test.add_func("/iso_3166_2/find all codes", () => {
+                var i = new ISO_3166_2();
+                i.set_filepath(Config.TESTDIR + "/iso_3166_2.xml");
+                try {
+                    var e = i.find_all();
+                    assert(e != null);
+                    // Check expected number of entries
+                    assert(e.length == 237);
+                    // Check first and last entry
+                    assert(e[0].country == "DE");
+                    assert(e[0].type == "State");
+                    assert(e[0].code == "DE-BW");
+                    assert(e[0].parent == "");
+                    assert(e[0].name == "Baden-Württemberg");
+                    assert(e[e.length-1].country == "ES");
+                    assert(e[e.length-1].type == "Autonomous city");
+                    assert(e[e.length-1].code == "ES-ML");
+                    assert(e[e.length-1].parent == "");
+                    assert(e[e.length-1].name == "Melilla");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
             Test.add_func("/iso_3166_2/call find_code() without argument", () => {
                 var i = new ISO_3166_2();
                 try {
