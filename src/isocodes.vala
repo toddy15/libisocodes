@@ -161,7 +161,7 @@ namespace libisocodes {
         internal ArrayList<HashMap<string, string>> _find_all() throws ISOCodesError
         {
             var result = new ArrayList<HashMap<string, string>>();
-            var xpath = "//iso_3166_entry";
+            var xpath = "//iso_" +  standard.replace("-", "_") + "_entry";
             // Make sure the XML file is ready for reading
             if (_xml == null) {
                 _open_file();
@@ -184,6 +184,12 @@ namespace libisocodes {
                     if (entry[field] == null) {
                         entry[field] = "";
                     }
+                }
+                // Special case for ISO 3166-2: Extract the country
+                // and the type from the parent elements.
+                if (standard == "3166-2") {
+                    entry["country"] = node->parent->parent->get_prop("code");
+                    entry["type"] = node->parent->get_prop("type");
                 }
                 // Try to get translations, if wanted
                 if (_locale != null && _locale != "") {
