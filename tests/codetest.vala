@@ -21,6 +21,7 @@ namespace libisocodes {
     {
         Test.init(ref args);
         Test_ISO_3166.add_tests();
+        Test_ISO_3166_2.add_tests();
         Test.run();
     }
 }

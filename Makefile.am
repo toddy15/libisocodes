@@ -70,7 +70,8 @@ CLEANFILES = $(gir_DATA) $(typelib_DATA)
 # All code below is needed for testing the package
 codetest_testfiles = \
 	tests/codetest.vala \
-	tests/test_iso_3166.vala
+	tests/test_iso_3166.vala \
+	tests/test_iso_3166_2.vala
 codetest_sources = $(codetest_testfiles) $(libisocodes_la_SOURCES)
 codetest_VALAFLAGS = \
 	--pkg libxml-2.0 \
