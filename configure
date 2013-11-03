@@ -11440,11 +11440,11 @@ fi
   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: No Vala compiler found.  You will not be able to compile .vala source files." >&5
 $as_echo "$as_me: WARNING: No Vala compiler found.  You will not be able to compile .vala source files." >&2;}
 else
-  if test -n "0.14"; then :
-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking $VALAC is at least version 0.14" >&5
-$as_echo_n "checking $VALAC is at least version 0.14... " >&6; }
+  if test -n "0.16"; then :
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking $VALAC is at least version 0.16" >&5
+$as_echo_n "checking $VALAC is at least version 0.16... " >&6; }
        am__vala_version=`$VALAC --version | sed 's/Vala  *//'`
-       as_arg_v1=0.14
+       as_arg_v1=0.16
 as_arg_v2="$am__vala_version"
 awk "$as_awk_strverscmp" v1="$as_arg_v1" v2="$as_arg_v2" /dev/null
 case $? in #(
@@ -11457,7 +11457,7 @@ $as_echo "yes" >&6; } ;; #(
   2) :
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
-          as_fn_error $? "Vala 0.14 not found." "$LINENO" 5 ;; #(
+          as_fn_error $? "Vala 0.16 not found." "$LINENO" 5 ;; #(
   *) :
      ;;
 esac
