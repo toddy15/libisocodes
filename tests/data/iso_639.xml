@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+This file gives a list of all languages in the ISO 639
+standard, and is used to provide translations via gettext
+
+Copyright (C) 2004-2006 Alastair McKinstry <mckinstry@computer.org>
+Copyright (C) 2004-2012 Christian Perrier <bubulle@debian.org>
+Copyright (C) 2005-2008 Tobias Quathamer <toddy@debian.org>
+
+    This file is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This file is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this file; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+Source: <http://www.loc.gov/standards/iso639-2/>
+-->
+
+<!DOCTYPE iso_639_entries [
+	<!ELEMENT iso_639_entries (iso_639_entry+)>
+	<!ELEMENT iso_639_entry EMPTY>
+	<!ATTLIST iso_639_entry
+		iso_639_2B_code		CDATA	#REQUIRED
+		iso_639_2T_code		CDATA	#REQUIRED
+		iso_639_1_code		CDATA	#IMPLIED
+		name			CDATA	#REQUIRED
+		common_name		CDATA	#IMPLIED
+	>
+]>
+
+<iso_639_entries>
+	<iso_639_entry
+		iso_639_2B_code="aar"
+		iso_639_2T_code="aar"
+		iso_639_1_code="aa"
+		name="Afar" />
+	<iso_639_entry
+		iso_639_2B_code="alg"
+		iso_639_2T_code="alg"
+		name="Algonquian languages" />
+	<iso_639_entry
+		iso_639_2B_code="heb"
+		iso_639_2T_code="heb"
+		iso_639_1_code="he"
+		name="Hebrew" />
+	<iso_639_entry
+		iso_639_2B_code="tib"
+		iso_639_2T_code="bod"
+		iso_639_1_code="bo"
+		name="Tibetan" />
+</iso_639_entries>
