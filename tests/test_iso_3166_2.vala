@@ -57,6 +57,31 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
+            Test.add_func("/iso_3166_2/find all codes in locale 'fr'", () => {
+                var i = new ISO_3166_2();
+                i.set_filepath(Config.TESTDIR + "/iso_3166_2.xml");
+                try {
+                    i.set_locale("fr");
+                    var e = i.find_all();
+                    assert(e != null);
+                    // Check expected number of entries
+                    assert(e.length == 237);
+                    // Check first and last translated entry
+                    assert(e[0].country == "DE");
+                    assert(e[0].type == "State");
+                    assert(e[0].code == "DE-BW");
+                    assert(e[0].parent == "");
+                    assert(e[0].name == "Bade-Wurtemberg");
+                    assert(e[234].country == "ES");
+                    assert(e[234].type == "Province");
+                    assert(e[234].code == "ES-Z");
+                    assert(e[234].parent == "AR");
+                    assert(e[234].name == "Saragosse");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
             Test.add_func("/iso_3166_2/call find_code() without argument", () => {
                 var i = new ISO_3166_2();
                 try {

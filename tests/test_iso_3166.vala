@@ -59,6 +59,33 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
+            Test.add_func("/iso_3166/find all codes in locale 'fr'", () => {
+                var i = new ISO_3166();
+                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                try {
+                    i.set_locale("fr");
+                    var e = i.find_all();
+                    assert(e != null);
+                    // Check expected number of entries
+                    assert(e.length == 7);
+                    // Check first and last translated entry
+                    assert(e[0].alpha_2_code == "DE");
+                    assert(e[0].alpha_3_code == "DEU");
+                    assert(e[0].numeric_code == "276");
+                    assert(e[0].name == "Allemagne");
+                    assert(e[0].official_name == "République fédérale d'Allemagne");
+                    assert(e[0].common_name == "");
+                    assert(e[5].alpha_2_code == "TW");
+                    assert(e[5].alpha_3_code == "TWN");
+                    assert(e[5].numeric_code == "158");
+                    assert(e[5].name == "Taïwan, province de Chine");
+                    assert(e[5].official_name == "Taïwan, province de Chine");
+                    assert(e[5].common_name == "Taïwan");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
+            });
             Test.add_func("/iso_3166/call find_code() without argument", () => {
                 var i = new ISO_3166();
                 try {
