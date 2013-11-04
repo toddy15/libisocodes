@@ -25,7 +25,7 @@ namespace libisocodes {
         /**
          * Major version of the iso-codes XML files.
          */
-        private string _iso_codes_xml_version;
+        private string _iso_codes_xml_version = "";
         /**
          * Get method for major version of the iso-codes XML files.
          * 
@@ -35,7 +35,12 @@ namespace libisocodes {
          * Currently, these methods need to be implemented instead
          * of using the built-in get/set methods.
          */
-        public string get_iso_codes_xml_version() {
+        public string get_iso_codes_xml_version() throws ISOCodesError {
+            // If the variable is not set, the XML file has never been
+            // opened, so do it now to return a correct value.
+            if (_iso_codes_xml_version == "") {
+                _open_file();
+            }
             return _iso_codes_xml_version;
         }
         /**

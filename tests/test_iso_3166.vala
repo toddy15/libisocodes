@@ -29,15 +29,22 @@ namespace libisocodes {
             });
             Test.add_func("/iso_3166/create class with changed filepath", () => {
                 var i = new ISO_3166();
-                i.set_filepath("/this/is/a/new/path");
-                assert(i.get_filepath() == "/this/is/a/new/path");
+                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                assert(i.get_filepath() == Config.TESTDIR + "/iso_3166.xml");
                 assert(i.standard == "3166");
+                try {
+                    assert(i.get_iso_codes_xml_version() == "3");
+                }
+                catch (ISOCodesError error) {
+                    assert_not_reached();
+                }
             });
             Test.add_func("/iso_3166/find all codes", () => {
                 var i = new ISO_3166();
                 i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
                 try {
                     var e = i.find_all();
+                    assert(i.get_iso_codes_xml_version() == "3");
                     assert(e != null);
                     // Check expected number of entries
                     assert(e.length == 7);
@@ -117,6 +124,7 @@ namespace libisocodes {
                 i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
                 try {
                     var e = i.find_code("de");
+                    assert(i.get_iso_codes_xml_version() == "3");
                     assert(e != null);
                     assert(e is ISO_3166_Entry);
                     assert(e.alpha_2_code == "DE");
