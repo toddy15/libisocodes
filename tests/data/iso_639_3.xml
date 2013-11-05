@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+This file gives a list of all languages in the ISO 639-3
+standard, and is used to provide translations via gettext
+
+Copyright © 2005 Alastair McKinstry <mckinstry@computer.org>
+Copyright © 2008,2012,2013 Tobias Quathamer <toddy@debian.org>
+
+    This file is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This file is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this file; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+Source: <http://www.sil.org/iso639-3/>
+-->
+
+<!DOCTYPE iso_639_3_entries [
+	<!ELEMENT iso_639_3_entries (iso_639_3_entry+)>
+	<!ELEMENT iso_639_3_entry EMPTY>
+	<!ATTLIST iso_639_3_entry
+		id		CDATA	#REQUIRED
+		part1_code	CDATA	#IMPLIED
+		part2_code	CDATA	#IMPLIED
+		status		CDATA	#REQUIRED
+		scope		CDATA   #REQUIRED
+		type		CDATA	#REQUIRED
+		inverted_name	CDATA	#IMPLIED
+		reference_name	CDATA	#REQUIRED
+		name		CDATA	#REQUIRED
+		common_name	CDATA	#IMPLIED
+	>
+]>
+
+<iso_639_3_entries>
+	<iso_639_3_entry
+		id="aae"
+		scope="I"
+		type="L"
+		name="Albanian, Arbëreshë" />
+	<iso_639_3_entry
+		id="deu"
+		part1_code="de"
+		part2_code="ger"
+		scope="I"
+		type="L"
+		name="German" />
+	<iso_639_3_entry
+		id="nbs"
+		scope="I"
+		type="L"
+		name="Namibian Sign Language" />
+</iso_639_3_entries>
