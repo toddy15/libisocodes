@@ -280,7 +280,8 @@ namespace libisocodes {
             string[] fields_to_translate = {
                 "name",
                 "official_name",
-                "common_name"
+                "common_name",
+                "currency_name"
             };
             // Save the current locale
             string loc_backup = Intl.setlocale(LocaleCategory.ALL, null);
