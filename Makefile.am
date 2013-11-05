@@ -82,13 +82,15 @@ codetest_testfiles = \
 	tests/test_iso_3166_2.vala \
 	tests/test_iso_639.vala \
 	tests/test_iso_639_3.vala \
-	tests/test_iso_4217.vala
+	tests/test_iso_4217.vala \
+	tests/test_iso_15924.vala
 codetest_datafiles = \
 	tests/data/iso_3166.xml \
 	tests/data/iso_3166_2.xml \
 	tests/data/iso_639.xml \
 	tests/data/iso_639_3.xml \
-	tests/data/iso_4217.xml
+	tests/data/iso_4217.xml \
+	tests/data/iso_15924.xml
 codetest_sources = $(codetest_testfiles) $(libisocodes_la_SOURCES)
 codetest_VALAFLAGS = \
 	--pkg libxml-2.0 \

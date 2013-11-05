@@ -25,6 +25,7 @@ namespace libisocodes {
         Test_ISO_639.add_tests();
         Test_ISO_639_3.add_tests();
         Test_ISO_4217.add_tests();
+        Test_ISO_15924.add_tests();
         Test.run();
     }
 }
