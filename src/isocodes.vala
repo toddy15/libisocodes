@@ -285,13 +285,13 @@ namespace libisocodes {
             };
             // Save the current locale
             string loc_backup = Intl.setlocale(LocaleCategory.ALL, null);
-            // Use the user's locale
-            Intl.setlocale(LocaleCategory.ALL, "");
             // Save the current setting of environment variable LANGUAGE.
             unowned string env = Environment.get_variable("LANGUAGE");
             var env_backup = env.dup();
             // Use the wanted locale to look for a translation
             Environment.set_variable("LANGUAGE", locale, true);
+            // Use the default locale, based on the environment variable above
+            Intl.setlocale(LocaleCategory.ALL, "");
             // Determine the gettext domain from the standard
             var domain = "iso_" + standard.replace("-", "_");
             foreach (var field in fields_to_translate) {
