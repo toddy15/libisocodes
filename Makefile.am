@@ -23,7 +23,11 @@ ACLOCAL_AMFLAGS = -I m4
 # po/Makefile.in.in for a non-recursive approach.
 SUBDIRS = po
 
-EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi $(codetest_testfiles) $(codetest_datafiles)
+EXTRA_DIST = libisocodes-$(VERSION).gir \
+	vapi/config.vapi \
+	libisocodes.pc.in \
+	$(codetest_testfiles) \
+	$(codetest_datafiles)
 
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = \
@@ -60,8 +64,20 @@ libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS) $(GEE_
 libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS) $(GEE_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_LT_VERSION)
 
-DISTCLEANFILES = libisocodes.h libisocodes.vapi libisocodes-$(VERSION).gir
+DISTCLEANFILES = libisocodes.h libisocodes.pc libisocodes.vapi libisocodes-$(VERSION).gir
 MAINTAINERCLEANFILES = config.h.in~
+
+# Create the pkg-config file
+pkgconfigdir = $(libdir)/pkgconfig
+nodist_pkgconfig_DATA = libisocodes.pc
+
+libisocodes.pc: $(srcdir)/libisocodes.pc.in
+	sed -e 's![@]prefix[@]!$(prefix)!g' \
+		-e 's![@]exec_prefix[@]!$(exec_prefix)!g' \
+		-e 's![@]includedir[@]!$(includedir)!g' \
+		-e 's![@]libdir[@]!$(libdir)!g' \
+		-e 's![@]PACKAGE_VERSION[@]!$(PACKAGE_VERSION)!g' \
+		$(srcdir)/libisocodes.pc.in > $@
 
 # Generate and install gir and typelib data
 girdir = $(datadir)/gir-1.0

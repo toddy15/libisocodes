@@ -128,7 +128,8 @@ am__uninstall_files_from_dir = { \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" \
-	"$(DESTDIR)$(typelibdir)" "$(DESTDIR)$(includedir)"
+	"$(DESTDIR)$(pkgconfigdir)" "$(DESTDIR)$(typelibdir)" \
+	"$(DESTDIR)$(includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libisocodes_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
@@ -204,7 +205,7 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
-DATA = $(gir_DATA) $(typelib_DATA)
+DATA = $(gir_DATA) $(nodist_pkgconfig_DATA) $(typelib_DATA)
 HEADERS = $(include_HEADERS)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
@@ -404,7 +405,12 @@ ACLOCAL_AMFLAGS = -I m4
 # This is needed for gettext, it is too much work to rewrite
 # po/Makefile.in.in for a non-recursive approach.
 SUBDIRS = po
-EXTRA_DIST = libisocodes-$(VERSION).gir vapi/config.vapi $(codetest_testfiles) $(codetest_datafiles)
+EXTRA_DIST = libisocodes-$(VERSION).gir \
+	vapi/config.vapi \
+	libisocodes.pc.in \
+	$(codetest_testfiles) \
+	$(codetest_datafiles)
+
 lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = \
 	src/isocodes.vala \
@@ -437,9 +443,13 @@ libisocodes_la_CPPFLAGS = -include config.h -DLOCALEDIR=\""$(localedir)"\"
 libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS) $(GEE_CFLAGS)
 libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS) $(GEE_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_LT_VERSION)
-DISTCLEANFILES = libisocodes.h libisocodes.vapi \
+DISTCLEANFILES = libisocodes.h libisocodes.pc libisocodes.vapi \
 	libisocodes-$(VERSION).gir codetest
 MAINTAINERCLEANFILES = config.h.in~
+
+# Create the pkg-config file
+pkgconfigdir = $(libdir)/pkgconfig
+nodist_pkgconfig_DATA = libisocodes.pc
 
 # Generate and install gir and typelib data
 girdir = $(datadir)/gir-1.0
@@ -874,6 +884,27 @@ uninstall-girDATA:
 	@list='$(gir_DATA)'; test -n "$(girdir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
 	dir='$(DESTDIR)$(girdir)'; $(am__uninstall_files_from_dir)
+install-nodist_pkgconfigDATA: $(nodist_pkgconfig_DATA)
+	@$(NORMAL_INSTALL)
+	@list='$(nodist_pkgconfig_DATA)'; test -n "$(pkgconfigdir)" || list=; \
+	if test -n "$$list"; then \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(pkgconfigdir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(pkgconfigdir)" || exit 1; \
+	fi; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(pkgconfigdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(pkgconfigdir)" || exit $$?; \
+	done
+
+uninstall-nodist_pkgconfigDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(nodist_pkgconfig_DATA)'; test -n "$(pkgconfigdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(pkgconfigdir)'; $(am__uninstall_files_from_dir)
 install-typelibDATA: $(typelib_DATA)
 	@$(NORMAL_INSTALL)
 	@list='$(typelib_DATA)'; test -n "$(typelibdir)" || list=; \
@@ -1244,7 +1275,7 @@ check: check-recursive
 all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" "$(DESTDIR)$(typelibdir)" "$(DESTDIR)$(includedir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" "$(DESTDIR)$(pkgconfigdir)" "$(DESTDIR)$(typelibdir)" "$(DESTDIR)$(includedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-recursive
@@ -1322,7 +1353,7 @@ info: info-recursive
 info-am:
 
 install-data-am: install-girDATA install-includeHEADERS \
-	install-typelibDATA
+	install-nodist_pkgconfigDATA install-typelibDATA
 
 install-dvi: install-dvi-recursive
 
@@ -1371,7 +1402,8 @@ ps: ps-recursive
 ps-am:
 
 uninstall-am: uninstall-girDATA uninstall-includeHEADERS \
-	uninstall-libLTLIBRARIES uninstall-typelibDATA
+	uninstall-libLTLIBRARIES uninstall-nodist_pkgconfigDATA \
+	uninstall-typelibDATA
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) all check-am \
 	ctags-recursive install-am install-strip tags-recursive
@@ -1388,18 +1420,27 @@ uninstall-am: uninstall-girDATA uninstall-includeHEADERS \
 	install-dvi-am install-exec install-exec-am install-girDATA \
 	install-html install-html-am install-includeHEADERS \
 	install-info install-info-am install-libLTLIBRARIES \
-	install-man install-pdf install-pdf-am install-ps \
-	install-ps-am install-strip install-typelibDATA installcheck \
-	installcheck-am installdirs installdirs-am maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-recursive uninstall uninstall-am uninstall-girDATA \
+	install-man install-nodist_pkgconfigDATA install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	install-typelibDATA installcheck installcheck-am installdirs \
+	installdirs-am maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool pdf pdf-am ps ps-am tags tags-recursive \
+	uninstall uninstall-am uninstall-girDATA \
 	uninstall-includeHEADERS uninstall-libLTLIBRARIES \
-	uninstall-typelibDATA
+	uninstall-nodist_pkgconfigDATA uninstall-typelibDATA
 
 
 libisocodes.h:
 	touch $@
+
+libisocodes.pc: $(srcdir)/libisocodes.pc.in
+	sed -e 's![@]prefix[@]!$(prefix)!g' \
+		-e 's![@]exec_prefix[@]!$(exec_prefix)!g' \
+		-e 's![@]includedir[@]!$(includedir)!g' \
+		-e 's![@]libdir[@]!$(libdir)!g' \
+		-e 's![@]PACKAGE_VERSION[@]!$(PACKAGE_VERSION)!g' \
+		$(srcdir)/libisocodes.pc.in > $@
 
 libisocodes-$(VERSION).gir: $(lib_LTLIBRARIES)
 

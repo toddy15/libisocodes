@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+includedir=@includedir@
+libdir=@libdir@
+
+Name: libisocodes
+Description: access of iso-codes data and translations
+URL: http://pkg-isocodes.alioth.debian.org/downloads/
+Version: @PACKAGE_VERSION@
+Requires.private: gobject-2.0 glib-2.0 libxml-2.0 gee-1.0
+Cflags: -I${includedir}
+Libs: -L${libdir} -lisocodes
