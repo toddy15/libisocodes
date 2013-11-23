@@ -64,8 +64,8 @@ libisocodes_la_CFLAGS = $(GOBJECT_CFLAGS) $(GLIB_CFLAGS) $(LIBXML_CFLAGS) $(GEE_
 libisocodes_la_LIBADD = $(GOBJECT_LIBS) $(GLIB_LIBS) $(LIBXML_LIBS) $(GEE_LIBS)
 libisocodes_la_LDFLAGS = -version-info $(LIBISOCODES_LT_VERSION)
 
-DISTCLEANFILES = libisocodes.h libisocodes.pc libisocodes.vapi libisocodes-$(VERSION).gir
-MAINTAINERCLEANFILES = config.h.in~
+DISTCLEANFILES = libisocodes.pc
+MAINTAINERCLEANFILES = config.h.in~ libisocodes.h libisocodes.vapi libisocodes-$(VERSION).gir
 
 # Create the pkg-config file
 pkgconfigdir = $(libdir)/pkgconfig
@@ -91,7 +91,7 @@ libisocodes-$(VERSION).typelib: libisocodes-$(VERSION).gir
 typelibdir = $(libdir)/girepository-1.0
 typelib_DATA = libisocodes-$(VERSION).typelib
 
-CLEANFILES = $(gir_DATA) $(typelib_DATA)
+CLEANFILES = $(typelib_DATA)
 
 # All code below is needed for testing the package
 codetest_testfiles = \
