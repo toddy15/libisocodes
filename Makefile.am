@@ -25,6 +25,7 @@ SUBDIRS = po
 
 EXTRA_DIST = libisocodes-$(VERSION).gir \
 	vapi/config.vapi \
+	libisocodes.vapi \
 	libisocodes.pc.in \
 	$(codetest_testfiles) \
 	$(codetest_datafiles)
@@ -79,11 +80,17 @@ libisocodes.pc: $(srcdir)/libisocodes.pc.in
 		-e 's![@]PACKAGE_VERSION[@]!$(PACKAGE_VERSION)!g' \
 		$(srcdir)/libisocodes.pc.in > $@
 
+# Install libisocodes.vapi
+libisocodes.vapi: $(lib_LTLIBRARIES)
+
+vapidir = $(datadir)/vala/vapi
+vapi_DATA = libisocodes.vapi
+
 # Generate and install gir and typelib data
+libisocodes-$(VERSION).gir: $(lib_LTLIBRARIES)
+
 girdir = $(datadir)/gir-1.0
 gir_DATA = libisocodes-$(VERSION).gir
-
-libisocodes-$(VERSION).gir: $(lib_LTLIBRARIES)
 
 libisocodes-$(VERSION).typelib: libisocodes-$(VERSION).gir
 	g-ir-compiler --shared-library=libisocodes.so --output=$@ $<
