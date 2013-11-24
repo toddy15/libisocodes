@@ -24,3 +24,4 @@ libisocodes.vapi
 libisocodes-[0-9.]*\.gir
 libisocodes-[0-9.]*\.typelib
 libisocodes.pc
+libisocodes-[0-9.]*\.tar\.xz
