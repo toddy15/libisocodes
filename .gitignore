@@ -23,3 +23,4 @@ libisocodes.h
 libisocodes.vapi
 libisocodes-[0-9.]*\.gir
 libisocodes-[0-9.]*\.typelib
+libisocodes.pc
