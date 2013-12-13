@@ -1,5 +1,2 @@
 # List of source files which contain translatable strings.
-src/exceptions.vala
-src/iso_3166_entry.vala
-src/iso_3166.vala
 src/isocodes.vala
