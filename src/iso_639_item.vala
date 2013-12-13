@@ -26,12 +26,12 @@ namespace libisocodes {
         public string iso_639_2T_code;
         public string iso_639_1_code;
         public string name;
-        internal ISO_639_Item(HashMap<string, string> entry)
+        internal ISO_639_Item(HashMap<string, string> item)
         {
-            iso_639_2B_code = entry["iso_639_2B_code"];
-            iso_639_2T_code = entry["iso_639_2T_code"];
-            iso_639_1_code = entry["iso_639_1_code"];
-            name = entry["name"];
+            iso_639_2B_code = item["iso_639_2B_code"];
+            iso_639_2T_code = item["iso_639_2T_code"];
+            iso_639_1_code = item["iso_639_1_code"];
+            name = item["name"];
         }
     }
 }

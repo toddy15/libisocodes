@@ -32,18 +32,18 @@ namespace libisocodes {
         public string reference_name;
         public string name;
         public string common_name;
-        internal ISO_639_3_Item(HashMap<string, string> entry)
+        internal ISO_639_3_Item(HashMap<string, string> item)
         {
-            id = entry["id"];
-            part1_code = entry["part1_code"];
-            part2_code = entry["part2_code"];
-            status = entry["status"];
-            scope = entry["scope"];
-            type = entry["type"];
-            inverted_name = entry["inverted_name"];
-            reference_name = entry["reference_name"];
-            name = entry["name"];
-            common_name = entry["common_name"];
+            id = item["id"];
+            part1_code = item["part1_code"];
+            part2_code = item["part2_code"];
+            status = item["status"];
+            scope = item["scope"];
+            type = item["type"];
+            inverted_name = item["inverted_name"];
+            reference_name = item["reference_name"];
+            name = item["name"];
+            common_name = item["common_name"];
         }
     }
 }

@@ -25,11 +25,11 @@ namespace libisocodes {
         public string alpha_4_code;
         public string numeric_code;
         public string name;
-        internal ISO_15924_Item(HashMap<string, string> entry)
+        internal ISO_15924_Item(HashMap<string, string> item)
         {
-            alpha_4_code = entry["alpha_4_code"];
-            numeric_code = entry["numeric_code"];
-            name = entry["name"];
+            alpha_4_code = item["alpha_4_code"];
+            numeric_code = item["numeric_code"];
+            name = item["name"];
         }
     }
 }

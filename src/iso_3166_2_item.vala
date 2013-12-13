@@ -27,13 +27,13 @@ namespace libisocodes {
         public string code;
         public string parent;
         public string name;
-        internal ISO_3166_2_Item(HashMap<string, string> entry)
+        internal ISO_3166_2_Item(HashMap<string, string> item)
         {
-            country = entry["country"];
-            type = entry["type"];
-            code = entry["code"];
-            parent = entry["parent"];
-            name = entry["name"];
+            country = item["country"];
+            type = item["type"];
+            code = item["code"];
+            parent = item["parent"];
+            name = item["name"];
         }
     }
 }

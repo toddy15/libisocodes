@@ -28,14 +28,14 @@ namespace libisocodes {
         public string name;
         public string official_name;
         public string common_name;
-        internal ISO_3166_Item(HashMap<string, string> entry)
+        internal ISO_3166_Item(HashMap<string, string> item)
         {
-            alpha_2_code = entry["alpha_2_code"];
-            alpha_3_code = entry["alpha_3_code"];
-            numeric_code = entry["numeric_code"];
-            name = entry["name"];
-            official_name = entry["official_name"];
-            common_name = entry["common_name"];
+            alpha_2_code = item["alpha_2_code"];
+            alpha_3_code = item["alpha_3_code"];
+            numeric_code = item["numeric_code"];
+            name = item["name"];
+            official_name = item["official_name"];
+            common_name = item["common_name"];
         }
     }
 }

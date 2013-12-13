@@ -25,11 +25,11 @@ namespace libisocodes {
         public string letter_code;
         public string numeric_code;
         public string name;
-        internal ISO_4217_Item(HashMap<string, string> entry)
+        internal ISO_4217_Item(HashMap<string, string> item)
         {
-            letter_code = entry["letter_code"];
-            numeric_code = entry["numeric_code"];
-            name = entry["currency_name"];
+            letter_code = item["letter_code"];
+            numeric_code = item["numeric_code"];
+            name = item["currency_name"];
         }
     }
 }
