@@ -181,26 +181,26 @@ namespace libisocodes {
             var fields = _get_fields();
             for (var i = 0; i < nodeset->length(); i++) {
                 var node = nodeset->item(i);
-                var entry = new HashMap<string, string>();
+                var item = new HashMap<string, string>();
                 foreach (var field in fields) {
-                    entry[field] = node->get_prop(field);
+                    item[field] = node->get_prop(field);
                     // Fields might be null, e.g. official name and
                     // common name. Set them to an empty string instead.
-                    if (entry[field] == null) {
-                        entry[field] = "";
+                    if (item[field] == null) {
+                        item[field] = "";
                     }
                 }
                 // Special case for ISO 3166-2: Extract the country
                 // and the type from the parent elements.
                 if (standard == "3166-2") {
-                    entry["country"] = node->parent->parent->get_prop("code");
-                    entry["type"] = node->parent->get_prop("type");
+                    item["country"] = node->parent->parent->get_prop("code");
+                    item["type"] = node->parent->get_prop("type");
                 }
                 // Try to get translations, if wanted
                 if (_locale != null && _locale != "") {
-                    _translate(entry, _locale);
+                    _translate(item, _locale);
                 }
-                result.add(entry);
+                result.add(item);
             }
             return result;
         }
@@ -248,7 +248,7 @@ namespace libisocodes {
                     }
                     did_not_find_code = false;
                     // Exit after successful match, to avoid matching the same
-                    // entry another time (can happen e.g. in ISO 639, where
+                    // item another time (can happen e.g. in ISO 639, where
                     // most entries have the same value for their 2B and 2T code.
                     break;
                 }
@@ -269,12 +269,12 @@ namespace libisocodes {
             return result;
         }
         /**
-         * Translate an entry to the wanted locale.
+         * Translate an item to the wanted locale.
          * 
          * @param HashMap<string, string> Entry to be translated
          * @param string Locale to use for translation
          */
-        internal void _translate(HashMap<string, string> entry, string locale)
+        internal void _translate(HashMap<string, string> item, string locale)
         {
             // Specify which fields need translation
             string[] fields_to_translate = {
@@ -295,8 +295,8 @@ namespace libisocodes {
             // Determine the gettext domain from the standard
             var domain = "iso_" + standard.replace("-", "_");
             foreach (var field in fields_to_translate) {
-                if (entry.has_key(field) && (entry[field] != "")) {
-                    entry[field] = dgettext(domain, entry[field]);
+                if (item.has_key(field) && (item[field] != "")) {
+                    item[field] = dgettext(domain, item[field]);
                 }
             }
             // Restore the environment from backup

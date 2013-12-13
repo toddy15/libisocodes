@@ -63,8 +63,8 @@ namespace libisocodes {
         {
             ISO_15924_Item[] result = null;
             var entries = _find_all();
-            foreach (var entry in entries) {
-                result += new ISO_15924_Item(entry);
+            foreach (var item in entries) {
+                result += new ISO_15924_Item(item);
             }
             return result;
         }
@@ -73,7 +73,7 @@ namespace libisocodes {
          * 
          * @param string Code to search for.
          * 
-         * @return struct A matching ISO 15924 entry, if found.
+         * @return struct A matching ISO 15924 item, if found.
          */
         public ISO_15924_Item find_code(string code = "") throws ISOCodesError
         {

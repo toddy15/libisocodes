@@ -63,8 +63,8 @@ namespace libisocodes {
         {
             ISO_639_Item[] result = null;
             var entries = _find_all();
-            foreach (var entry in entries) {
-                result += new ISO_639_Item(entry);
+            foreach (var item in entries) {
+                result += new ISO_639_Item(item);
             }
             return result;
         }
@@ -73,7 +73,7 @@ namespace libisocodes {
          * 
          * @param string Code to search for.
          * 
-         * @return struct A matching ISO 639 entry, if found.
+         * @return struct A matching ISO 639 item, if found.
          */
         public ISO_639_Item find_code(string code = "") throws ISOCodesError
         {
