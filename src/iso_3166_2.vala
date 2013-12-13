@@ -55,15 +55,15 @@ namespace libisocodes {
             Parser.cleanup();
         }
         /**
-         * Return an array of all entries in the ISO standard.
+         * Return an array of all items in the ISO standard.
          * 
-         * @return array All ISO 3166-2 entries.
+         * @return array All ISO 3166-2 items.
          */
         public ISO_3166_2_Item[] find_all() throws ISOCodesError
         {
             ISO_3166_2_Item[] result = null;
-            var entries = _find_all();
-            foreach (var item in entries) {
+            var items = _find_all();
+            foreach (var item in items) {
                 result += new ISO_3166_2_Item(item);
             }
             return result;

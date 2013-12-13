@@ -159,9 +159,9 @@ namespace libisocodes {
             _iso_codes_xml_version = "3";
         }
         /**
-         * Return an array of all entries in the ISO standard.
+         * Return an array of all items in the ISO standard.
          * 
-         * @return array All ISO 3166 entries.
+         * @return array All ISO 3166 items.
          */
         internal ArrayList<HashMap<string, string>> _find_all() throws ISOCodesError
         {
@@ -249,7 +249,7 @@ namespace libisocodes {
                     did_not_find_code = false;
                     // Exit after successful match, to avoid matching the same
                     // item another time (can happen e.g. in ISO 639, where
-                    // most entries have the same value for their 2B and 2T code.
+                    // most items have the same value for their 2B and 2T code.
                     break;
                 }
             }

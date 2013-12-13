@@ -55,15 +55,15 @@ namespace libisocodes {
             Parser.cleanup();
         }
         /**
-         * Return an array of all entries in the ISO standard.
+         * Return an array of all items in the ISO standard.
          * 
-         * @return array All ISO 4217 entries.
+         * @return array All ISO 4217 items.
          */
         public ISO_4217_Item[] find_all() throws ISOCodesError
         {
             ISO_4217_Item[] result = null;
-            var entries = _find_all();
-            foreach (var item in entries) {
+            var items = _find_all();
+            foreach (var item in items) {
                 result += new ISO_4217_Item(item);
             }
             return result;
