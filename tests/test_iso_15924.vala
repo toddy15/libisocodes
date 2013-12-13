@@ -114,7 +114,7 @@ namespace libisocodes {
                     var e = i.find_code("Cyrl");
                     assert(i.get_iso_codes_xml_version() == "3");
                     assert(e != null);
-                    assert(e is ISO_15924_Entry);
+                    assert(e is ISO_15924_Item);
                     assert(e.alpha_4_code == "Cyrl");
                     assert(e.numeric_code == "220");
                     assert(e.name == "Cyrillic");
@@ -129,7 +129,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("200");
                     assert(e != null);
-                    assert(e is ISO_15924_Entry);
+                    assert(e is ISO_15924_Item);
                     assert(e.alpha_4_code == "Grek");
                     assert(e.numeric_code == "200");
                     assert(e.name == "Greek");
@@ -144,7 +144,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("BENG");
                     assert(e != null);
-                    assert(e is ISO_15924_Entry);
+                    assert(e is ISO_15924_Item);
                     assert(e.alpha_4_code == "Beng");
                     assert(e.numeric_code == "325");
                     assert(e.name == "Bengali");
@@ -159,7 +159,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("grEK");
                     assert(e != null);
-                    assert(e is ISO_15924_Entry);
+                    assert(e is ISO_15924_Item);
                     assert(e.alpha_4_code == "Grek");
                     assert(e.numeric_code == "200");
                     assert(e.name == "Greek");
@@ -189,7 +189,7 @@ namespace libisocodes {
                     i.set_locale("de");
                     var e = i.find_code("Grek");
                     assert(e != null);
-                    assert(e is ISO_15924_Entry);
+                    assert(e is ISO_15924_Item);
                     assert(e.alpha_4_code == "Grek");
                     assert(e.numeric_code == "200");
                     assert(e.name == "Griechisch");
@@ -205,7 +205,7 @@ namespace libisocodes {
                     i.set_locale("fr");
                     var e = i.find_code("220");
                     assert(e != null);
-                    assert(e is ISO_15924_Entry);
+                    assert(e is ISO_15924_Item);
                     assert(e.alpha_4_code == "Cyrl");
                     assert(e.numeric_code == "220");
                     assert(e.name == "cyrillique");
@@ -221,7 +221,7 @@ namespace libisocodes {
                     i.set_locale("does-not-exist");
                     var e = i.find_code("Latn");
                     assert(e != null);
-                    assert(e is ISO_15924_Entry);
+                    assert(e is ISO_15924_Item);
                     assert(e.alpha_4_code == "Latn");
                     assert(e.numeric_code == "215");
                     assert(e.name == "Latin");

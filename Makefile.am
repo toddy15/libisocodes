@@ -34,17 +34,17 @@ lib_LTLIBRARIES = libisocodes.la
 libisocodes_la_SOURCES = \
 	src/isocodes.vala \
 	src/iso_3166.vala \
-	src/iso_3166_entry.vala \
+	src/iso_3166_item.vala \
 	src/iso_3166_2.vala \
-	src/iso_3166_2_entry.vala \
+	src/iso_3166_2_item.vala \
 	src/iso_639.vala \
-	src/iso_639_entry.vala \
+	src/iso_639_item.vala \
 	src/iso_639_3.vala \
-	src/iso_639_3_entry.vala \
+	src/iso_639_3_item.vala \
 	src/iso_4217.vala \
-	src/iso_4217_entry.vala \
+	src/iso_4217_item.vala \
 	src/iso_15924.vala \
-	src/iso_15924_entry.vala \
+	src/iso_15924_item.vala \
 	src/exceptions.vala
 include_HEADERS = libisocodes.h
 

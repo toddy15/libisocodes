@@ -118,7 +118,7 @@ namespace libisocodes {
                     var e = i.find_code("ALG");
                     assert(i.get_iso_codes_xml_version() == "3");
                     assert(e != null);
-                    assert(e is ISO_639_Entry);
+                    assert(e is ISO_639_Item);
                     assert(e.iso_639_2B_code == "alg");
                     assert(e.iso_639_2T_code == "alg");
                     assert(e.iso_639_1_code == "");
@@ -134,7 +134,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("Tib");
                     assert(e != null);
-                    assert(e is ISO_639_Entry);
+                    assert(e is ISO_639_Item);
                     assert(e.iso_639_2B_code == "tib");
                     assert(e.iso_639_2T_code == "bod");
                     assert(e.iso_639_1_code == "bo");
@@ -150,7 +150,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("bod");
                     assert(e != null);
-                    assert(e is ISO_639_Entry);
+                    assert(e is ISO_639_Item);
                     assert(e.iso_639_2B_code == "tib");
                     assert(e.iso_639_2T_code == "bod");
                     assert(e.iso_639_1_code == "bo");
@@ -166,7 +166,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("aA");
                     assert(e != null);
-                    assert(e is ISO_639_Entry);
+                    assert(e is ISO_639_Item);
                     assert(e.iso_639_2B_code == "aar");
                     assert(e.iso_639_2T_code == "aar");
                     assert(e.iso_639_1_code == "aa");
@@ -197,7 +197,7 @@ namespace libisocodes {
                     i.set_locale("fr");
                     var e = i.find_code("he");
                     assert(e != null);
-                    assert(e is ISO_639_Entry);
+                    assert(e is ISO_639_Item);
                     assert(e.iso_639_2B_code == "heb");
                     assert(e.iso_639_2T_code == "heb");
                     assert(e.iso_639_1_code == "he");
@@ -214,7 +214,7 @@ namespace libisocodes {
                     i.set_locale("pl");
                     var e = i.find_code("hEB");
                     assert(e != null);
-                    assert(e is ISO_639_Entry);
+                    assert(e is ISO_639_Item);
                     assert(e.iso_639_2B_code == "heb");
                     assert(e.iso_639_2T_code == "heb");
                     assert(e.iso_639_1_code == "he");
@@ -231,7 +231,7 @@ namespace libisocodes {
                     i.set_locale("does-not-exist");
                     var e = i.find_code("alg");
                     assert(e != null);
-                    assert(e is ISO_639_Entry);
+                    assert(e is ISO_639_Item);
                     assert(e.iso_639_2B_code == "alg");
                     assert(e.iso_639_2T_code == "alg");
                     assert(e.iso_639_1_code == "");

@@ -114,7 +114,7 @@ namespace libisocodes {
                     var e = i.find_code("EUR");
                     assert(i.get_iso_codes_xml_version() == "3");
                     assert(e != null);
-                    assert(e is ISO_4217_Entry);
+                    assert(e is ISO_4217_Item);
                     assert(e.letter_code == "EUR");
                     assert(e.numeric_code == "978");
                     assert(e.name == "Euro");
@@ -129,7 +129,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("826");
                     assert(e != null);
-                    assert(e is ISO_4217_Entry);
+                    assert(e is ISO_4217_Item);
                     assert(e.letter_code == "GBP");
                     assert(e.numeric_code == "826");
                     assert(e.name == "Pound Sterling");
@@ -144,7 +144,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("inR");
                     assert(e != null);
-                    assert(e is ISO_4217_Entry);
+                    assert(e is ISO_4217_Item);
                     assert(e.letter_code == "INR");
                     assert(e.numeric_code == "356");
                     assert(e.name == "Indian Rupee");
@@ -174,7 +174,7 @@ namespace libisocodes {
                     i.set_locale("de");
                     var e = i.find_code("GBP");
                     assert(e != null);
-                    assert(e is ISO_4217_Entry);
+                    assert(e is ISO_4217_Item);
                     assert(e.letter_code == "GBP");
                     assert(e.numeric_code == "826");
                     assert(e.name == "Pfund Sterling");
@@ -190,7 +190,7 @@ namespace libisocodes {
                     i.set_locale("fr");
                     var e = i.find_code("356");
                     assert(e != null);
-                    assert(e is ISO_4217_Entry);
+                    assert(e is ISO_4217_Item);
                     assert(e.letter_code == "INR");
                     assert(e.numeric_code == "356");
                     assert(e.name == "Roupie indienne");
@@ -206,7 +206,7 @@ namespace libisocodes {
                     i.set_locale("does-not-exist");
                     var e = i.find_code("GBP");
                     assert(e != null);
-                    assert(e is ISO_4217_Entry);
+                    assert(e is ISO_4217_Item);
                     assert(e.letter_code == "GBP");
                     assert(e.numeric_code == "826");
                     assert(e.name == "Pound Sterling");

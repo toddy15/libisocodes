@@ -20,19 +20,17 @@ using Xml;
 using Gee;
 
 namespace libisocodes {
-    public class ISO_3166_2_Entry : Object
+    public class ISO_639_Item : Object
     {
-        public string country;
-        public string type;
-        public string code;
-        public string parent;
+        public string iso_639_2B_code;
+        public string iso_639_2T_code;
+        public string iso_639_1_code;
         public string name;
-        internal ISO_3166_2_Entry(HashMap<string, string> entry)
+        internal ISO_639_Item(HashMap<string, string> entry)
         {
-            country = entry["country"];
-            type = entry["type"];
-            code = entry["code"];
-            parent = entry["parent"];
+            iso_639_2B_code = entry["iso_639_2B_code"];
+            iso_639_2T_code = entry["iso_639_2T_code"];
+            iso_639_1_code = entry["iso_639_1_code"];
             name = entry["name"];
         }
     }

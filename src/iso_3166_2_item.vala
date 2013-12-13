@@ -20,15 +20,19 @@ using Xml;
 using Gee;
 
 namespace libisocodes {
-    public class ISO_15924_Entry : Object
+    public class ISO_3166_2_Item : Object
     {
-        public string alpha_4_code;
-        public string numeric_code;
+        public string country;
+        public string type;
+        public string code;
+        public string parent;
         public string name;
-        internal ISO_15924_Entry(HashMap<string, string> entry)
+        internal ISO_3166_2_Item(HashMap<string, string> entry)
         {
-            alpha_4_code = entry["alpha_4_code"];
-            numeric_code = entry["numeric_code"];
+            country = entry["country"];
+            type = entry["type"];
+            code = entry["code"];
+            parent = entry["parent"];
             name = entry["name"];
         }
     }

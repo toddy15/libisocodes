@@ -126,7 +126,7 @@ namespace libisocodes {
                     var e = i.find_code("de");
                     assert(i.get_iso_codes_xml_version() == "3");
                     assert(e != null);
-                    assert(e is ISO_3166_Entry);
+                    assert(e is ISO_3166_Item);
                     assert(e.alpha_2_code == "DE");
                     assert(e.alpha_3_code == "DEU");
                     assert(e.numeric_code == "276");
@@ -144,7 +144,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("FR");
                     assert(e != null);
-                    assert(e is ISO_3166_Entry);
+                    assert(e is ISO_3166_Item);
                     assert(e.alpha_2_code == "FR");
                     assert(e.alpha_3_code == "FRA");
                     assert(e.numeric_code == "250");
@@ -162,7 +162,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("Tw");
                     assert(e != null);
-                    assert(e is ISO_3166_Entry);
+                    assert(e is ISO_3166_Item);
                     assert(e.alpha_2_code == "TW");
                     assert(e.alpha_3_code == "TWN");
                     assert(e.numeric_code == "158");
@@ -180,7 +180,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("ukr");
                     assert(e != null);
-                    assert(e is ISO_3166_Entry);
+                    assert(e is ISO_3166_Item);
                     assert(e.alpha_2_code == "UA");
                     assert(e.alpha_3_code == "UKR");
                     assert(e.numeric_code == "804");
@@ -198,7 +198,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("798");
                     assert(e != null);
-                    assert(e is ISO_3166_Entry);
+                    assert(e is ISO_3166_Item);
                     assert(e.alpha_2_code == "TV");
                     assert(e.alpha_3_code == "TUV");
                     assert(e.numeric_code == "798");
@@ -231,7 +231,7 @@ namespace libisocodes {
                     i.set_locale("de");
                     var e = i.find_code("es");
                     assert(e != null);
-                    assert(e is ISO_3166_Entry);
+                    assert(e is ISO_3166_Item);
                     assert(e.alpha_2_code == "ES");
                     assert(e.alpha_3_code == "ESP");
                     assert(e.numeric_code == "724");
@@ -250,7 +250,7 @@ namespace libisocodes {
                     i.set_locale("fr");
                     var e = i.find_code("TW");
                     assert(e != null);
-                    assert(e is ISO_3166_Entry);
+                    assert(e is ISO_3166_Item);
                     assert(e.alpha_2_code == "TW");
                     assert(e.alpha_3_code == "TWN");
                     assert(e.numeric_code == "158");
@@ -269,7 +269,7 @@ namespace libisocodes {
                     i.set_locale("does-not-exist");
                     var e = i.find_code("RUS");
                     assert(e != null);
-                    assert(e is ISO_3166_Entry);
+                    assert(e is ISO_3166_Item);
                     assert(e.alpha_2_code == "RU");
                     assert(e.alpha_3_code == "RUS");
                     assert(e.numeric_code == "643");

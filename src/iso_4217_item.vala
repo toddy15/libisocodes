@@ -20,30 +20,16 @@ using Xml;
 using Gee;
 
 namespace libisocodes {
-    public class ISO_639_3_Entry : Object
+    public class ISO_4217_Item : Object
     {
-        public string id;
-        public string part1_code;
-        public string part2_code;
-        public string status;
-        public string scope;
-        public string type;
-        public string inverted_name;
-        public string reference_name;
+        public string letter_code;
+        public string numeric_code;
         public string name;
-        public string common_name;
-        internal ISO_639_3_Entry(HashMap<string, string> entry)
+        internal ISO_4217_Item(HashMap<string, string> entry)
         {
-            id = entry["id"];
-            part1_code = entry["part1_code"];
-            part2_code = entry["part2_code"];
-            status = entry["status"];
-            scope = entry["scope"];
-            type = entry["type"];
-            inverted_name = entry["inverted_name"];
-            reference_name = entry["reference_name"];
-            name = entry["name"];
-            common_name = entry["common_name"];
+            letter_code = entry["letter_code"];
+            numeric_code = entry["numeric_code"];
+            name = entry["currency_name"];
         }
     }
 }

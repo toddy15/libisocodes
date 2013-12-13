@@ -122,7 +122,7 @@ namespace libisocodes {
                     var e = i.find_code("de-hh");
                     assert(i.get_iso_codes_xml_version() == "3");
                     assert(e != null);
-                    assert(e is ISO_3166_2_Entry);
+                    assert(e is ISO_3166_2_Item);
                     assert(e.country == "DE");
                     assert(e.type == "State");
                     assert(e.code == "DE-HH");
@@ -139,7 +139,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("FR-78");
                     assert(e != null);
-                    assert(e is ISO_3166_2_Entry);
+                    assert(e is ISO_3166_2_Item);
                     assert(e.country == "FR");
                     assert(e.type == "Metropolitan department");
                     assert(e.code == "FR-78");
@@ -156,7 +156,7 @@ namespace libisocodes {
                 try {
                     var e = i.find_code("ES-C");
                     assert(e != null);
-                    assert(e is ISO_3166_2_Entry);
+                    assert(e is ISO_3166_2_Item);
                     assert(e.country == "ES");
                     assert(e.type == "Province");
                     assert(e.code == "ES-C");
@@ -188,7 +188,7 @@ namespace libisocodes {
                     i.set_locale("fr");
                     var e = i.find_code("DE-HH");
                     assert(e != null);
-                    assert(e is ISO_3166_2_Entry);
+                    assert(e is ISO_3166_2_Item);
                     assert(e.country == "DE");
                     assert(e.type == "State");
                     assert(e.code == "DE-HH");
@@ -206,7 +206,7 @@ namespace libisocodes {
                     i.set_locale("does-not-exist");
                     var e = i.find_code("NO-15");
                     assert(e != null);
-                    assert(e is ISO_3166_2_Entry);
+                    assert(e is ISO_3166_2_Item);
                     assert(e.country == "NO");
                     assert(e.type == "County");
                     assert(e.code == "NO-15");

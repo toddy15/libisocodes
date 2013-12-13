@@ -20,16 +20,22 @@ using Xml;
 using Gee;
 
 namespace libisocodes {
-    public class ISO_4217_Entry : Object
+    public class ISO_3166_Item : Object
     {
-        public string letter_code;
+        public string alpha_2_code;
+        public string alpha_3_code;
         public string numeric_code;
         public string name;
-        internal ISO_4217_Entry(HashMap<string, string> entry)
+        public string official_name;
+        public string common_name;
+        internal ISO_3166_Item(HashMap<string, string> entry)
         {
-            letter_code = entry["letter_code"];
+            alpha_2_code = entry["alpha_2_code"];
+            alpha_3_code = entry["alpha_3_code"];
             numeric_code = entry["numeric_code"];
-            name = entry["currency_name"];
+            name = entry["name"];
+            official_name = entry["official_name"];
+            common_name = entry["common_name"];
         }
     }
 }

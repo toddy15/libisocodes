@@ -59,12 +59,12 @@ namespace libisocodes {
          * 
          * @return array All ISO 15924 entries.
          */
-        public ISO_15924_Entry[] find_all() throws ISOCodesError
+        public ISO_15924_Item[] find_all() throws ISOCodesError
         {
-            ISO_15924_Entry[] result = null;
+            ISO_15924_Item[] result = null;
             var entries = _find_all();
             foreach (var entry in entries) {
-                result += new ISO_15924_Entry(entry);
+                result += new ISO_15924_Item(entry);
             }
             return result;
         }
@@ -75,10 +75,10 @@ namespace libisocodes {
          * 
          * @return struct A matching ISO 15924 entry, if found.
          */
-        public ISO_15924_Entry find_code(string code = "") throws ISOCodesError
+        public ISO_15924_Item find_code(string code = "") throws ISOCodesError
         {
             var res = _find_code(code);
-            return new ISO_15924_Entry(res);
+            return new ISO_15924_Item(res);
         }
         /**
          * Set up the XPaths to try.
