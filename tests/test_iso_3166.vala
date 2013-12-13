@@ -21,16 +21,16 @@ namespace libisocodes {
     {
         public static void add_tests()
         {
-            Test.add_func("/iso_3166/create class", () => {
+            Test.add_func("/iso_3166/3.x/create class", () => {
                 var i = new ISO_3166();
                 assert(i != null);
                 assert(i.standard == "3166");
                 assert(i.get_filepath() == "/usr/share/xml/iso-codes/iso_3166.xml");
             });
-            Test.add_func("/iso_3166/create class with changed filepath", () => {
+            Test.add_func("/iso_3166/3.x/create class with changed filepath", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
-                assert(i.get_filepath() == Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
+                assert(i.get_filepath() == Config.TESTDIR + "/3.x/iso_3166.xml");
                 assert(i.standard == "3166");
                 try {
                     assert(i.get_iso_codes_xml_version() == "3");
@@ -39,9 +39,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/find all codes", () => {
+            Test.add_func("/iso_3166/3.x/find all codes", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     var e = i.find_all();
                     assert(i.get_iso_codes_xml_version() == "3");
@@ -66,9 +66,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/find all codes in locale 'fr'", () => {
+            Test.add_func("/iso_3166/3.x/find all codes in locale 'fr'", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     i.set_locale("fr");
                     var e = i.find_all();
@@ -93,7 +93,7 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/call find_code() without argument", () => {
+            Test.add_func("/iso_3166/3.x/call find_code() without argument", () => {
                 var i = new ISO_3166();
                 try {
                     var e = i.find_code();
@@ -106,7 +106,7 @@ namespace libisocodes {
                 catch (ISOCodesError error) {
                 }
             });
-            Test.add_func("/iso_3166/search empty code", () => {
+            Test.add_func("/iso_3166/3.x/search empty code", () => {
                 var i = new ISO_3166();
                 try {
                     var e = i.find_code("");
@@ -119,9 +119,9 @@ namespace libisocodes {
                 catch (ISOCodesError error) {
                 }
             });
-            Test.add_func("/iso_3166/find code 'de'", () => {
+            Test.add_func("/iso_3166/3.x/find code 'de'", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     var e = i.find_code("de");
                     assert(i.get_iso_codes_xml_version() == "3");
@@ -138,9 +138,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/find code 'FR'", () => {
+            Test.add_func("/iso_3166/3.x/find code 'FR'", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     var e = i.find_code("FR");
                     assert(e != null);
@@ -156,9 +156,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/find code 'Tw'", () => {
+            Test.add_func("/iso_3166/3.x/find code 'Tw'", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     var e = i.find_code("Tw");
                     assert(e != null);
@@ -174,9 +174,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/find code 'ukr'", () => {
+            Test.add_func("/iso_3166/3.x/find code 'ukr'", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     var e = i.find_code("ukr");
                     assert(e != null);
@@ -192,9 +192,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/find code '798'", () => {
+            Test.add_func("/iso_3166/3.x/find code '798'", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     var e = i.find_code("798");
                     assert(e != null);
@@ -210,9 +210,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/search non existant code", () => {
+            Test.add_func("/iso_3166/3.x/search non existant code", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     var e = i.find_code("not-there");
                     // This assert is just to use the variable e,
@@ -224,9 +224,9 @@ namespace libisocodes {
                 catch (ISOCodesError error) {
                 }
             });
-            Test.add_func("/iso_3166/find code 'ES' in locale 'de'", () => {
+            Test.add_func("/iso_3166/3.x/find code 'ES' in locale 'de'", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     i.set_locale("de");
                     var e = i.find_code("es");
@@ -243,9 +243,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/find code 'TW' in locale 'fr'", () => {
+            Test.add_func("/iso_3166/3.x/find code 'TW' in locale 'fr'", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     i.set_locale("fr");
                     var e = i.find_code("TW");
@@ -262,9 +262,9 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
-            Test.add_func("/iso_3166/find code 'RUS' in non existant locale", () => {
+            Test.add_func("/iso_3166/3.x/find code 'RUS' in non existant locale", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/iso_3166.xml");
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
                 try {
                     i.set_locale("does-not-exist");
                     var e = i.find_code("RUS");
