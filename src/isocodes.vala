@@ -125,8 +125,8 @@ namespace libisocodes {
             if (name != "") {
                 set_filepath(name);
             }
-            // Check that the file exists.
-            if (FileUtils.test(get_filepath(), FileTest.EXISTS) == false) {
+            // Check that the file exists and is a regular file (not a directory).
+            if (FileUtils.test(get_filepath(), FileTest.IS_REGULAR) == false) {
                 throw new ISOCodesError.FILE_DOES_NOT_EXIST(
                     // TRANSLATORS:
                     // The placeholder is a filename, including the directory path.
