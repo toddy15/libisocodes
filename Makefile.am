@@ -115,7 +115,8 @@ codetest_datafiles = \
 	tests/data/3.x/iso_639.xml \
 	tests/data/3.x/iso_639_3.xml \
 	tests/data/3.x/iso_4217.xml \
-	tests/data/3.x/iso_15924.xml
+	tests/data/3.x/iso_15924.xml \
+	tests/data/3.x/no-iso-data.txt
 codetest_sources = $(codetest_testfiles) $(libisocodes_la_SOURCES)
 codetest_VALAFLAGS = \
 	--pkg libxml-2.0 \

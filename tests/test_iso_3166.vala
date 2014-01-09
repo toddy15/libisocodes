@@ -39,6 +39,54 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
+            Test.add_func("/iso_3166/3.x/throw exception for non-existant file", () => {
+                var i = new ISO_3166();
+                i.set_filepath(Config.TESTDIR + "/3.x/not-there.xml");
+                assert(i.get_filepath() == Config.TESTDIR + "/3.x/not-there.xml");
+                assert(i.standard == "3166");
+                try {
+                    i.find_all();
+                }
+                catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.FILE_DOES_NOT_EXIST);
+                }
+            });
+            Test.add_func("/iso_3166/3.x/throw exception for directory", () => {
+                var i = new ISO_3166();
+                i.set_filepath(Config.TESTDIR + "/3.x/");
+                assert(i.get_filepath() == Config.TESTDIR + "/3.x/");
+                assert(i.standard == "3166");
+                try {
+                    i.find_all();
+                }
+                catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.FILE_DOES_NOT_EXIST);
+                }
+            });
+            Test.add_func("/iso_3166/3.x/throw exception for parsing failure", () => {
+                var i = new ISO_3166();
+                i.set_filepath(Config.TESTDIR + "/3.x/no-iso-data.txt");
+                assert(i.get_filepath() == Config.TESTDIR + "/3.x/no-iso-data.txt");
+                assert(i.standard == "3166");
+                try {
+                    i.find_all();
+                }
+                catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.CANNOT_PARSE_FILE);
+                }
+            });
+            Test.add_func("/iso_3166/3.x/throw exception for wrong ISO data", () => {
+                var i = new ISO_3166();
+                i.set_filepath(Config.TESTDIR + "/3.x/iso_4217.xml");
+                assert(i.get_filepath() == Config.TESTDIR + "/3.x/iso_4217.xml");
+                assert(i.standard == "3166");
+                try {
+                    i.find_all();
+                }
+                catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.FILE_DOES_NOT_CONTAIN_ISO_DATA);
+                }
+            });
             Test.add_func("/iso_3166/3.x/find all codes", () => {
                 var i = new ISO_3166();
                 i.set_filepath(Config.TESTDIR + "/3.x/iso_3166.xml");
