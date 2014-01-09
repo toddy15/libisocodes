@@ -59,10 +59,16 @@ namespace libisocodes {
         /**
          * Set method for filepath of the XML file.
          * 
+         * If the new path is an empty string or NULL, the previous
+         * value is not changed.
+         * 
          * Currently, these methods need to be implemented instead
          * of using the built-in get/set methods.
          */
-        public void set_filepath(string path) {
+        public void set_filepath(string? path) {
+            if (path == null || path == "") {
+                return;
+            }
             _filepath = path;
             // If there is an open file, close it
             if (_xml != null) {
@@ -90,10 +96,13 @@ namespace libisocodes {
         /**
          * Set method for output locale.
          * 
+         * If the new locale is an empty string or NULL, no locale
+         * is used for the returned values.
+         * 
          * Currently, these methods need to be implemented instead
          * of using the built-in get/set methods.
          */
-        public void set_locale(string locale) {
+        public void set_locale(string? locale) {
             _locale = locale;
         }
         /**

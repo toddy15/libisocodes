@@ -39,6 +39,27 @@ namespace libisocodes {
                     assert_not_reached();
                 }
             });
+            Test.add_func("/iso_3166/3.x/change filepath with null value or empty string", () => {
+                var i = new ISO_3166();
+                i.set_filepath(null);
+                assert(i.get_filepath() == "/usr/share/xml/iso-codes/iso_3166.xml");
+                i.set_filepath("");
+                assert(i.get_filepath() == "/usr/share/xml/iso-codes/iso_3166.xml");
+                assert(i.standard == "3166");
+            });
+            Test.add_func("/iso_3166/3.x/change locale", () => {
+                var i = new ISO_3166();
+                assert(i.get_locale() == null);
+                i.set_locale("fr");
+                assert(i.get_locale() == "fr");
+                i.set_locale(null);
+                assert(i.get_locale() == null);
+                i.set_locale("");
+                assert(i.get_locale() == "");
+                i.set_locale("de");
+                assert(i.get_locale() == "de");
+                assert(i.standard == "3166");
+            });
             Test.add_func("/iso_3166/3.x/throw exception for non-existant file", () => {
                 var i = new ISO_3166();
                 i.set_filepath(Config.TESTDIR + "/3.x/not-there.xml");
