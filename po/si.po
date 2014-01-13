@@ -1,54 +1,58 @@
-# Translation of libisocodes to German
+# Translation of libisocodes to Sinhala
 # This file is distributed under the same license as the libisocodes package.
 #
 # Copyright ©
-# Tobias Quathamer <toddy@debian.org>, 2007-2014.
+# Danishka Navin <danishka@gmail.com>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: libisocodes\n"
 "Report-Msgid-Bugs-To: toddy@debian.org\n"
 "POT-Creation-Date: 2014-01-13 12:49+0100\n"
-"PO-Revision-Date: 2014-01-13 13:35+0100\n"
-"Last-Translator: Tobias Quathamer <toddy@debian.org>\n"
-"Language-Team: German <debian-l10n-german@lists.debian.org>\n"
-"Language: de\n"
+"PO-Revision-Date: 2011-12-28 06:29+0530\n"
+"Last-Translator: Danishka Navin <danishka@gmail.com>\n"
+"Language-Team: Sinhala <info@hanthana.org>\n"
+"Language: si\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.2\n"
 
 #. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
 #: src/isocodes.vala:150
-#, python-format
+#, fuzzy, python-format
+#| msgid "The file '%(filename)s' could not be opened."
 msgid "The file \"%(filename)s\" could not be opened."
-msgstr "Die Datei „%(filename)s“ konnte nicht geöffnet werden."
+msgstr "'%(filename)s' ගොනුව විවෘත කල නොහැක."
 
 #: src/isocodes.vala:158
 msgid "An internal libxml structure could not be created."
-msgstr "Eine interne LibXML-Struktur konnte nicht erzeugt werden."
+msgstr ""
 
 #. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
 #: src/isocodes.vala:169
-#, python-format
+#, fuzzy, python-format
+#| msgid "The file '%(filename)s' could not be parsed correctly."
 msgid "The file \"%(filename)s\" could not be parsed correctly."
-msgstr "Die Datei „%(filename)s“ konnte nicht korrekt ausgewertet werden."
+msgstr "'%(filename)s' ගොනුව නිවැරදිව විග්‍රහ කල නොහැක."
 
 #. TRANSLATORS:
 #. The first placeholder is a filename, including the directory path.
 #. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
 #: src/isocodes.vala:183
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "The file '%(filename)s' does not contain valid ISO %(standard)s data."
 msgid "The file \"%(filename)s\" does not contain valid ISO %(standard)s data."
-msgstr ""
-"Die Datei „%(filename)s“ enthält keine gültigen ISO %(standard)s Daten."
+msgstr "'%(filename)s' ගොනුව සතුව වලංගු ISO %(standard)s දත්ත නොපවතී."
 
 #. TRANSLATORS:
 #. The first placeholder is a code, e.g. 'de' or 'hurgh'.
 #. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
 #: src/isocodes.vala:292
-#, python-format
+#, fuzzy, python-format
+#| msgid "The code '%(code)s' is not defined in ISO %(standard)s."
 msgid "The code \"%(code)s\" is not defined in ISO %(standard)s."
-msgstr "Der Code „%(code)s“ ist in ISO %(standard)s nicht definiert."
+msgstr "ISO %(standard)s හි  '%(code)s' කේතය යොදා නොමැත."

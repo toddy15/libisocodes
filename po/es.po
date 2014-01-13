@@ -1,0 +1,77 @@
+# libisocodes po translation to Spanish
+# Copyright (C) 2010 Software in the Public Interest
+# This file is distributed under the same license as the libisocodes package.
+#
+# Changes:
+#   - Initial translation
+#       Omar Campagne <ocampagne@gmail.com>, 2010
+#
+#   - Updates
+#       TRANSLATOR
+#
+# Traductores, si no conocen el formato PO, merece la pena leer la
+# documentación de gettext, especialmente las secciones dedicadas a este
+# formato, por ejemplo ejecutando:
+#       info -n '(gettext)PO Files'
+#       info -n '(gettext)Header Entry'
+#
+# Equipo de traducción al español, por favor lean antes de traducir
+# los siguientes documentos:
+#
+#   - El proyecto de traducción de Debian al español
+#     http://www.debian.org/intl/spanish/
+#     especialmente las notas y normas de traducción en
+#     http://www.debian.org/intl/spanish/notas
+#
+#   - La guía de traducción de po's de debconf:
+#     /usr/share/doc/po-debconf/README-trans
+#     o http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libisocodes\n"
+"Report-Msgid-Bugs-To: toddy@debian.org\n"
+"POT-Creation-Date: 2014-01-13 12:49+0100\n"
+"PO-Revision-Date: 2010-07-17 18:18+0200\n"
+"Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
+"Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.6.1\n"
+
+#. TRANSLATORS:
+#. The placeholder is a filename, including the directory path.
+#: src/isocodes.vala:150
+#, python-format
+msgid "The file \"%(filename)s\" could not be opened."
+msgstr "No se pudo abrir el fichero «%(filename)s»."
+
+#: src/isocodes.vala:158
+msgid "An internal libxml structure could not be created."
+msgstr ""
+
+#. TRANSLATORS:
+#. The placeholder is a filename, including the directory path.
+#: src/isocodes.vala:169
+#, python-format
+msgid "The file \"%(filename)s\" could not be parsed correctly."
+msgstr "El fichero «%(filename)s» no se pudo analizar adecuadamente."
+
+#. TRANSLATORS:
+#. The first placeholder is a filename, including the directory path.
+#. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
+#: src/isocodes.vala:183
+#, python-format
+msgid "The file \"%(filename)s\" does not contain valid ISO %(standard)s data."
+msgstr "El fichero «%(filename)s» no contiene datos ISO %(standard)s válidos."
+
+#. TRANSLATORS:
+#. The first placeholder is a code, e.g. 'de' or 'hurgh'.
+#. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
+#: src/isocodes.vala:292
+#, python-format
+msgid "The code \"%(code)s\" is not defined in ISO %(standard)s."
+msgstr "El código «%(code)s» no está definido en la ISO %(standard)s."
