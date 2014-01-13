@@ -154,7 +154,7 @@ namespace libisocodes {
             // Create a new parsing context, to be able to set parsing options.
             _ctx = new ParserCtxt();
             if (_ctx == null) {
-                throw new ISOCodesError.CANNOT_PARSE_FILE(
+                throw new ISOCodesError.CANNOT_CREATE_LIBXML_STRUCTURE(
                     _("An internal libxml structure could not be created.")
                 );
             }
