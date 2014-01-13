@@ -70,7 +70,7 @@ namespace libisocodes {
                     i.find_all();
                 }
                 catch (ISOCodesError error) {
-                    assert(error is ISOCodesError.FILE_DOES_NOT_EXIST);
+                    assert(error is ISOCodesError.CANNOT_OPEN_FILE);
                     assert(error.message == "The file \"" + filepath + "\" could not be opened.");
                 }
             });
@@ -84,7 +84,7 @@ namespace libisocodes {
                     i.find_all();
                 }
                 catch (ISOCodesError error) {
-                    assert(error is ISOCodesError.FILE_DOES_NOT_EXIST);
+                    assert(error is ISOCodesError.CANNOT_OPEN_FILE);
                     assert(error.message == "The file \"" + filepath + "\" could not be opened.");
                 }
             });

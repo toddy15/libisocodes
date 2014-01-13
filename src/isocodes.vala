@@ -144,7 +144,7 @@ namespace libisocodes {
             }
             // Check that the file exists and is a regular file (not a directory).
             if (FileUtils.test(get_filepath(), FileTest.IS_REGULAR) == false) {
-                throw new ISOCodesError.FILE_DOES_NOT_EXIST(
+                throw new ISOCodesError.CANNOT_OPEN_FILE(
                     // # TRANSLATORS:
                     // # The placeholder is a filename, including the directory path.
                     _("The file \"%(filename)s\" could not be opened.")

@@ -18,7 +18,7 @@
 
 namespace libisocodes {
     public errordomain ISOCodesError {
-        FILE_DOES_NOT_EXIST,
+        CANNOT_OPEN_FILE,
         CANNOT_CREATE_LIBXML_STRUCTURE,
         CANNOT_PARSE_FILE,
         FILE_DOES_NOT_CONTAIN_ISO_DATA,
