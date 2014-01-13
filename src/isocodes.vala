@@ -145,9 +145,10 @@ namespace libisocodes {
             // Check that the file exists and is a regular file (not a directory).
             if (FileUtils.test(get_filepath(), FileTest.IS_REGULAR) == false) {
                 throw new ISOCodesError.FILE_DOES_NOT_EXIST(
-                    // TRANSLATORS:
-                    // The placeholder is a filename, including the directory path.
-                    _("The file \"%s\" could not be opened.").printf(get_filepath())
+                    // # TRANSLATORS:
+                    // # The placeholder is a filename, including the directory path.
+                    _("The file \"%(filename)s\" could not be opened.")
+                    .replace("%(filename)s", get_filepath())
                 );
             }
             // Create a new parsing context, to be able to set parsing options.
@@ -163,9 +164,10 @@ namespace libisocodes {
             _xml = _ctx->read_file(get_filepath());
             if (_xml == null) {
                 throw new ISOCodesError.CANNOT_PARSE_FILE(
-                    // TRANSLATORS:
-                    // The placeholder is a filename, including the directory path.
-                    _("The file \"%s\" could not be parsed correctly.").printf(get_filepath())
+                    // # TRANSLATORS:
+                    // # The placeholder is a filename, including the directory path.
+                    _("The file \"%(filename)s\" could not be parsed correctly.")
+                    .replace("%(filename)s", get_filepath())
                 );
             }
             // Check that the file contains the expected data.
@@ -175,10 +177,12 @@ namespace libisocodes {
             var expected_name = "iso_" + standard.replace("-", "_") + "_entries";
             if (root_name != expected_name) {
                 throw new ISOCodesError.FILE_DOES_NOT_CONTAIN_ISO_DATA(
-                    // TRANSLATORS:
-                    // The first placeholder is a filename, including the directory path.
-                    // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
-                    _("The file \"%s\" does not contain valid ISO %s data.").printf(get_filepath(), standard)
+                    // # TRANSLATORS:
+                    // # The first placeholder is a filename, including the directory path.
+                    // # The second placeholder is an ISO standard, e.g. 3166 or 639-3.
+                    _("The file \"%(filename)s\" does not contain valid ISO %(standard)s data.")
+                    .replace("%(filename)s", get_filepath())
+                    .replace("%(standard)s", standard)
                 );
             }
             // @TODO: This must not be hardcoded after the new iso-codes XML structure is adopted.
@@ -282,10 +286,12 @@ namespace libisocodes {
             // Throw an error, if the code could not be found.
             if (did_not_find_code) {
                 throw new ISOCodesError.CODE_NOT_DEFINED(
-                    // TRANSLATORS:
-                    // The first placeholder is a code, e.g. 'de' or 'hurgh'.
-                    // The second placeholder is an ISO standard, e.g. 3166 or 639-3.
-                    _("The code \"%s\" is not defined in ISO %s.").printf(code, standard)
+                    // # TRANSLATORS:
+                    // # The first placeholder is a code, e.g. 'de' or 'hurgh'.
+                    // # The second placeholder is an ISO standard, e.g. 3166 or 639-3.
+                    _("The code \"%(code)s\" is not defined in ISO %(standard)s.")
+                    .replace("%(code)s", code)
+                    .replace("%(standard)s", standard)
                 );
             }
             // Try to get translations, if wanted
