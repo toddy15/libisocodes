@@ -70,10 +70,14 @@ namespace libisocodes {
                 return;
             }
             _filepath = path;
-            // If there is an open file, close it
+            // If there is an open file, free the associated libxml structures
             if (_xml != null) {
                 delete _xml;
                 _xml = null;
+            }
+            if (_ctx != null) {
+                delete _ctx;
+                _ctx = null;
             }
         }
         /**
@@ -110,6 +114,10 @@ namespace libisocodes {
          */
         private Xml.Doc* _xml = null;
         /**
+         * Pointer to the Xml.ParserCtxt structure of LibXML.
+         */
+        private Xml.ParserCtxt* _ctx = null;
+        /**
          * Set up the i18n framework.
          * 
          * This method needs to be called by every subclass.
@@ -142,8 +150,17 @@ namespace libisocodes {
                     _("The file \"%s\" could not be opened.").printf(get_filepath())
                 );
             }
+            // Create a new parsing context, to be able to set parsing options.
+            _ctx = new ParserCtxt();
+            if (_ctx == null) {
+                throw new ISOCodesError.CANNOT_PARSE_FILE(
+                    _("An internal libxml structure could not be created.")
+                );
+            }
+            // Do not print parser warnings and errors from libxml to stderr.
+            _ctx->use_options(ParserOption.NOERROR + ParserOption.NOWARNING);
             // Try parsing the file and handle errors.
-            _xml = Parser.parse_file(get_filepath());
+            _xml = _ctx->read_file(get_filepath());
             if (_xml == null) {
                 throw new ISOCodesError.CANNOT_PARSE_FILE(
                     // TRANSLATORS:
