@@ -62,50 +62,58 @@ namespace libisocodes {
             });
             Test.add_func("/iso_3166/3.x/throw exception for non-existant file", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/3.x/not-there.xml");
-                assert(i.get_filepath() == Config.TESTDIR + "/3.x/not-there.xml");
+                var filepath = Config.TESTDIR + "/3.x/not-there.xml";
+                i.set_filepath(filepath);
+                assert(i.get_filepath() == filepath);
                 assert(i.standard == "3166");
                 try {
                     i.find_all();
                 }
                 catch (ISOCodesError error) {
                     assert(error is ISOCodesError.FILE_DOES_NOT_EXIST);
+                    assert(error.message == "The file \"" + filepath + "\" could not be opened.");
                 }
             });
             Test.add_func("/iso_3166/3.x/throw exception for directory", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/3.x/");
-                assert(i.get_filepath() == Config.TESTDIR + "/3.x/");
+                var filepath = Config.TESTDIR + "/3.x/";
+                i.set_filepath(filepath);
+                assert(i.get_filepath() == filepath);
                 assert(i.standard == "3166");
                 try {
                     i.find_all();
                 }
                 catch (ISOCodesError error) {
                     assert(error is ISOCodesError.FILE_DOES_NOT_EXIST);
+                    assert(error.message == "The file \"" + filepath + "\" could not be opened.");
                 }
             });
             Test.add_func("/iso_3166/3.x/throw exception for parsing failure", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/3.x/no-iso-data.txt");
-                assert(i.get_filepath() == Config.TESTDIR + "/3.x/no-iso-data.txt");
+                var filepath = Config.TESTDIR + "/3.x/no-iso-data.txt";
+                i.set_filepath(filepath);
+                assert(i.get_filepath() == filepath);
                 assert(i.standard == "3166");
                 try {
                     i.find_all();
                 }
                 catch (ISOCodesError error) {
                     assert(error is ISOCodesError.CANNOT_PARSE_FILE);
+                    assert(error.message == "The file \"" + filepath + "\" could not be parsed correctly.");
                 }
             });
             Test.add_func("/iso_3166/3.x/throw exception for wrong ISO data", () => {
                 var i = new ISO_3166();
-                i.set_filepath(Config.TESTDIR + "/3.x/iso_4217.xml");
-                assert(i.get_filepath() == Config.TESTDIR + "/3.x/iso_4217.xml");
+                var filepath = Config.TESTDIR + "/3.x/iso_4217.xml";
+                i.set_filepath(filepath);
+                assert(i.get_filepath() == filepath);
                 assert(i.standard == "3166");
                 try {
                     i.find_all();
                 }
                 catch (ISOCodesError error) {
                     assert(error is ISOCodesError.FILE_DOES_NOT_CONTAIN_ISO_DATA);
+                    assert(error.message == "The file \"" + filepath + "\" does not contain valid ISO 3166 data.");
                 }
             });
             Test.add_func("/iso_3166/3.x/find all codes", () => {
@@ -173,6 +181,8 @@ namespace libisocodes {
                     assert_not_reached();
                 }
                 catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.CODE_NOT_DEFINED);
+                    assert(error.message == "The code \"\" is not defined in ISO " + i.standard + ".");
                 }
             });
             Test.add_func("/iso_3166/3.x/search empty code", () => {
@@ -186,6 +196,8 @@ namespace libisocodes {
                     assert_not_reached();
                 }
                 catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.CODE_NOT_DEFINED);
+                    assert(error.message == "The code \"\" is not defined in ISO " + i.standard + ".");
                 }
             });
             Test.add_func("/iso_3166/3.x/find code 'de'", () => {
@@ -291,6 +303,8 @@ namespace libisocodes {
                     assert_not_reached();
                 }
                 catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.CODE_NOT_DEFINED);
+                    assert(error.message == "The code \"not-there\" is not defined in ISO " + i.standard + ".");
                 }
             });
             Test.add_func("/iso_3166/3.x/find code 'ES' in locale 'de'", () => {

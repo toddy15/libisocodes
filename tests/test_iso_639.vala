@@ -96,6 +96,8 @@ namespace libisocodes {
                     assert_not_reached();
                 }
                 catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.CODE_NOT_DEFINED);
+                    assert(error.message == "The code \"\" is not defined in ISO " + i.standard + ".");
                 }
             });
             Test.add_func("/iso_639/3.x/search empty code", () => {
@@ -109,6 +111,8 @@ namespace libisocodes {
                     assert_not_reached();
                 }
                 catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.CODE_NOT_DEFINED);
+                    assert(error.message == "The code \"\" is not defined in ISO " + i.standard + ".");
                 }
             });
             Test.add_func("/iso_639/3.x/find code 'ALG'", () => {
@@ -188,6 +192,8 @@ namespace libisocodes {
                     assert_not_reached();
                 }
                 catch (ISOCodesError error) {
+                    assert(error is ISOCodesError.CODE_NOT_DEFINED);
+                    assert(error.message == "The code \"not-there\" is not defined in ISO " + i.standard + ".");
                 }
             });
             Test.add_func("/iso_639/3.x/find code 'he' in locale 'fr'", () => {
