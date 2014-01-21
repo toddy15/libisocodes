@@ -1,59 +1,54 @@
-# Translation of libisocodes messages to Portuguese
+# Translation of libisocodes messages to European Portuguese
 # This file is distributed under the same license as the libisocodes package.
 #
-# Copyright ©
-# Américo Monteiro <a_monteiro@netcabo.pt>, 2010, 2011.
+# Copyright © the libisocodes's copyright holder
+# Américo Monteiro <a_monteiro@gmx.com>, 2010, 2011, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: libisocodes\n"
 "Report-Msgid-Bugs-To: toddy@debian.org\n"
 "POT-Creation-Date: 2014-01-13 12:49+0100\n"
-"PO-Revision-Date: 2011-06-01 23:54+0100\n"
-"Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
+"PO-Revision-Date: 2014-01-20 22:18+0000\n"
+"Last-Translator: Américo Monteiro <a_monteiro@gmx.com>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
 #: src/isocodes.vala:150
-#, fuzzy, python-format
-#| msgid "The file '%(filename)s' could not be opened."
+#, python-format
 msgid "The file \"%(filename)s\" could not be opened."
-msgstr "O ficheiro '%(filename)s' não pôde ser aberto."
+msgstr "O ficheiro \"%(filename)s\" não pôde ser aberto."
 
 #: src/isocodes.vala:158
 msgid "An internal libxml structure could not be created."
-msgstr ""
+msgstr "Não foi possível criar uma estrutura libxml interna."
 
 #. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
 #: src/isocodes.vala:169
-#, fuzzy, python-format
-#| msgid "The file '%(filename)s' could not be parsed correctly."
+#, python-format
 msgid "The file \"%(filename)s\" could not be parsed correctly."
-msgstr "O ficheiro '%(filename)s' não pôde ser analisado correctamente."
+msgstr "O ficheiro \"%(filename)s\" não pôde ser analisado correctamente."
 
 #. TRANSLATORS:
 #. The first placeholder is a filename, including the directory path.
 #. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
 #: src/isocodes.vala:183
-#, fuzzy, python-format
-#| msgid ""
-#| "The file '%(filename)s' does not contain valid ISO %(standard)s data."
+#, python-format
 msgid "The file \"%(filename)s\" does not contain valid ISO %(standard)s data."
 msgstr ""
-"O ficheiro '%(filename)s' não contém dados de ISO %(standard)s válidos."
+"O ficheiro \"%(filename)s\" não contém dados de ISO %(standard)s válidos."
 
 #. TRANSLATORS:
 #. The first placeholder is a code, e.g. 'de' or 'hurgh'.
 #. The second placeholder is an ISO standard, e.g. 3166 or 639-3.
 #: src/isocodes.vala:292
-#, fuzzy, python-format
-#| msgid "The code '%(code)s' is not defined in ISO %(standard)s."
+#, python-format
 msgid "The code \"%(code)s\" is not defined in ISO %(standard)s."
-msgstr "O código '%(code)s' não está definido em ISO %(standard)s."
+msgstr "O código \"%(code)s\" não está definido em ISO %(standard)s."
