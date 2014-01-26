@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the libisocodes package.
 #
 # Copyright ©
-# Christian Perrier <bubulle@debian.org>, 2010, 2011.
+# Christian Perrier <bubulle@debian.org>, 2010, 2011, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: libisocodes\n"
 "Report-Msgid-Bugs-To: toddy@debian.org\n"
 "POT-Creation-Date: 2014-01-13 12:49+0100\n"
-"PO-Revision-Date: 2011-06-02 07:40+0200\n"
+"PO-Revision-Date: 2014-01-24 19:04+0100\n"
 "Last-Translator: Christian Perrier <bubulle@debian.org>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
@@ -27,7 +27,7 @@ msgstr "Le fichier « %(filename)s » n'a pas pu être ouvert."
 
 #: src/isocodes.vala:158
 msgid "An internal libxml structure could not be created."
-msgstr ""
+msgstr "Une structure interne de libxml n'a pas pu être créée."
 
 #. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
