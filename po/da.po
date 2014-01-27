@@ -1,7 +1,7 @@
 # Danish translation libisocodes.
-# Copyright (C) 2011 libisocodes & nedenstående oversætttere.
+# Copyright (C) 2014 libisocodes & nedenstående oversætttere.
 # This file is distributed under the same license as the libisocodes package.
-# Joe Hansen <joedalton2@yahoo.dk>, 2010, 2011.
+# Joe Hansen <joedalton2@yahoo.dk>, 2010, 2011, 2014.
 #
 # Hi Tobias, what is the meaning for locale in this file.
 # Is it regional settings, language or place.
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libisocodes\n"
 "Report-Msgid-Bugs-To: toddy@debian.org\n"
 "POT-Creation-Date: 2014-01-13 12:49+0100\n"
-"PO-Revision-Date: 2011-06-12 14:44+0200\n"
+"PO-Revision-Date: 2014-01-26 14:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
 "Language: da\n"
@@ -29,7 +29,7 @@ msgstr "Filen »%(filename)s« kunne ikke åbnes."
 
 #: src/isocodes.vala:158
 msgid "An internal libxml structure could not be created."
-msgstr ""
+msgstr "En intern libxml-struktur kunne ikke oprettes."
 
 #. TRANSLATORS:
 #. The placeholder is a filename, including the directory path.
