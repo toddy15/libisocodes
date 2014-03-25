@@ -19,7 +19,7 @@
 
 # Set up autoconf
 AC_PREREQ(2.68)
-AC_INIT([libisocodes], [1.0], [toddy@debian.org])
+AC_INIT([libisocodes], [1.1], [toddy@debian.org])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
@@ -31,7 +31,7 @@ AM_MAINTAINER_MODE
 # Set up libtool
 LT_PREREQ([2.4.2])
 LT_INIT
-LIBISOCODES_LT_VERSION="0:0:0"
+LIBISOCODES_LT_VERSION="1:0:0"
 AC_SUBST([LIBISOCODES_LT_VERSION])
 
 # Check for compilers and pkg-config
