@@ -104,8 +104,9 @@ DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(srcdir)/config.h.in src/isocodes.c src/iso_3166.c \
 	src/iso_3166_item.c src/iso_3166_2.c src/iso_3166_2_item.c \
 	src/iso_639.c src/iso_639_item.c src/iso_639_3.c \
-	src/iso_639_3_item.c src/iso_4217.c src/iso_4217_item.c \
-	src/iso_15924.c src/iso_15924_item.c src/exceptions.c \
+	src/iso_639_3_item.c src/iso_639_5.c src/iso_639_5_item.c \
+	src/iso_4217.c src/iso_4217_item.c src/iso_15924.c \
+	src/iso_15924_item.c src/exceptions.c \
 	$(top_srcdir)/build-aux/depcomp \
 	$(srcdir)/libisocodes_la_vala.stamp $(include_HEADERS) \
 	ABOUT-NLS COPYING ChangeLog README build-aux/compile \
@@ -181,6 +182,8 @@ am_libisocodes_la_OBJECTS = src/libisocodes_la-isocodes.lo \
 	src/libisocodes_la-iso_639_item.lo \
 	src/libisocodes_la-iso_639_3.lo \
 	src/libisocodes_la-iso_639_3_item.lo \
+	src/libisocodes_la-iso_639_5.lo \
+	src/libisocodes_la-iso_639_5_item.lo \
 	src/libisocodes_la-iso_4217.lo \
 	src/libisocodes_la-iso_4217_item.lo \
 	src/libisocodes_la-iso_15924.lo \
@@ -495,6 +498,8 @@ libisocodes_la_SOURCES = \
 	src/iso_639_item.vala \
 	src/iso_639_3.vala \
 	src/iso_639_3_item.vala \
+	src/iso_639_5.vala \
+	src/iso_639_5_item.vala \
 	src/iso_4217.vala \
 	src/iso_4217_item.vala \
 	src/iso_15924.vala \
@@ -674,6 +679,10 @@ src/libisocodes_la-iso_639_3.lo: src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
 src/libisocodes_la-iso_639_3_item.lo: src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
+src/libisocodes_la-iso_639_5.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libisocodes_la-iso_639_5_item.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
 src/libisocodes_la-iso_4217.lo: src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
 src/libisocodes_la-iso_4217_item.lo: src/$(am__dirstamp) \
@@ -708,6 +717,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libisocodes_la-iso_639.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libisocodes_la-iso_639_3.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libisocodes_la-iso_639_3_item.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libisocodes_la-iso_639_5.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libisocodes_la-iso_639_5_item.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libisocodes_la-iso_639_item.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libisocodes_la-isocodes.Plo@am__quote@
 
@@ -798,6 +809,20 @@ src/libisocodes_la-iso_639_3_item.lo: src/iso_639_3_item.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libisocodes_la_CPPFLAGS) $(CPPFLAGS) $(libisocodes_la_CFLAGS) $(CFLAGS) -c -o src/libisocodes_la-iso_639_3_item.lo `test -f 'src/iso_639_3_item.c' || echo '$(srcdir)/'`src/iso_639_3_item.c
 
+src/libisocodes_la-iso_639_5.lo: src/iso_639_5.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libisocodes_la_CPPFLAGS) $(CPPFLAGS) $(libisocodes_la_CFLAGS) $(CFLAGS) -MT src/libisocodes_la-iso_639_5.lo -MD -MP -MF src/$(DEPDIR)/libisocodes_la-iso_639_5.Tpo -c -o src/libisocodes_la-iso_639_5.lo `test -f 'src/iso_639_5.c' || echo '$(srcdir)/'`src/iso_639_5.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libisocodes_la-iso_639_5.Tpo src/$(DEPDIR)/libisocodes_la-iso_639_5.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/iso_639_5.c' object='src/libisocodes_la-iso_639_5.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libisocodes_la_CPPFLAGS) $(CPPFLAGS) $(libisocodes_la_CFLAGS) $(CFLAGS) -c -o src/libisocodes_la-iso_639_5.lo `test -f 'src/iso_639_5.c' || echo '$(srcdir)/'`src/iso_639_5.c
+
+src/libisocodes_la-iso_639_5_item.lo: src/iso_639_5_item.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libisocodes_la_CPPFLAGS) $(CPPFLAGS) $(libisocodes_la_CFLAGS) $(CFLAGS) -MT src/libisocodes_la-iso_639_5_item.lo -MD -MP -MF src/$(DEPDIR)/libisocodes_la-iso_639_5_item.Tpo -c -o src/libisocodes_la-iso_639_5_item.lo `test -f 'src/iso_639_5_item.c' || echo '$(srcdir)/'`src/iso_639_5_item.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libisocodes_la-iso_639_5_item.Tpo src/$(DEPDIR)/libisocodes_la-iso_639_5_item.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/iso_639_5_item.c' object='src/libisocodes_la-iso_639_5_item.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libisocodes_la_CPPFLAGS) $(CPPFLAGS) $(libisocodes_la_CFLAGS) $(CFLAGS) -c -o src/libisocodes_la-iso_639_5_item.lo `test -f 'src/iso_639_5_item.c' || echo '$(srcdir)/'`src/iso_639_5_item.c
+
 src/libisocodes_la-iso_4217.lo: src/iso_4217.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libisocodes_la_CPPFLAGS) $(CPPFLAGS) $(libisocodes_la_CFLAGS) $(CFLAGS) -MT src/libisocodes_la-iso_4217.lo -MD -MP -MF src/$(DEPDIR)/libisocodes_la-iso_4217.Tpo -c -o src/libisocodes_la-iso_4217.lo `test -f 'src/iso_4217.c' || echo '$(srcdir)/'`src/iso_4217.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libisocodes_la-iso_4217.Tpo src/$(DEPDIR)/libisocodes_la-iso_4217.Plo
@@ -877,6 +902,16 @@ $(srcdir)/src/iso_639_3_item.c: $(srcdir)/libisocodes_la_vala.stamp
 	@if test -f $@; then :; else \
 	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libisocodes_la_vala.stamp; \
 	fi
+$(srcdir)/src/iso_639_5.c: $(srcdir)/libisocodes_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libisocodes_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libisocodes_la_vala.stamp; \
+	fi
+$(srcdir)/src/iso_639_5_item.c: $(srcdir)/libisocodes_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libisocodes_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libisocodes_la_vala.stamp; \
+	fi
 $(srcdir)/src/iso_4217.c: $(srcdir)/libisocodes_la_vala.stamp
 	@if test -f $@; then :; else rm -f $(srcdir)/libisocodes_la_vala.stamp; fi
 	@if test -f $@; then :; else \
@@ -902,9 +937,9 @@ $(srcdir)/src/exceptions.c: $(srcdir)/libisocodes_la_vala.stamp
 	@if test -f $@; then :; else \
 	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libisocodes_la_vala.stamp; \
 	fi
-$(srcdir)/libisocodes_la_vala.stamp: src/isocodes.vala src/iso_3166.vala src/iso_3166_item.vala src/iso_3166_2.vala src/iso_3166_2_item.vala src/iso_639.vala src/iso_639_item.vala src/iso_639_3.vala src/iso_639_3_item.vala src/iso_4217.vala src/iso_4217_item.vala src/iso_15924.vala src/iso_15924_item.vala src/exceptions.vala
+$(srcdir)/libisocodes_la_vala.stamp: src/isocodes.vala src/iso_3166.vala src/iso_3166_item.vala src/iso_3166_2.vala src/iso_3166_2_item.vala src/iso_639.vala src/iso_639_item.vala src/iso_639_3.vala src/iso_639_3_item.vala src/iso_639_5.vala src/iso_639_5_item.vala src/iso_4217.vala src/iso_4217_item.vala src/iso_15924.vala src/iso_15924_item.vala src/exceptions.vala
 	$(AM_V_at)rm -f $@ && echo stamp > $@-t
-	$(AM_V_VALAC)$(am__cd) $(srcdir) && $(VALAC) $(AM_VALAFLAGS) $(VALAFLAGS) -C src/isocodes.vala src/iso_3166.vala src/iso_3166_item.vala src/iso_3166_2.vala src/iso_3166_2_item.vala src/iso_639.vala src/iso_639_item.vala src/iso_639_3.vala src/iso_639_3_item.vala src/iso_4217.vala src/iso_4217_item.vala src/iso_15924.vala src/iso_15924_item.vala src/exceptions.vala
+	$(AM_V_VALAC)$(am__cd) $(srcdir) && $(VALAC) $(AM_VALAFLAGS) $(VALAFLAGS) -C src/isocodes.vala src/iso_3166.vala src/iso_3166_item.vala src/iso_3166_2.vala src/iso_3166_2_item.vala src/iso_639.vala src/iso_639_item.vala src/iso_639_3.vala src/iso_639_3_item.vala src/iso_639_5.vala src/iso_639_5_item.vala src/iso_4217.vala src/iso_4217_item.vala src/iso_15924.vala src/iso_15924_item.vala src/exceptions.vala
 	$(AM_V_at)mv -f $@-t $@
 
 mostlyclean-libtool:
@@ -1364,6 +1399,8 @@ maintainer-clean-generic:
 	-rm -f $(srcdir)/src/iso_639.c
 	-rm -f $(srcdir)/src/iso_639_3.c
 	-rm -f $(srcdir)/src/iso_639_3_item.c
+	-rm -f $(srcdir)/src/iso_639_5.c
+	-rm -f $(srcdir)/src/iso_639_5_item.c
 	-rm -f $(srcdir)/src/iso_639_item.c
 	-rm -f $(srcdir)/src/isocodes.c
 	-rm -f src/exceptions.c
@@ -1378,6 +1415,8 @@ maintainer-clean-generic:
 	-rm -f src/iso_639.c
 	-rm -f src/iso_639_3.c
 	-rm -f src/iso_639_3_item.c
+	-rm -f src/iso_639_5.c
+	-rm -f src/iso_639_5_item.c
 	-rm -f src/iso_639_item.c
 	-rm -f src/isocodes.c
 	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)

@@ -41,6 +41,8 @@ libisocodes_la_SOURCES = \
 	src/iso_639_item.vala \
 	src/iso_639_3.vala \
 	src/iso_639_3_item.vala \
+	src/iso_639_5.vala \
+	src/iso_639_5_item.vala \
 	src/iso_4217.vala \
 	src/iso_4217_item.vala \
 	src/iso_15924.vala \
