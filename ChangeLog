@@ -1,3 +1,10 @@
+libisocodes 1.2
+===============
+2014-05-07
+
+* Add new interface for ISO 639-5, recently added to iso-codes
+
+
 libisocodes 1.1
 ===============
 2014-03-25
