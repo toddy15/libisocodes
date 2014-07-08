@@ -55,7 +55,7 @@ libisocodes.h:
 
 VALAFLAGS = \
 	--pkg libxml-2.0 \
-	--pkg gee-1.0 \
+	--pkg gee-0.8 \
 	--library=libisocodes \
 	--vapidir=vapi --pkg config \
 	--header=libisocodes.h \
@@ -124,7 +124,7 @@ codetest_datafiles = \
 codetest_sources = $(codetest_testfiles) $(libisocodes_la_SOURCES)
 codetest_VALAFLAGS = \
 	--pkg libxml-2.0 \
-	--pkg gee-1.0 \
+	--pkg gee-0.8 \
 	--vapidir=$(srcdir)/vapi --pkg config \
 	-X -I. \
 	-X -DGETTEXT_PACKAGE=\"libisocodes\" \
