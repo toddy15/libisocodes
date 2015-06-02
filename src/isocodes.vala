@@ -331,8 +331,14 @@ namespace libisocodes {
                     item[field] = dgettext(domain, item[field]);
                 }
             }
-            // Restore the environment from backup
-            Environment.set_variable("LANGUAGE", env_backup, true);
+            // Restore the environment variable LANGUAGE, either
+            // to the previous value or unset the variable.
+            if (env_backup == null) {
+                Environment.unset_variable("LANGUAGE");
+            }
+            else {
+                Environment.set_variable("LANGUAGE", env_backup, true);
+            }
             // Restore the locale from backup
             Intl.setlocale(LocaleCategory.ALL, loc_backup);
         }
