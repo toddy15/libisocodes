@@ -1,7 +1,7 @@
 # English translations for libisocodes package.
-# Copyright (C) 2014 Tobias Quathamer
+# Copyright (C) 2015 Tobias Quathamer
 # This file is distributed under the same license as the libisocodes package.
-# Automatically generated, 2014.
+# Automatically generated, 2015.
 #
 # All this catalog "translates" are quotation characters.
 # The msgids must be ASCII and therefore cannot contain real quotation
@@ -30,10 +30,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libisocodes 1.2.1\n"
+"Project-Id-Version: libisocodes 1.2.2\n"
 "Report-Msgid-Bugs-To: toddy@debian.org\n"
-"POT-Creation-Date: 2014-07-08 20:21+0200\n"
-"PO-Revision-Date: 2014-07-08 20:21+0200\n"
+"POT-Creation-Date: 2015-06-02 23:29+0200\n"
+"PO-Revision-Date: 2015-06-02 23:29+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en@boldquot\n"
