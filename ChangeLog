@@ -1,3 +1,12 @@
+libisocodes 1.2.2
+=================
+2015-06-02
+
+* Fix GLib critical warning if the environment variable LANGUAGE
+  is not set. Thanks to Paul Wise for the bug report.
+  Closes: #787395
+
+
 libisocodes 1.2.1
 =================
 2014-07-08
