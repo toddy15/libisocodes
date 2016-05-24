@@ -46,7 +46,7 @@ PKG_PROG_PKG_CONFIG
 
 # Set up gettext
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.18])
+AM_GNU_GETTEXT_VERSION([0.19.3])
 AC_DEFINE([GETTEXT_PACKAGE], ["libisocodes"], [Gettext package name.])
 
 # Detect the needed libraries
