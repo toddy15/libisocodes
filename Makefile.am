@@ -95,7 +95,7 @@ girdir = $(datadir)/gir-1.0
 gir_DATA = libisocodes-$(VERSION).gir
 
 libisocodes-$(VERSION).typelib: libisocodes-$(VERSION).gir
-	g-ir-compiler --shared-library=libisocodes.so --output=$@ $<
+	$(G_IR_COMPILER) --shared-library=libisocodes.so --output=$@ $<
 
 typelibdir = $(libdir)/girepository-1.0
 typelib_DATA = libisocodes-$(VERSION).typelib

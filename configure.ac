@@ -36,6 +36,10 @@ AC_SUBST([LIBISOCODES_LT_VERSION])
 
 # Check for compilers and pkg-config
 AM_PROG_VALAC([0.16])
+AC_PATH_PROG([G_IR_COMPILER], [g-ir-compiler], [no])
+if test x"$G_IR_COMPILER" == x"no" ; then
+    AC_MSG_ERROR([g-ir-compiler is required. On Debian, try installing the package gobject-introspection.])
+fi
 AC_PROG_CC
 AM_PROG_CC_C_O
 PKG_PROG_PKG_CONFIG
