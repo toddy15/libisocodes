@@ -1,3 +1,11 @@
+libisocodes 1.2.3
+=================
+2021-01-27
+
+* Fix failing test due to French translation update.
+  Closes: #963411
+
+
 libisocodes 1.2.2
 =================
 2015-06-02
