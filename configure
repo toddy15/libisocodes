@@ -12097,10 +12097,9 @@ $as_echo "no" >&6; }
 esac
 fi
     if test "$VALAC" = valac; then
-      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Vala compiler not found or too old" >&5
-$as_echo "$as_me: WARNING: Vala compiler not found or too old" >&2;}
-         { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: you will not be able to compile Vala source files" >&5
-$as_echo "$as_me: WARNING: you will not be able to compile Vala source files" >&2;}
+
+	as_fn_error $? "valac is required. On Debian, try installing the package valac." "$LINENO" 5
+
     else
       :
     fi
