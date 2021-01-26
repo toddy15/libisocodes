@@ -72,7 +72,7 @@ namespace libisocodes {
                     // Check first and last translated entry
                     assert(e[0].alpha_4_code == "Beng");
                     assert(e[0].numeric_code == "325");
-                    assert(e[0].name == "bengalî");
+                    assert(e[0].name == "Bengali");
                     assert(e[e.length-1].alpha_4_code == "Latn");
                     assert(e[e.length-1].numeric_code == "215");
                     assert(e[e.length-1].name == "latin");
