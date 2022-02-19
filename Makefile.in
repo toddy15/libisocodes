@@ -542,7 +542,7 @@ VALAFLAGS = \
 	--pkg libxml-2.0 \
 	--pkg gee-0.8 \
 	--library=libisocodes \
-	--vapidir=vapi --pkg config \
+	--vapidir=$(srcdir)/vapi --pkg config \
 	--header=libisocodes.h \
 	--gir=libisocodes-$(VERSION).gir
 
