@@ -27,6 +27,7 @@ EXTRA_DIST = libisocodes-$(VERSION).gir \
 	vapi/config.vapi \
 	libisocodes.vapi \
 	libisocodes.pc.in \
+	CHANGELOG.md \
 	$(codetest_testfiles) \
 	$(codetest_datafiles)
 

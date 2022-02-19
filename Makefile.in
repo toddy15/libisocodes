@@ -301,8 +301,8 @@ am__DIST_COMMON = $(builddir)/libisocodes_la_vala.stamp \
 	$(top_srcdir)/build-aux/depcomp \
 	$(top_srcdir)/build-aux/install-sh \
 	$(top_srcdir)/build-aux/ltmain.sh \
-	$(top_srcdir)/build-aux/missing ABOUT-NLS COPYING ChangeLog \
-	README build-aux/compile build-aux/config.guess \
+	$(top_srcdir)/build-aux/missing ABOUT-NLS COPYING README.md \
+	build-aux/compile build-aux/config.guess \
 	build-aux/config.rpath build-aux/config.sub build-aux/depcomp \
 	build-aux/install-sh build-aux/ltmain.sh build-aux/missing \
 	src/exceptions.c src/iso_15924.c src/iso_15924_item.c \
@@ -515,6 +515,7 @@ EXTRA_DIST = libisocodes-$(VERSION).gir \
 	vapi/config.vapi \
 	libisocodes.vapi \
 	libisocodes.pc.in \
+	CHANGELOG.md \
 	$(codetest_testfiles) \
 	$(codetest_datafiles)
 
