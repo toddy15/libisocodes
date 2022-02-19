@@ -5,7 +5,7 @@ libdir=@libdir@
 
 Name: libisocodes
 Description: access of iso-codes data and translations
-URL: http://pkg-isocodes.alioth.debian.org/downloads/
+URL: https://github.com/toddy15/libisocodes
 Version: @PACKAGE_VERSION@
 Requires.private: gobject-2.0 glib-2.0 libxml-2.0 gee-0.8
 Cflags: -I${includedir}

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 * Fix --vapidir in VALAFLAGS. Thanks to Lemures Lemniscati. Closes #1
 * Use only one equal sign in test command for POSIX conformance. Closes #2
-
+* Update project URL in libisocodes.pc.in
 
 ## [1.2.4] – 2021-08-26
 ### Fixed
