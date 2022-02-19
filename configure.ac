@@ -39,7 +39,7 @@ AM_PROG_VALAC([0.26], [], [
 	AC_MSG_ERROR([valac is required. On Debian, try installing the package valac.])
 ])
 AC_PATH_PROG([G_IR_COMPILER], [g-ir-compiler], [no])
-if test x"$G_IR_COMPILER" == x"no" ; then
+if test x"$G_IR_COMPILER" = x"no" ; then
     AC_MSG_ERROR([g-ir-compiler is required. On Debian, try installing the package gobject-introspection.])
 fi
 AC_PROG_CC

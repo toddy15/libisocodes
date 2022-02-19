@@ -12802,7 +12802,7 @@ printf "%s\n" "no" >&6; }
 fi
 
 
-if test x"$G_IR_COMPILER" == x"no" ; then
+if test x"$G_IR_COMPILER" = x"no" ; then
     as_fn_error $? "g-ir-compiler is required. On Debian, try installing the package gobject-introspection." "$LINENO" 5
 fi
 ac_ext=c
